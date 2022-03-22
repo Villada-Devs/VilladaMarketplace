@@ -1,0 +1,149 @@
+/* Globales */
+* {
+    font-family: 'Fredoka', sans-serif;
+    color: rgb(65, 65, 65);
+}
+
+h1 {
+    font-weight: 500;
+}
+
+h2, h3, h4 {
+    font-weight: 400;
+}
+
+p {
+    font-weight: 300;
+}
+
+body {
+    background-color: transparent;
+    
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid rgb(65, 65, 65);
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+
+/* Utils */
+.link {
+    color: rgb(94, 145, 221);
+}
+
+.hover {
+    cursor: pointer;
+}
+
+.little {
+    font-size: 0.8rem;
+}
+
+
+
+
+/* Login */
+.bg {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    backdrop-filter: blur(5px);
+}
+
+
+.login-card {
+    z-index: 2;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 50vmin;
+    color: rgb(49, 49, 49);
+    padding: 0 4vmin;
+    justify-content: space-evenly;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-25vmin, -40vh);
+
+    background: rgba(246, 246, 246, 0.4);
+    border-radius: 40px;
+    backdrop-filter: blur(7.6px);
+    -webkit-backdrop-filter: blur(7.6px);
+    box-shadow: inset 6px 5px 10px 5px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 6px 5px 60px 5px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: inset 6px 5px 60px 5px rgba(255, 255, 255, 0.3);
+    border: solid 3px rgba(0, 0, 0, 0.4);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 60%;
+}
+
+.input {
+    padding: 2.4vmin;
+    border-radius: 10px;
+    border: none;
+    text-align: start;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 30vmin;
+}
+.inputs p {
+    margin-left: 1.2vmin;
+}
+
+.btn-login {
+    background-color: rgb(235, 116, 109);
+    padding: 1.4vmin 2vmin;
+    border-radius: 10px;
+}
+
+.login-button-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-button-area p {
+    margin-top: 2vmin;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.separator hr {
+    width: 40%;
+    
+}
+
+
+/* Medias */
+@media (max-width: 768px) {
+    .login-card {
+        width: 100vw;
+        height: 100vh;
+        transform: translate(-50vw, -50vh);
+        border-radius: 0;
+        border: none;
+    }
+
+    
+}
