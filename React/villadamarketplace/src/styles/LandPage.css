@@ -1,0 +1,124 @@
+.logo {
+    letter-spacing: 3vmin;
+    font-weight: 400;
+    margin: 0;
+    margin-left: 1.5vmin;
+}
+
+.top-nav a{
+    color: black;
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    height: 100%;
+    max-width: 1920px;
+    margin: 0;
+}
+
+.top-nav {
+    min-height: 8vh;
+    background-color: rgb(240, 240, 240);
+    padding: 1vh 0;
+}
+
+.btn-login {
+    background-color: transparent;
+    border: solid 2px rgb(235, 116, 109);
+    padding: 2vmin 2.4vmin;
+    border-radius: 10px;
+    height: 4vmin;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.btn-login:hover {
+    background-color: rgb(235, 116, 109);
+    color: rgb(240, 240, 240);
+}
+
+ul {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.top-container {
+    background-image: url("../villada.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 92vh;
+    box-shadow: 
+        inset 0px 20px 0px 0px rgb(0, 0, 0);
+    -webkit-box-shadow: 
+        inset 0px 40px 20px 0px rgba(0, 0, 0, 0.411);
+    -moz-box-shadow: 
+        inset 0px 20px 0px 0px rgb(0, 0, 0);
+}
+
+.top-title {
+    color: rgb(240, 240, 240);
+    margin-top: 12vmin;
+    font-weight: 300;
+    font-size: 3rem;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+}
+
+.cross {
+    color: black;
+    position: absolute;
+    top: 1rem;
+    right: 1.4rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.nav-link {
+    text-align: center;
+}
+
+.horizontal-inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.horizontal-inputs input {
+    width: 49%;
+}
+
+@media (max-width: 991px) {
+    .collapse {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .top-title {
+        font-size: 6vmin;
+        width: 80%;
+        text-align: center;
+        margin: 12vmin auto auto auto;
+        letter-spacing: 2vmin;
+    }
+
+    .btn-login {
+        padding: 1.4rem 2rem;
+    }
+
+
+}

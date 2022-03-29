@@ -16,32 +16,33 @@ function App() {
 
   const timeMessage = new Date().getHours() <= 6 && new Date().getHours() >= 18? messages[2] : new Date().getHours() < 18 && new Date().getHours() >= 12? messages[1] : messages[0];
 
+  const toggleLoginMenu = async () => {
+    if(loginOpened) {
+      setLoginOpened(false);
+    } else {
+      setRegisterOpened(false);
+      setLoginOpened(true);
+    }
+  }
+
+  const toggleRegisterMenu = async () => {
+    if(registerOpened) {
+      setRegisterOpened(false);
+    } else {
+      setLoginOpened(false);
+      setRegisterOpened(true);
+    }
+  }
 
   return (
     <>
 
-      <LandPage />
+      <LandPage toggleLoginMenu={toggleLoginMenu} />
       
-      { loginOpened? <Login timeMessage={timeMessage} /> : null }
-      { registerOpened? <Register timeMessage={timeMessage} /> : null }
+      { loginOpened? <Login timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} /> : null }
+      { registerOpened? <Register timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} /> : null }
 
-      <button type="button" className="btn btn-primary" onClick={() => {
-        if(loginOpened) {
-          setLoginOpened(false)
-        } else {
-          setRegisterOpened(false);
-          setLoginOpened(true);
-        }
-      }}>Login</button>
-
-      <button type="button" className="btn btn-danger" onClick={() => {
-        if(registerOpened) {
-          setRegisterOpened(false)
-        } else {
-          setLoginOpened(false);
-          setRegisterOpened(true);
-        }
-      }}>Register</button>
+      
       
     </>
 
