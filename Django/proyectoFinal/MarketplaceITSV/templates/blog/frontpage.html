@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    {% for post in posts %}
+        <div class="post block">
+            <h2 class="subtitle">{{ post.title }}</h2>
+
+            <small>Publicado el {{ post.date }}</small>
+
+            <p>{{ post.intro }}</p>
+
+            <img src="{{ post.imagen.url }}">
+
+            <a href="{% url 'post_detalle' post.slug %}">Leer mas</a>
+            adminadmin.site.register(Comment).site.register(Comment)
+            <hr>
+            
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
