@@ -26,5 +26,6 @@ from MarketplaceITSV.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.frontpage, name='frontpage'),
+    path('crearpost/', views.crear_post, name='crearpost'),
     path('<slug:slug>/', views.post_detalle, name='post_detalle'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

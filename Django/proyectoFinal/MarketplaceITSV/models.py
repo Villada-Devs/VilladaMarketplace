@@ -10,7 +10,7 @@ class Post(models.Model):
     intro = models.TextField()
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    imagen = models.ImageField(upload_to= "static/media/")
+    imagen = models.ImageField(upload_to= "images")
 
 #slug es lo que va a salir en  donde se escribe en google por ejemplo facebook/perfil/fotos para eso seria el slug. 
 #podriamos cambiar el nombre del slugfield() con "title" funciona como titulo y podemos usar el slug tambien
