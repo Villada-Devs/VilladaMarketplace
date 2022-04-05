@@ -25,6 +25,7 @@ def post_detalle(request, slug):
             comment.save()
 
             return redirect('post_detalle', slug=post.slug)
+
             
     else:
         form = CommentForm()
