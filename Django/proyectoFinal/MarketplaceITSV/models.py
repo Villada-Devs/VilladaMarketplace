@@ -6,11 +6,15 @@ from django.db.models.fields import CharField, SlugField, DateTimeField, TextFie
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField()
-    intro = models.TextField()
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     imagen = models.ImageField(upload_to= "images")
+
+    def __str__(self):
+        return f"{self.title}" 
+        
+
+
     #@method_decorator(login_required)
 
 #slug es lo que va a salir en  donde se escribe en google por ejemplo facebook/perfil/fotos para eso seria el slug. 
@@ -27,6 +31,4 @@ class Comment(models.Model):
 #nose que es el "related_name= 'comments'" en la conexion de foreign key de post
     class Meta:
         ordering = ['-date']
-
-
 

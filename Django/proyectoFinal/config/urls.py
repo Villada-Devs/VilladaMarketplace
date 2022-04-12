@@ -24,12 +24,11 @@ from django.conf.urls.static import static
 from MarketplaceITSV import views
 from MarketplaceITSV.views import *
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.frontpage, name='frontpage'),
-    #path('crearpost/', views.crear_post, name='crearpost'),
-    path('crearpost/', login_required(views.crear_post), name='crearpost'), #login_required verifica que este logueado
-    path('<slug:slug>/', views.post_detalle, name='post_detalle'),
-    path('accounts/login/', views.frontpage, name='redireccion_sinlog')
-
+    path('crearpost/', views.crear_post, name='crearpost'),
+    path('editarpost/<title>', views.editar_post, name='editarpost'),
+    path('<str:title>/', views.post_detalle, name='post_detalle'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

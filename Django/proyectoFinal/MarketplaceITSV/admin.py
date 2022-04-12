@@ -3,5 +3,5 @@ from .models import *
 from django.contrib.auth.models import Permission
 
 admin.site.register(Post)
-admin.site.register(Permission)
+#admin.site.register(Permission)
 

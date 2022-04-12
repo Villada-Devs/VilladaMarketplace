@@ -44,9 +44,14 @@
 
         <div class="field">
             <div class="control">
-                <button class="button is-succes">Enviar</button>
+                <button class="btn btn-success">Enviar</button>
             </div>
         </div>
     </form>
+    <br>
+    <br>
+
+    <a class= "btn btn-warning" href=" {% url 'editarpost' post.title %}">MODIFICAR POST</a> 
+    <button>BORRAR POST</button>
 
 {% endblock %}
