@@ -1,1 +1,5 @@
-readme
+Register (Falta enviar email de verificacion),
+Login ✔,
+consultar Username ✔,
+Recovery Pass ✔ (se puede implementar threading para mejorarlo),
+Tambien esta funcionando la opcion logout en la pagina principal y el display de usuario logueado.
