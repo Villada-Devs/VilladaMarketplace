@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'signin.css'%}">
+</head>
+<body>
+    <div id="cont">
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>Message:</strong>{{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        <form action="/signin" method="POST">
+            {% csrf_token %}
+                
+                <label for="">Nombre De usuario:</label>
+                <input type="text" id="email" name="username" placeholder="Ingrese Su nombre de usuario" required> 
+                <br>
+        
+                <label for="">Contraseña:</label>
+                <input type="password" id="pass1" name="pass1" placeholder="Ingrese Su contraseña" required>
+                <br>            
+        
+                <button type="submit"> iniciar sesion !</button>
+                
+            </form>
+            <label for="" style="display: block;">Olvido su contraseña ? <a href="accounts/password_reset">cambie aqui !</a></label>
+            <label for="" style="display: block;">Olvido su username ? <a href="consult">consulte aqui !</a></label>
+            <label for="">No es usuario? <a href="signup">Registrese aqui !</a></label>
+    </div>
+</body>
+</html>
