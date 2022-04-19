@@ -1,12 +1,14 @@
 .logo {
-    letter-spacing: 3vmin;
+    letter-spacing: 2vmin;
     font-weight: 400;
     margin: 0;
     margin-left: 1.5vmin;
+    font-size: 1.8rem;
 }
 
 .top-nav a{
     color: black;
+    
 }
 
 .column {
@@ -18,13 +20,16 @@
 .navbar {
     height: 100%;
     max-width: 1920px;
-    margin: 0;
+    margin: auto;
+    padding: 0;
 }
 
 .top-nav {
-    min-height: 8vh;
-    background-color: rgb(240, 240, 240);
+    min-height: 10vh;
     padding: 1vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-login {
@@ -54,28 +59,41 @@ ul {
     justify-content: space-around;
 }
 
+hr.top-separator {
+    width: 90%;
+    margin: auto;
+    border-top: 2px solid rgb(128, 128, 128);
+}
+
 .top-container {
-    background-image: url("../villada.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 92vh;
-    box-shadow: 
-        inset 0px 20px 0px 0px rgb(0, 0, 0);
-    -webkit-box-shadow: 
-        inset 0px 40px 20px 0px rgba(0, 0, 0, 0.411);
-    -moz-box-shadow: 
-        inset 0px 20px 0px 0px rgb(0, 0, 0);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5vmin;
+}
+
+.foto-cole {
+    background-image: url('../villada.jpeg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    margin: 8vmin 10vmin 10vmin 0;
 }
 
 .top-title {
-    color: rgb(240, 240, 240);
-    margin-top: 12vmin;
-    font-weight: 300;
-    font-size: 3rem;
+    color: rgb(51, 51, 51);
+    margin-top: 6vmin;
+    font-weight: bold;
+    font-size: 2.8rem;
+    width: 100%;
     overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 1rem;
+    letter-spacing: 0.6rem;
+}
+.top-title span {
+    color: rgb(0, 75, 145);
 }
 
 .cross {
@@ -98,6 +116,10 @@ ul {
 }
 .horizontal-inputs input {
     width: 49%;
+}
+
+.left-card {
+    margin: 8vmin 0 10vmin 10vmin;
 }
 
 @media (max-width: 991px) {

@@ -50,9 +50,19 @@ function LandPage(toggleLoginMenu) {
                 </nav>
             </div>
 
+            <hr className="top-separator"></hr>
+
             <div className="top-container">
 
-                <h1 className="text-center top-title">Bienvenidos!</h1>
+                <div className="left-card">
+                    <h1 className="top-title">Bienvenidos <br></br>a la <span>Unión <br></br>Padres de Familia.</span></h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit facilis dolore, quae, doloribus esse laboriosam.</p>
+                    <button type="button" className="btn btn-success"></button>
+                </div>
+
+                <div className="foto-cole">
+
+                </div>
 
             </div>
 
