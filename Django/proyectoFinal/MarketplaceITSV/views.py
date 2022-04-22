@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 
+
+#🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿
+
 # Create your views here.
 from .models import *
 from .forms import CommentForm, PostForm
 from MarketplaceITSV.forms import CommentForm, PostForm
-
+from django.views.generic import DeleteView
+from django.urls import reverse_lazy
 
 def frontpage(request):
     posts = Post.objects.all()
@@ -47,6 +51,7 @@ def crear_post(request):
         crear_post_form = PostForm(request.POST, request.FILES)
 
         if crear_post_form.is_valid():
+           print("pene")
            crear_post_form.save()
            return redirect('frontpage')
     else:
@@ -54,23 +59,18 @@ def crear_post(request):
     return render(request, 'blog/crear_post_blog.html', {'crear_post_form':crear_post_form})
 
 
+def editar_post(request, id):
 
-
-def editar_post(request, title):
-    post = Post.objects.get(title=title)
-    print("holaa")
+    post = Post.objects.get(pk=id)
     form = PostForm(request.POST or None, instance= post)
-    print("todavia no entro al if")
-
+    
     if form.is_valid():
         form.save()
         return redirect('frontpage')
-
-        print("valido")
-
+        
     return render(request, 'blog/editar_post.html', {"post": post, "form": form})
 
-
-
-
-
+class PostDelete(DeleteView):
+    model = Post
+    template_name = 'blog/post_delete.html'
+    success_url = reverse_lazy('frontpage')

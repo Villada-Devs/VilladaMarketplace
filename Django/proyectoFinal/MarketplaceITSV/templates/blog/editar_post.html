@@ -3,26 +3,28 @@
 {% block content %}
 
 
-                    <form action="/crearpost/" method="POST" enctype="multipart/form-data" >
+                    <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         
                         <div class="fieldWrapper">
-                            <label for="">title:</label>
+                            <label for="">Title</label>
                             {{ form.title }}
                         </div>
                         <br>
                         <div class="fieldWrapper">
-                            <label for="">body:</label>
+                            <label for="">Body</label>
                             {{ form.body }}
                         </div>
                         <br>
                         
                         <div class="fieldWrapper">
-                            <label for="">imagen:</label>
+                            <label for="">imagen</label>
                             {{ form.imagen }}
                         </div>
+                            
                         <br>
-                        <button class="btn btn-success" type= 'submit'>Modificar</button>
+                            
+                        <button class="btn btn-success" type='submit' value="Update">Modificar</button>
                     </form>
 
 {% endblock %}

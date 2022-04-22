@@ -51,7 +51,7 @@
     <br>
     <br>
 
-    <a class= "btn btn-warning" href=" {% url 'editarpost' post.title %}">MODIFICAR POST</a> 
-    <button>BORRAR POST</button>
+    <a class= "btn btn-warning" href=" {% url 'editarpost' post.pk %}">MODIFICAR POST</a> 
+    <a class="btn btn-danger" href=" {% url 'post_delete' post.id %}">BORRAR POST</a>
 
 {% endblock %}

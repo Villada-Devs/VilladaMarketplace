@@ -1,5 +1,5 @@
 """
-ASGI config for proyectoFinal project.
+ASGI config for eeeeeeee project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
