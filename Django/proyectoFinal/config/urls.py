@@ -15,7 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.decorators import login_required
+
+from django.conf import settings
+from django.conf.urls.static import static  
+
+
+from MarketplaceITSV import views
+from MarketplaceITSV.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', views.frontpage, name='frontpage'),
+    path('crearpost/', views.crear_post, name='crearpost'),
+    path('editarpost/<title>', views.editar_post, name='editarpost'),
+    path('<str:title>/', views.post_detalle, name='post_detalle'),
+]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
