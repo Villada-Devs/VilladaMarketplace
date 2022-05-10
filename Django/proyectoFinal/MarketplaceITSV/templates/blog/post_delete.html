@@ -6,7 +6,7 @@
         {% csrf_token %}
         <h3>¿Desea eliminar la publicacion "{{ post.title }}" </h3>
         <button class="btn btn-danger" type="submit">Si, eliminar</button>
-        <a class="btn btn-default" href="{% url 'post_detalle' post.title %}">Cancelar</a>
+        <a class="btn btn-secondary" href="{% url 'post_detalle' post.title %}">Cancelar</a>
     </form>
 
 {% endblock %}

@@ -26,10 +26,14 @@ from MarketplaceITSV.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.frontpage, name='frontpage'),
+    path('', views.list_blog, name='list_blog'),
     path('crearpost/', views.crear_post, name='crearpost'),
-    path('post_edit/<int:id>/', views.editar_post, name='editarpost'),
-    path('post_delete/<int:pk>/', PostDelete.as_view(), name='post_delete'),
-    path('post_detail/<str:title>/', views.post_detalle, name='post_detalle'),
+    path('Post_edit/<int:id>/', views.editar_post, name='editarpost'),
+    path('Post_delete/<int:pk>/', PostDelete.as_view(), name='post_delete'),
+    path('Post_detail/<str:title>/', views.post_detalle, name='post_detalle'),
+    path('createevent/', views.create_event, name='create_event'),
+    path('Events/', views.event_list, name='event_list'),
+    path('update_event/<int:pk>/', UpdateEvent.as_view(), name='update_event'),
+    path('delete_event/<int:pk>/', DeleteEvent.as_view(), name='delete_event'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 

@@ -1,0 +1,33 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+
+<form method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+    
+    <div class="fieldWrapper">
+        <label for="">Title</label>
+        {{ form.title }}
+    </div>
+    <br>
+    <div class="fieldWrapper">
+        <label for="">Body</label>
+        {{ form.body }}
+    </div>
+    <br>
+
+    <div class="fieldWrapper">
+        <label for="">Fecha del evento</label>
+        {{ form.set_date }}
+    </div>
+    <br>
+
+    <div class="fieldWrapper">
+        <label for="">Imagen</label>
+        {{ form.image }}
+    </div>
+    <br>
+    <button class="btn btn-success" type= 'submit'>Modificar</button>
+</form>
+{% endblock %}

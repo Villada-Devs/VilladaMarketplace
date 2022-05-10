@@ -8,9 +8,6 @@
 
             <small>Publicado el {{ post.date }}</small>
 
-            <p>{{ post.intro }}</p>
-
-            
            <img src="{{ post.imagen.url }}"> 
         
            <a href="{% url 'post_detalle' post.title %}">Leer mas</a>

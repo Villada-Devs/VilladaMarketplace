@@ -1,0 +1,30 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+    {% for event in events %}
+
+        <div class="post block">
+
+            <h2 class="subtitle">{{ event.title }}</h2>
+
+           <img src="{{ event.image.url }}"> 
+
+           <h3 class="subtitle">{{ event.body }}</h3>
+           
+           <small>Publicado el {{ event.date }}</small>
+           <br>
+
+           <h8> La fecha del evento sera el <strong>{{ event.set_date }} </strong></h8>
+           <br>
+            
+           <a class= "btn btn-warning" href="{% url 'update_event' event.pk %}">MODIFICAR EVENTO</a> 
+           <a class="btn btn-danger" href="{% url 'delete_event' event.pk %}">BORRAR EVENTO</a>
+           <hr>
+           <hr>
+
+
+        </div>
+    {% endfor %}
+
+{% endblock %}

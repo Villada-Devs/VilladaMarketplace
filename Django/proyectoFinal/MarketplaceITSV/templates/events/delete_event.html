@@ -1,0 +1,12 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+    <form method="POST" >
+        {% csrf_token %}
+        <h3>¿Desea eliminar la publicacion "{{ event.title }}" </h3>
+        <button class="btn btn-danger" type="submit">Si, eliminar</button>
+        <a class="btn btn-secondary" href="{% url 'event_list' %}">Cancelar</a>
+    </form>
+
+{% endblock %}
