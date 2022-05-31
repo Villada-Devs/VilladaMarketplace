@@ -1,75 +1,46 @@
-.logo {
-    letter-spacing: 2vmin;
-    font-weight: 400;
-    margin: 0;
-    margin-left: 1.5vmin;
-    font-size: 1.8rem;
+.sub-title {
+    font-size: 1.5rem;
+    color: rgb(115, 115, 115);
+    line-height: 1.4;
+    margin: 2rem 0;
 }
 
-.top-nav a{
-    color: black;
-    
-}
-
-.column {
+.texto-conoce-mas {
     display: flex;
-    justify-content: center;
     align-items: center;
+    position: absolute;
+    bottom: 0;
+    letter-spacing: 0.3rem;
+    cursor: pointer;
+    color: var(--main-color);
+}
+.conocer-link {
+    color: var(--main-color);
+    margin-left: 1rem;
 }
 
-.navbar {
-    height: 100%;
-    max-width: 1920px;
-    margin: auto;
-    padding: 0;
-}
-
-.top-nav {
-    min-height: 10vh;
-    padding: 1vh 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn-login {
-    background-color: transparent;
-    border: solid 2px rgb(235, 116, 109);
+.btn-marketplace {
+    background-color: var(--main-color);
+    border: solid 2px var(--main-color);
     padding: 2vmin 2.4vmin;
-    border-radius: 10px;
+    border-radius: 4px;
     height: 4vmin;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-}
-
-.btn-login:hover {
-    background-color: rgb(235, 116, 109);
     color: rgb(240, 240, 240);
 }
-
-ul {
-    font-weight: 300;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
-}
-
-hr.top-separator {
-    width: 90%;
-    margin: auto;
-    border-top: 2px solid rgb(128, 128, 128);
+.btn-marketplace:hover {
+    color: rgb(240, 240, 240);
 }
 
 .top-container {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 92vh;
+    height: 89vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 5vmin;
@@ -91,41 +62,15 @@ hr.top-separator {
     width: 100%;
     overflow: hidden;
     letter-spacing: 0.6rem;
+    margin-bottom: 0;
 }
 .top-title span {
-    color: rgb(0, 75, 145);
-}
-
-.cross {
-    color: black;
-    position: absolute;
-    top: 1rem;
-    right: 1.4rem;
-    font-size: 1.4rem;
-    cursor: pointer;
-}
-
-.nav-link {
-    text-align: center;
-}
-
-.horizontal-inputs {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-.horizontal-inputs input {
-    width: 49%;
+    color: var(--main-color);
 }
 
 .left-card {
     margin: 8vmin 0 10vmin 10vmin;
-}
-
-@media (max-width: 991px) {
-    .collapse {
-        margin-bottom: 1rem;
-    }
+    position: relative;
 }
 
 @media (max-width: 768px) {
@@ -137,10 +82,5 @@ hr.top-separator {
         margin: 12vmin auto auto auto;
         letter-spacing: 2vmin;
     }
-
-    .btn-login {
-        padding: 1.4rem 2rem;
-    }
-
 
 }

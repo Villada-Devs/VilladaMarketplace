@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
+import "../styles/Register.css";
+
+
 function Register({toggleLoginMenu, timeMessage, toggleRegisterMenu}) {
 
     const [submited, setSubmited] = useState(false);
 
     return (
         <>
-            <div className="bg"></div>
+            <div className="bg" onClick={() => toggleRegisterMenu()}></div>
 
             <div className="login-card">
             <FontAwesomeIcon icon={faXmark} className="cross" onClick={async () => {

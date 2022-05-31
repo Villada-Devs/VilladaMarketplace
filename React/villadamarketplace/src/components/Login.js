@@ -2,12 +2,15 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
+import "../styles/Login.css";
+
+
 function Login({toggleLoginMenu, timeMessage, toggleRegisterMenu}) {
     
     return (
 
         <>
-            <div className="bg"></div>
+            <div className="bg" onClick={() => toggleLoginMenu()}></div>
 
             <div className="login-card">
                 <FontAwesomeIcon icon={faXmark} className="cross" onClick={async () => {
