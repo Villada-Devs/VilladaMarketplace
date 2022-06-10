@@ -1,0 +1,155 @@
+/* Root */
+:root {
+    --main-color: rgb(94, 145, 221);
+}
+
+
+/* Globales */
+* {
+    font-family: 'Fredoka', sans-serif;
+    color: rgb(65, 65, 65);
+    
+    overflow-x: hidden;
+}
+
+h1 {
+    font-weight: 500;
+}
+
+h2, h3, h4 {
+    font-weight: 400;
+}
+
+p {
+    font-weight: 300;
+}
+
+body {
+    background-color: transparent;
+    
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid rgb(235, 116, 109);
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+button:focus, button:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* Utils */
+.link {
+    color: var(--main-color);
+}
+
+.hover {
+    cursor: pointer;
+}
+
+.little {
+    font-size: 0.8rem;
+}
+
+.cross {
+    color: black;
+    position: absolute;
+    top: 1rem;
+    right: 1.4rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.contenedor {
+    max-width: 90%;
+    margin: auto;
+}
+
+
+
+
+
+/* Login */
+.bg {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    backdrop-filter: blur(10px);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 60%;
+}
+
+.input {
+    padding: 2.4vmin;
+    border-radius: 10px;
+    border: none;
+    text-align: start;
+    background-color: rgb(240, 240, 240);
+}
+.input:focus {
+    outline: none;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 30vmin;
+}
+
+.inputs p {
+    margin-left: 1.2vmin;
+}
+
+.login-button-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-button-area p {
+    margin-top: 2vmin;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.separator hr {
+    width: 40%;
+    
+}
+
+.submition p {
+    margin-bottom: 2rem;
+}
+
+.header-seccion {
+    background-color: rgb(220, 220, 220);
+}
+.header-seccion h2 {
+    color: var(--main-color);
+    margin: 1.2rem 0;
+}
+.header-seccion p {
+    margin-bottom: 1.2rem;
+    max-width: 40%;
+}
+.header-seccion .btn {
+    margin-bottom: 1.2rem;
+}

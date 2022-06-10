@@ -1,0 +1,123 @@
+.logo {
+    letter-spacing: 2vmin;
+    font-weight: 400;
+    margin: 0;
+    text-align: left;
+    font-size: 1.8rem;
+    display: flex;
+    width: auto;
+}
+
+.top-nav a{
+    color: black;
+    
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    height: 100%;
+    max-width: 1920px;
+    margin: auto;
+    padding: 0;
+}
+
+.top-nav {
+    min-height: 10vh;
+    padding: 1vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.btn-login {
+    background-color: var(--main-color);
+    border: solid 2px var(--main-color);
+    padding: 2vmin 2.4vmin;
+    border-radius: 4px;
+    height: 4vmin;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: rgb(240, 240, 240);
+}
+
+.btn-login:hover {
+    background-color: var(--main-color);
+    color: rgb(240, 240, 240);
+}
+
+.btn-register {
+    background-color: transparent;
+    border: solid 2px var(--main-color);
+    padding: 2vmin 2.4vmin;
+    border-radius: 0 4px 4px 0;
+    height: 4vmin;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform: translateX(-10px);
+}
+
+.btn-register:hover {
+    background-color: var(--main-color);
+    color: rgb(240, 240, 240);
+}
+
+
+ul {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+hr.top-separator {
+    width: 90%;
+    margin: auto;
+    border-top: 2px solid rgb(128, 128, 128);
+}
+
+.nav-link {
+    text-align: center;
+    cursor: pointer;
+}
+
+.selected-view {
+    text-decoration: underline;
+    color: var(--main-color)!important;
+}
+
+.navbar-button {
+    padding: 1rem;
+}
+
+
+@media (max-width: 991px) {
+    .collapse {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .btn-login {
+        padding: 1.4rem 2rem;
+    }
+    .btn-register {
+        padding: 1.4rem 2rem;
+    }
+
+}
