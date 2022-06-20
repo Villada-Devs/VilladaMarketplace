@@ -7,9 +7,6 @@ import Register from "./components/Register";
 import TopNav from "./components/TopNav";
 import Events from "./components/Events";
 import Marketplace from "./components/Marketplace";
-import Portal from "./components/Portal";
-import Blog from "./components/Blog";
-import Pool from "./components/Pool";
 import Footer from "./components/Footer";
 
 const messages = ["un Buen Día", "Buenas Tardes", " Buenas Noches"];
@@ -18,11 +15,16 @@ const messages = ["un Buen Día", "Buenas Tardes", " Buenas Noches"];
 
 function App() {
 
+  const backendUrl = "https://upf-app-web.herokuapp.com/";
+
   const [registerOpened, setRegisterOpened] = useState(false);
   const [loginOpened, setLoginOpened] = useState(false);
 
   const [selectedView, setSelectedView] = useState("Inicio");
-  const views = ["Inicio", "Eventos", "Marketplace", "Portal de Trabajo", "Blog", "Pool"];
+  const views = ["Inicio", "Eventos", "Marketplace"];
+
+  const [userToken, setUserToken] = useState(null);
+  const [userInfo, setUserInfo] = useState({username: ""});
 
   const timeMessage = new Date().getHours() <= 6 && new Date().getHours() >= 18? messages[2] : new Date().getHours() < 18 && new Date().getHours() >= 12? messages[1] : messages[0];
 
@@ -40,7 +42,31 @@ function App() {
       setRegisterOpened(false);
     } else {
       setLoginOpened(false);
-      setRegisterOpened(true);
+      setRegisterOpened(true); 
+    }
+  }
+
+  const login = async (email, password) => {
+
+    if(password !== "" && email !== "") {
+
+      const response = await fetch(backendUrl + "dj-rest-auth/login/", {
+        method: "POST",
+        body: JSON.stringify({ email: email, password: password}),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+
+      const res = await response.json();
+      console.log(res);
+
+      if("statusCode" in res === false) {
+        setUserToken(res);
+        // getUserInfo(res);
+      } else {
+        alert("Wrong Credentials.");
+      }   
     }
   }
 
@@ -57,19 +83,13 @@ function App() {
           <Events />
         ) : selectedView == views[2]? (
           <Marketplace />
-        ) : selectedView == views[3]? (
-          <Portal />
-        ) : selectedView == views[4]? (
-          <Blog setSelectedView={setSelectedView} />
-        ) : selectedView == views[5]? (
-          <Pool />
         ) : (
           null
         )
       }
       
 
-      { loginOpened? <Login timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} /> : null }
+      { loginOpened? <Login login={login} timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} /> : null }
       { registerOpened? <Register timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} /> : null }
 
       <Footer />
