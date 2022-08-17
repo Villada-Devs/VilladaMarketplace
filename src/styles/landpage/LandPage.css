@@ -1,0 +1,23 @@
+.land-img {
+    background-image: url(/src/img/villada.jpg);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 0 10px grey;
+    border-radius: 20px;
+    height: 470px;
+}
+
+.land-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.land-sub-title {
+    margin: 20px 0;
+}
+
+.button-marketplace {
+    height: unset;
+    padding: 15px 30px;
+}

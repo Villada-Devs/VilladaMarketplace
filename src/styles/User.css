@@ -1,0 +1,27 @@
+.user-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+}
+
+.user-data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-photo {
+    background-color: #6490DC;
+    margin-right: 10px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+}
+
+.user-creation-date {
+    color: #9E9E9E;
+    font-size: 14px;
+}

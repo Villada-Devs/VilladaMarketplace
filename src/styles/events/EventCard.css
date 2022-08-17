@@ -1,0 +1,54 @@
+.event-card-r, .event-card-l {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px grey;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+
+/* Photo */
+
+
+.event-card-photo {
+    background-color: var(--main-color);
+    border-radius: 20px;
+    min-height: 360px;
+    height: 100%;
+}
+
+
+/* Content */
+
+
+.event-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* Top */
+
+
+.event-card-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+/* Description */
+
+
+.event-title {
+    margin: 20px 0;
+    color: #6490DC;
+}
+
+
+/* Footer */
+
+.event-card-footer {
+    margin-top: 20px;
+}

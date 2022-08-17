@@ -1,11 +1,11 @@
 import { useState } from "react";
-import "./styles/styles.css";
+import "./styles/Styles.css";
 
-import LandPage from "./components/LandPage";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import TopNav from "./components/TopNav";
-import Events from "./components/Events";
+import LandPage from "./components/landpage/LandPage";
+import Login from "./components/navbar/Login";
+import Register from "./components/navbar/Register";
+import NavBar from "./components/navbar/NavBar";
+import EventsMain from "./components/events/EventsMain";
 import Marketplace from "./components/Marketplace";
 import Footer from "./components/Footer";
 
@@ -21,7 +21,7 @@ function App() {
   const [loginOpened, setLoginOpened] = useState(false);
 
   const [selectedView, setSelectedView] = useState("Inicio");
-  const views = ["Inicio", "Eventos", "Marketplace"];
+  const views = ["Inicio", "Marketplace", "Eventos", "Pool"];
 
   const [userToken, setUserToken] = useState(null);
   const [userInfo, setUserInfo] = useState({username: ""});
@@ -73,16 +73,16 @@ function App() {
   return (
     <>
 
-      <TopNav toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} selectedView={selectedView} setSelectedView={setSelectedView} views={views} />
+      <NavBar toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} selectedView={selectedView} setSelectedView={setSelectedView} views={views} />
 
 
       {
         selectedView == views[0]? (
           <LandPage />
         ) : selectedView == views[1]? (
-          <Events />
-        ) : selectedView == views[2]? (
           <Marketplace />
+        ) : selectedView == views[2]? (
+          <EventsMain />
         ) : (
           null
         )

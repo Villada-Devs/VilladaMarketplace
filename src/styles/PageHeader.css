@@ -1,0 +1,16 @@
+.page-header {
+    margin: 0 0 70px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.page-title {
+    color: #6490DC;
+}
+
+.page-subtitle {
+    margin: 20px 0;
+    width: 400px;
+}
