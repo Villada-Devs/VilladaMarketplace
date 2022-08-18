@@ -35,14 +35,14 @@ function Register({toggleLoginMenu, timeMessage, toggleRegisterMenu, handleCardC
                             <Row>
 
                                 <Col>
-                                    <Form.Group className="mb-3" controlId="formBasicText">
+                                    <Form.Group className="mb-3" controlId="FName">
                                         <Form.Label className='input-label'>Nombre</Form.Label>
                                         <Form.Control className='input' type="text" />
                                     </Form.Group>
                                 </Col>
 
                                 <Col>
-                                    <Form.Group className="mb-3" controlId="formBasicText">
+                                    <Form.Group className="mb-3" controlId="LName">
                                         <Form.Label className='input-label'>Apellido</Form.Label>
                                         <Form.Control className='input' type="text" />
                                     </Form.Group>
@@ -50,17 +50,17 @@ function Register({toggleLoginMenu, timeMessage, toggleRegisterMenu, handleCardC
 
                             </Row>
                             
-                            <Form.Group className="mb-3" controlId="formBasicText">
+                            <Form.Group className="mb-3" controlId="UserName">
                                 <Form.Label className='input-label'>Nombre de Usuario</Form.Label>
                                 <Form.Control className='input' type="text" />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Group className="mb-3" controlId="Email">
                                 <Form.Label className='input-label'>Mail Institucional</Form.Label>
                                 <Form.Control className='input' type="email" />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Group className="mb-3" controlId="Password">
                                 <Form.Label className='input-label'>Contraseña</Form.Label>
                                 <Form.Control className='input' type="password" placeholder='8+ carácteres' />
                             </Form.Group>
@@ -70,7 +70,7 @@ function Register({toggleLoginMenu, timeMessage, toggleRegisterMenu, handleCardC
 
                     ):(
 
-                        <Form.Group className="mb-3" controlId="formBasicText">
+                        <Form.Group className="mb-3" controlId="Code">
                             <Form.Label className='input-label'>Código</Form.Label>
                             <Form.Control className='input' type="text" />
                             <Button className='button login-register-button' variant="primary" type="submit">Verificar</Button>

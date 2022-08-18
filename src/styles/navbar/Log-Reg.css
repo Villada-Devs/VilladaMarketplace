@@ -70,6 +70,10 @@
 }
 
 
+.card-footer span {
+    cursor: pointer;
+}
+
 
 /* Login */
 
