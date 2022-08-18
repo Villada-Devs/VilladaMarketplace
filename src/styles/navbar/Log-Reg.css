@@ -1,9 +1,15 @@
 /* Background */
 
 
-.blur-bg {
-    background-color: grey;
-    height: 100vh;
+.log-reg-bg {
+    background-color: rgba(17, 28, 64, .50);
+    backdrop-filter: blur(5px);
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,8 +34,6 @@
 
 
 .log-reg-card {
-    transform: translate(35vw, -95vh);
-    position: fixed;
     
     background-color: #fff;
     box-shadow: 0 0 10px grey;

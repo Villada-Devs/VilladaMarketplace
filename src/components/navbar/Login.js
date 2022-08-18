@@ -8,62 +8,67 @@ import Form from 'react-bootstrap/Form';
 import "../../styles/navbar/Log-Reg.css";
 
 
-function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu}) {
+function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu, handleCardClick}) {
     
     return (
 
         <>
 
-            <Container className='log-reg-card'>
+            <Container className="log-reg-bg" onClick={async () => { toggleLoginMenu(); }} fluid>
 
-                <div className='log-reg-card-top'>
-                    <h3>Iniciar Sesion</h3>
-                    <CloseButton onClick={async () => { toggleLoginMenu(); }}/>
-                </div>
-                <hr className='log-reg-hr'></hr>
+                <div className='log-reg-card' onClick={handleCardClick}>
 
-                <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label className="input-label">Mail Institucional</Form.Label>
-                        <Form.Control 
-                            id="login-mail-input" 
-                            className="input" 
-                            type="email" 
-                        />
-                    </Form.Group>
+                    <div className='log-reg-card-top'>
+                        <h3>Iniciar Sesion</h3>
+                        <CloseButton onClick={async () => { toggleLoginMenu(); }}/>
+                    </div>
+                    <hr className='log-reg-hr'></hr>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <div className='recover-password'>
-                            <Form.Label className='input-label'>Contraseña</Form.Label>
-                            <p className='recover'>¿Olvidaste tu Contraseña?</p>
-                        </div>
-                        <Form.Control 
-                            id="login-password-input" 
-                            className='input' 
-                            type="password" 
-                            placeholder="8+ carácteres" 
-                        />
-                    </Form.Group>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label className="input-label">Mail Institucional</Form.Label>
+                            <Form.Control 
+                                id="login-mail-input" 
+                                className="input" 
+                                type="email" 
+                            />
+                        </Form.Group>
 
-                    <Button 
-                        className='button login-register-button' 
-                        variant="primary" 
-                        type="submit"
-                        onClick={() => {
-                            const mail = document.querySelector('#login-mail-input').value;
-                            const password = document.querySelector('#login-password-input').value;
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <div className='recover-password'>
+                                <Form.Label className='input-label'>Contraseña</Form.Label>
+                                <p className='recover'>¿Olvidaste tu Contraseña?</p>
+                            </div>
+                            <Form.Control 
+                                id="login-password-input" 
+                                className='input' 
+                                type="password" 
+                                placeholder="8+ carácteres" 
+                            />
+                        </Form.Group>
 
-                            login(mail, password);
-                        }}
-                    >Iniciar Sesion</Button>
-                </Form>
-                        
-                
-                <div className='card-footer'>
-                    <p>¿No tienes Cuenta?<br></br><span className='blue-section' onClick={() => {toggleRegisterMenu()}}>Registrarse</span></p>
+                        <Button 
+                            className='button login-register-button' 
+                            variant="primary" 
+                            type="submit"
+                            onClick={() => {
+                                const mail = document.querySelector('#login-mail-input').value;
+                                const password = document.querySelector('#login-password-input').value;
+
+                                login(mail, password);
+                            }}
+                        >Iniciar Sesion</Button>
+                    </Form>
+                            
+                    
+                    <div className='card-footer'>
+                        <p>¿No tienes Cuenta?<br></br><span className='blue-section' onClick={() => {toggleRegisterMenu()}}>Registrarse</span></p>
+                    </div>
+
                 </div>
 
             </Container>
+
         </>
     );
 }

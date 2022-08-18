@@ -46,6 +46,8 @@ function App() {
     }
   }
 
+  const handleCardClick = (e) => e.stopPropagation();
+
   const login = async (email, password) => {
 
     if(password !== "" && email !== "") {
@@ -89,8 +91,8 @@ function App() {
       }
       
 
-      { loginOpened? <Login login={login} timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} /> : null }
-      { registerOpened? <Register timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} /> : null }
+      { loginOpened? <Login login={login} timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
+      { registerOpened? <Register timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
 
       <Footer />
 
