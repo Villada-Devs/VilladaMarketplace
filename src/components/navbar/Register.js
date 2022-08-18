@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 
-import "../../styles/navbar/Register.css";
+import "../../styles/navbar/Log-Reg.css";
 
 
 function Register({toggleLoginMenu, timeMessage, toggleRegisterMenu, handleCardClick}) {
