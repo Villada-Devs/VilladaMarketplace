@@ -79,7 +79,6 @@ function Register({toggleLoginMenu, timeMessage, toggleRegisterMenu}) {
 
             </div>
 
-
         </>
     );
 }

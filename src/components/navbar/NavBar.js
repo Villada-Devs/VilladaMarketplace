@@ -1,6 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faBars } from '@fortawesome/free-solid-svg-icons';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -32,7 +30,7 @@ function NavBar({toggleLoginMenu, toggleRegisterMenu, selectedView, setSelectedV
 
                                 <Nav.Link 
                                     key={index} 
-                                    className={view == selectedView? "nav-link selected-view" : "nav-link"} 
+                                    className={view === selectedView? "nav-link selected-view" : "nav-link"} 
                                     onClick={() => setSelectedView(view)}
                                 >{view}</Nav.Link>
 

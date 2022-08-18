@@ -77,11 +77,11 @@ function App() {
 
 
       {
-        selectedView == views[0]? (
+        selectedView === views[0]? (
           <LandPage />
-        ) : selectedView == views[1]? (
+        ) : selectedView === views[1]? (
           <Marketplace />
-        ) : selectedView == views[2]? (
+        ) : selectedView === views[2]? (
           <EventsMain />
         ) : (
           null
