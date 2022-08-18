@@ -1,13 +1,14 @@
 import { useState } from "react";
 import "./styles/styles.css";
 
+import NavBar from "./components/navbar/NavBar";
 import LandPage from "./components/landpage/LandPage";
 import Login from "./components/navbar/Login";
 import Register from "./components/navbar/Register";
-import NavBar from "./components/navbar/NavBar";
 import EventsMain from "./components/events/EventsMain";
 import Marketplace from "./components/Marketplace";
 import Footer from "./components/Footer";
+import PoolMain from "./components/pool/PoolMain";
 
 const messages = ["un Buen Día", "Buenas Tardes", " Buenas Noches"];
 
@@ -85,6 +86,8 @@ function App() {
           <Marketplace />
         ) : selectedView === views[2]? (
           <EventsMain />
+        ) : selectedView === views[3]? (
+          <PoolMain />
         ) : (
           null
         )

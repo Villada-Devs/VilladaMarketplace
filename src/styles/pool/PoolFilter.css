@@ -1,0 +1,19 @@
+.filter-container {
+    margin: 20px 0;
+}
+
+.button-filter {
+    margin-bottom: 10px;
+}
+
+.pool-btn-group {
+    margin-top: 10px;
+    height: 40px;
+    width: 100%;
+}
+
+.pool-button-btng {
+    background-color: #F5F5F5;
+    color: #4D4D4D;
+    justify-content: center;
+}

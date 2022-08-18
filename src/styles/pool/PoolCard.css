@@ -1,0 +1,22 @@
+.pool-card{
+    padding: 15px;
+    border-style: none;
+    border-radius: 20px;
+    box-shadow: 0 0 5px grey;
+}
+
+.pool-ubic {
+    background-color: var(--main-color);
+    margin: 15px 0;
+    border-radius: 20px;
+    height: 250px;
+}
+
+.pool-card-item {
+    padding-bottom: 7px;
+    margin-bottom: 7px;
+}
+
+.pool-button {
+    width: 100%;
+}
