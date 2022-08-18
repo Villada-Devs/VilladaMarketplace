@@ -22,7 +22,7 @@
 
 
 .nav-link {
-    margin-right: 10px;
+    margin: 0 10px;
     color: #4D4D4D;
     transition: all .3s ease;
 }
