@@ -79,58 +79,6 @@ function Register({toggleLoginMenu, timeMessage, toggleRegisterMenu}) {
 
             </div>
 
-            <Container className='log-reg-card'>
-
-                    <div className='log-reg-card-top'>
-                        <h3>Registrarse</h3>
-                        <CloseButton onClick={async () => { toggleLoginMenu(); }}/>
-                    </div>
-                    <hr className='log-reg-hr register-hr'></hr>
-
-                    <Form>
-
-                        <Row>
-
-                            <Col>
-                                <Form.Group className="mb-3" controlId="formBasicText">
-                                    <Form.Label className='input-label'>Nombre</Form.Label>
-                                    <Form.Control className='input' type="text" />
-                                </Form.Group>
-                            </Col>
-
-                            <Col>
-                                <Form.Group className="mb-3" controlId="formBasicText">
-                                    <Form.Label className='input-label'>Apellido</Form.Label>
-                                    <Form.Control className='input' type="text" />
-                                </Form.Group>
-                            </Col>
-
-                        </Row>
-                        
-                    <Form.Group className="mb-3" controlId="formBasicText">
-                        <Form.Label className='input-label'>Nombre de Usuario</Form.Label>
-                        <Form.Control className='input' type="text" />
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label className='input-label'>Mail Institucional</Form.Label>
-                        <Form.Control className='input' type="email" />
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label className='input-label'>Contraseña</Form.Label>
-                        <Form.Control className='input' type="password" placeholder='8+ carácteres' />
-                    </Form.Group>
-
-                    <Button className='button login-register-button' variant="primary" type="submit">Crear Cuenta</Button>
-                </Form>
-
-                <div className='card-footer'>
-                    <p>¿Ya tienes Cuenta?<br></br><span className='blue-section'>Iniciar Sesion</span></p>
-                </div>  
-
-            </Container>
-
 
         </>
     );

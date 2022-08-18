@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./styles/Styles.css";
+import "./styles/styles.css";
 
 import LandPage from "./components/landpage/LandPage";
 import Login from "./components/navbar/Login";
