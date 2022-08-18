@@ -1,20 +1,9 @@
 .cross {
-    color: black;
     position: absolute;
     top: 1rem;
     right: 1.4rem;
     font-size: 1.4rem;
     cursor: pointer;
-}
-
-.horizontal-inputs {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.horizontal-inputs input {
-    width: 49%;
 }
 
 .register-inputs {

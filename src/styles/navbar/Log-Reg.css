@@ -1,0 +1,100 @@
+/* Background */
+
+
+.blur-bg {
+    background-color: grey;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Decorator */
+
+
+.log-reg-hr {
+    background-color: var(--main-color);
+    opacity: unset;
+    border-style: none;
+    border-radius: 10px;
+    margin: 5px 0 20px 0;
+    height: 5px;
+    width: 30px;
+}
+
+
+/* Card */
+
+
+.log-reg-card {
+    transform: translate(35vw, -95vh);
+    position: fixed;
+    
+    background-color: #fff;
+    box-shadow: 0 0 10px grey;
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px;
+}
+
+
+/* Header */
+
+
+.log-reg-card-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+/* Inputs */
+
+
+.login-register-button {
+    margin: 10px 0 20px 0;
+    width: 100%;
+}
+
+
+/* Footer */
+
+
+.card-footer {
+    text-align: center;
+}
+
+
+
+/* Login */
+
+
+.recover-password {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.recover {
+    cursor: pointer;
+    color: var(--main-color);
+}
+
+
+/* Register */
+
+
+.register-hr {
+    margin-bottom: 10px;
+}
+
+.inputs-grid {
+    display: grid; 
+    grid-template-columns: auto auto;
+    column-gap: 20px;
+}
+
+
+/* Medias */
+
