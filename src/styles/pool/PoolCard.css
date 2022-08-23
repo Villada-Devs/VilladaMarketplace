@@ -1,8 +1,9 @@
 .pool-card{
     padding: 15px;
+    margin-bottom: 25px;
     border-style: none;
     border-radius: 20px;
-    box-shadow: 0 0 5px grey;
+    box-shadow: var(--shadow);
 }
 
 .pool-ubic {

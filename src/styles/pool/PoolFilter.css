@@ -2,18 +2,28 @@
     margin: 20px 0;
 }
 
-.button-filter {
+.filter-header {
     margin-bottom: 10px;
 }
 
-.pool-btn-group {
+.filter-btn-group {
     margin-top: 10px;
     height: 40px;
     width: 100%;
 }
 
-.pool-button-btng {
+.filter-button-btng {
     background-color: #F5F5F5;
     color: #4D4D4D;
     justify-content: center;
+    --bs-btn-hover-color: #4D4D4D;
+    --bs-btn-hover-bg: #F5F5F5;
+}
+
+.filter-button-btng:hover {
+    color: #fff;
+}
+
+.btn-check:active+.btn, .btn-check:checked+.btn, .btn.active, .btn.show, .btn:active {
+    background-color: var(--main-color);
 }

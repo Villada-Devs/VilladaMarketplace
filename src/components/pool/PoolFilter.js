@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import Accordion from 'react-bootstrap/Accordion';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import Card from 'react-bootstrap/Card';
-import ToggleButton from 'react-bootstrap/ToggleButton';
+
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -17,7 +19,7 @@ function CustomToggle({ children, eventKey }) {
 
   return (
 
-    <button className="button" type="button" onClick={decoratedOnClick}>
+    <button className="button filter-button" type="button" onClick={decoratedOnClick}>
       {children}
     </button>
 
@@ -38,7 +40,7 @@ function PoolFilter() {
 
         <Card className="unbackground">
 
-          <Card.Header className="unpadding unbackground button-filter">
+          <Card.Header className="unpadding unbackground filter-header">
             <CustomToggle eventKey="0">Filtros</CustomToggle>
           </Card.Header>
 
@@ -77,25 +79,25 @@ function PoolFilter() {
 
                           <Col lg={3} md={6} sm={12}>
                             <Form.Label className="input-label">Dias</Form.Label><br></br>
-                            <ToggleButtonGroup className="pool-btn-group" type="checkbox" value={value} onChange={handleChange}>
+                            <ToggleButtonGroup className="filter-btn-group" type="checkbox" value={value} onChange={handleChange}>
 
-                              <ToggleButton className="button pool-button-btng" id="tbg-btn-1" value={1}>
+                              <ToggleButton className="button filter-button-btng" id="tbg-btn-1" value={1}>
                                 Lu
                               </ToggleButton>
 
-                              <ToggleButton className="button pool-button-btng" id="tbg-btn-2" value={2}>
+                              <ToggleButton className="button filter-button-btng" id="tbg-btn-2" value={2}>
                                 Ma
                               </ToggleButton>
 
-                              <ToggleButton className="button pool-button-btng" id="tbg-btn-3" value={3}>
+                              <ToggleButton className="button filter-button-btng" id="tbg-btn-3" value={3}>
                                 Mi
                               </ToggleButton>
 
-                              <ToggleButton className="button pool-button-btng" id="tbg-btn-4" value={4}>
+                              <ToggleButton className="button filter-button-btng" id="tbg-btn-4" value={4}>
                                 Ju
                               </ToggleButton>
 
-                              <ToggleButton className=" button pool-button-btng" id="tbg-btn-5" value={5}>
+                              <ToggleButton className=" button filter-button-btng" id="tbg-btn-5" value={5}>
                                 Vi
                               </ToggleButton>
 

@@ -25,7 +25,7 @@ function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu, handleC
                     <hr className='log-reg-hr'></hr>
 
                     <Form>
-                        <Form.Group className="mb-3" controlId="Email">
+                        <Form.Group className="mb-3 unpadding" controlId="Email">
                             <Form.Label className="input-label">Mail Institucional</Form.Label>
                             <Form.Control 
                                 id="login-mail-input" 
@@ -34,7 +34,7 @@ function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu, handleC
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="Password">
+                        <Form.Group className="mb-3 unpadding" controlId="Password">
                             <div className='recover-password'>
                                 <Form.Label className='input-label'>Contraseña</Form.Label>
                                 <p className='recover'>¿Olvidaste tu Contraseña?</p>

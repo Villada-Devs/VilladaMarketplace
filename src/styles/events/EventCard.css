@@ -1,7 +1,7 @@
 .event-card-r, .event-card-l {
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 0 5px grey;
+    box-shadow: var(--shadow);
     border-radius: 20px;
     margin-bottom: 40px;
 }
