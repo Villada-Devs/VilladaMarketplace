@@ -11,7 +11,7 @@ function MarketplaceMain() {
 
             <Container className="page-container">
                 <PageHeader
-                    title="Viilada Marketplace"
+                    title="Villada Marketplace"
                     button="Vender"
                 />
             </Container>
