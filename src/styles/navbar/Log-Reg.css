@@ -1,3 +1,8 @@
+.unmarging {
+    margin: 0 !important;
+}
+
+
 /* Background */
 
 
@@ -79,9 +84,7 @@
 
 
 .recover-password {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .recover {

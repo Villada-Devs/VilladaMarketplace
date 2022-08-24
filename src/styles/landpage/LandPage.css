@@ -2,7 +2,7 @@
     background-image: url(/src/img/villada.jpg);
     background-position: center;
     background-size: cover;
-    box-shadow: 0 0 10px grey;
+    box-shadow: var(--shadow);
     border-radius: 20px;
     height: 470px;
 }

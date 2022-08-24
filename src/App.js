@@ -6,7 +6,7 @@ import LandPage from "./components/landpage/LandPage";
 import Login from "./components/navbar/Login";
 import Register from "./components/navbar/Register";
 import EventsMain from "./components/events/EventsMain";
-import Marketplace from "./components/Marketplace";
+import MarketplaceMain from "./components/marketplace/MarketplaceMain";
 import Footer from "./components/Footer";
 import PoolMain from "./components/pool/PoolMain";
 
@@ -83,7 +83,7 @@ function App() {
         selectedView === views[0]? (
           <LandPage />
         ) : selectedView === views[1]? (
-          <Marketplace />
+          <MarketplaceMain />
         ) : selectedView === views[2]? (
           <EventsMain />
         ) : selectedView === views[3]? (
