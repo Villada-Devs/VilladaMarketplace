@@ -6,6 +6,11 @@
     margin-bottom: 10px;
 }
 
+.input-option {
+    background-color: red;
+    border-radius: 10px;
+}
+
 .filter-btn-group {
     margin-top: 10px;
     height: 40px;
