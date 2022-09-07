@@ -1,5 +1,5 @@
 :root {
-    --main-color: rgb(94, 145, 221);
+    --main-color: #29235C ;
     --shadow: 0 0 7px rgba(0, 0, 0, .20);
 }
 
@@ -13,7 +13,7 @@ body {
 
 h1 {
     margin: 0;
-    color: #313131;
+    color: #BE1622;
     font-size: 50px;
     font-weight: 600;
 }

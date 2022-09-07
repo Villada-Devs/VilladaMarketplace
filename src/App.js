@@ -10,9 +10,6 @@ import MarketplaceMain from "./components/marketplace/MarketplaceMain";
 import Footer from "./components/Footer";
 import PoolMain from "./components/pool/PoolMain";
 
-const messages = ["un Buen Día", "Buenas Tardes", " Buenas Noches"];
-
-
 
 function App() {
 
@@ -26,8 +23,6 @@ function App() {
 
   const [userToken, setUserToken] = useState(null);
   const [userInfo, setUserInfo] = useState({username: ""});
-
-  const timeMessage = new Date().getHours() <= 6 && new Date().getHours() >= 18? messages[2] : new Date().getHours() < 18 && new Date().getHours() >= 12? messages[1] : messages[0];
 
   const toggleLoginMenu = async () => {
     if(loginOpened) {
@@ -78,7 +73,6 @@ function App() {
 
       <NavBar toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} selectedView={selectedView} setSelectedView={setSelectedView} views={views} />
 
-
       {
         selectedView === views[0]? (
           <LandPage />
@@ -94,8 +88,8 @@ function App() {
       }
       
 
-      { loginOpened? <Login login={login} timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
-      { registerOpened? <Register timeMessage={timeMessage} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
+      { loginOpened? <Login login={login} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
+      { registerOpened? <Register toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
 
       <Footer />
 
