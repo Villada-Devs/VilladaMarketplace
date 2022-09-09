@@ -3,8 +3,11 @@ import React from "react";
 import Container from "react-bootstrap/esm/Container";
 
 import PageHeader from "../PageHeader";
+import EventsForm from "./EventsForm";
 import EventCardR from "./EventCardR";
 import EventCardL from "./EventCardL";
+
+import InputFile from "../InputFile";
 
 function EventsMain() {
 
@@ -18,10 +21,7 @@ function EventsMain() {
                     button="Nuevo Evento"
                 />
 
-                <div className="events-content">
-                    <EventCardR />
-                    <EventCardL />
-                </div>
+                <EventsForm />
 
             </Container>
 
@@ -29,5 +29,12 @@ function EventsMain() {
     );
 
 }
+
+/* 
+<div className="events-content">
+    <EventCardR />
+    <EventCardL />
+</div>
+*/
 
 export default EventsMain;

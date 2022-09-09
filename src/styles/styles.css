@@ -1,5 +1,5 @@
 :root {
-    --main-color: #29235C ;
+    --main-color: rgb(94, 145, 221);
     --shadow: 0 0 7px rgba(0, 0, 0, .20);
 }
 
@@ -13,7 +13,7 @@ body {
 
 h1 {
     margin: 0;
-    color: #BE1622;
+    color: #313131;
     font-size: 50px;
     font-weight: 600;
 }
@@ -41,6 +41,14 @@ p {
 
 .page-container {
     padding: 120px 4%;
+}
+
+.form-container {
+    background-color: #fff;
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+    width: 800px;
+    padding: 20px;
 }
 
 

@@ -43,7 +43,7 @@
 
 .event-title {
     margin: 20px 0;
-    color: #6490DC;
+    color: var(--main-color);
 }
 
 
