@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./styles/styles.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import NavBar from "./components/navbar/NavBar";
 import LandPage from "./components/landpage/LandPage";
@@ -10,6 +10,7 @@ import MarketplaceMain from "./components/marketplace/MarketplaceMain";
 import Footer from "./components/Footer";
 import PoolMain from "./components/pool/PoolMain";
 
+import "./styles/styles.css";
 
 function App() {
 
@@ -73,20 +74,14 @@ function App() {
 
       <NavBar toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} selectedView={selectedView} setSelectedView={setSelectedView} views={views} />
 
-      {
-        selectedView === views[0]? (
-          <LandPage />
-        ) : selectedView === views[1]? (
-          <MarketplaceMain />
-        ) : selectedView === views[2]? (
-          <EventsMain />
-        ) : selectedView === views[3]? (
-          <PoolMain />
-        ) : (
-          null
-        )
-      }
-      
+      <BrowserRouter>
+          <Routes>
+            <Route path="/" element= {<LandPage />} />
+            <Route path="/Marketplace" element= {<MarketplaceMain />} />
+            <Route path="/Eventos" element= {<EventsMain />} />
+            <Route path="/Pool" element= {<PoolMain />} />
+          </Routes>
+        </BrowserRouter>
 
       { loginOpened? <Login login={login} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
       { registerOpened? <Register toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }

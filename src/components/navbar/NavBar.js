@@ -15,7 +15,7 @@ function NavBar({toggleLoginMenu, toggleRegisterMenu, selectedView, setSelectedV
         
         <Navbar className="navbar" expand="lg">
             <Container className="unpadding" fluid>
-                <Navbar.Brand className="upf" href="#">U P F</Navbar.Brand>
+                <Navbar.Brand className="upf" href="/">U P F</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                 <Nav
@@ -24,22 +24,22 @@ function NavBar({toggleLoginMenu, toggleRegisterMenu, selectedView, setSelectedV
                     navbarScroll
                 >
 
-                    {
-                        views.map((view, index) => {
-                            return (
+                    <Nav.Item>
+                        <Nav.Link href="/Marketplace">Marketplace</Nav.Link>
+                    </Nav.Item>
 
-                                <Nav.Link 
-                                    key={index} 
-                                    className={view === selectedView? "nav-link selected-view" : "nav-link"} 
-                                    onClick={() => setSelectedView(view)}
-                                >{view}</Nav.Link>
+                    <Nav.Item>
+                        <Nav.Link href="/Eventos">Eventos</Nav.Link>
+                    </Nav.Item>
 
-                            )
-                        })
-                    }
+                    <Nav.Item>
+                        <Nav.Link href="/Pool">Pool</Nav.Link>
+                    </Nav.Item>
+                    
 
                 </Nav>
                 <Form className="d-flex">
+
                     <Button 
                         className="button nav-login-button" 
                         variant="primary"
@@ -47,6 +47,7 @@ function NavBar({toggleLoginMenu, toggleRegisterMenu, selectedView, setSelectedV
                             toggleLoginMenu();
                         }}
                         >Iniciar Sesion</Button>
+
                     <Button 
                         className="button nav-register-button" 
                         variant="outline-primary"
@@ -54,6 +55,7 @@ function NavBar({toggleLoginMenu, toggleRegisterMenu, selectedView, setSelectedV
                             toggleRegisterMenu();
                         }}
                         >Registrarse</Button>
+
                 </Form>
                 </Navbar.Collapse>
             </Container>

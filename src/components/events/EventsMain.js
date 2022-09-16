@@ -3,14 +3,11 @@ import React from "react";
 import Container from "react-bootstrap/esm/Container";
 
 import PageHeader from "../PageHeader";
-import EventsForm from "./EventsForm";
 import EventCardR from "./EventCardR";
 import EventCardL from "./EventCardL";
 
-import InputFile from "../InputFile";
-
 function EventsMain() {
-
+    
     return(
         <>
 
@@ -21,7 +18,22 @@ function EventsMain() {
                     button="Nuevo Evento"
                 />
 
-                <EventsForm />
+                <div className="events-content">
+                    <EventCardR 
+                        userName="Matias"
+                        creationDate="16 de septiembre 2022"
+                        eventTitle="Titulo del Evento"
+                        eventDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        eventDate="14 de octubre 2022"
+                    />
+                    <EventCardL 
+                        userName="Matias"
+                        creationDate="16 de septiembre 2022"
+                        eventTitle="Titulo del Evento"
+                        eventDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        eventDate="14 de octubre 2022"
+                    />
+                </div>
 
             </Container>
 
@@ -30,7 +42,7 @@ function EventsMain() {
 
 }
 
-/* 
+/*
 <div className="events-content">
     <EventCardR />
     <EventCardL />

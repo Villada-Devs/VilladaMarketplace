@@ -34,6 +34,9 @@ function EventsForm() {
 
         <Container className='form-container' fluid>
 
+            <Form.Group as={Col} md="6" controlId="validationCustom01">
+                <Form.Label className='input-label'>Foto</Form.Label>
+            </Form.Group>
             <div>
                 <form className='event-image-input-container' onSubmit={handleSubmit(setRegister)}>
                     <input className='event-image-input' type="file" {...register('image', { required: true })}></input>

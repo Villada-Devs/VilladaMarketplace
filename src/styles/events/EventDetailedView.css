@@ -1,0 +1,19 @@
+.det-event-carousel {
+    margin-bottom: 40px;
+    height: fit-content;
+}
+
+.det-event-carousel-item {
+    height: 500px;
+}
+
+.det-event-img {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detailed-event-title {
+    margin: 40px 0;
+}
