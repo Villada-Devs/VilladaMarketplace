@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,9 +10,12 @@ import User from "../User";
 import "../../styles/events/EventCard.css";
 
 function CardL(props) {
+
+    const navigate = useNavigate();
+
     return (
         
-        <Container className="event-card-r" fluid>
+        <Container className="event-card-r" fluid onClick={() => { navigate('/Eventos/detalles'); }}>
             <Row>
 
                 <Col className="event-card-content">

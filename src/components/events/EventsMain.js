@@ -16,6 +16,7 @@ function EventsMain() {
                 <PageHeader 
                     title="Villada Eventos"
                     button="Nuevo Evento"
+                    buttonURL="/Eventos/formulario"
                 />
 
                 <div className="events-content">

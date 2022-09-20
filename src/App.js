@@ -6,6 +6,8 @@ import LandPage from "./components/landpage/LandPage";
 import Login from "./components/navbar/Login";
 import Register from "./components/navbar/Register";
 import EventsMain from "./components/events/EventsMain";
+import EventDetailedView from "./components/events/EventDetailedView";
+import EventsForm from "./components/events/EventsForm";
 import MarketplaceMain from "./components/marketplace/MarketplaceMain";
 import Footer from "./components/Footer";
 import PoolMain from "./components/pool/PoolMain";
@@ -79,6 +81,8 @@ function App() {
             <Route path="/" element= {<LandPage />} />
             <Route path="/Marketplace" element= {<MarketplaceMain />} />
             <Route path="/Eventos" element= {<EventsMain />} />
+            <Route path="/Eventos/detalles" element= {<EventDetailedView />} />
+            <Route path="/Eventos/formulario" element= {<EventsForm/>} />
             <Route path="/Pool" element= {<PoolMain />} />
           </Routes>
         </BrowserRouter>

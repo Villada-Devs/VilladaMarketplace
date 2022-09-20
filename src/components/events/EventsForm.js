@@ -32,7 +32,7 @@ function EventsForm() {
 
     return (
 
-        <Container className='form-container' fluid>
+        <Container className='page-container' fluid>
 
             <Form.Group as={Col} md="6" controlId="validationCustom01">
                 <Form.Label className='input-label'>Foto</Form.Label>

@@ -1,6 +1,6 @@
 import React from "react";
 
-
+import Container from "react-bootstrap/esm/Container";
 import Carousel from 'react-bootstrap/Carousel';
 
 import User from "../User";
@@ -11,7 +11,7 @@ import villada from "../../img/villada.jpg"
 function EventDetailedView() {
     return(
 
-        <>
+        <Container className="page-container" fluid>
 
             <Carousel className="det-event-carousel">
 
@@ -40,7 +40,7 @@ function EventDetailedView() {
 
             <h1 className="detailed-event-title blue-section">Titulo del Evento.</h1>
 
-        </>
+        </Container>
 
     );
 }
