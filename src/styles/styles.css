@@ -1,6 +1,6 @@
 :root {
     --main-color: rgb(94, 145, 221);
-    --shadow: 0 0 7px rgba(0, 0, 0, .20);
+    --shadow: 0 0 5px rgba(0, 0, 0, .20);
 }
 
 * {
@@ -38,6 +38,9 @@ p {
     font-size: 16px;
 }
 
+.mb-3 {margin-bottom: unset !important;
+}
+
 
 .page-container {
     padding: 120px 4%;
@@ -57,7 +60,7 @@ p {
 
 .input-label {
     color: #4D4D4D;
-    margin: 0;
+    margin: 10px 0;
 }
 
 .input {
@@ -66,7 +69,6 @@ p {
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
-    margin: 10px 0;
     outline: none;
     padding: 0 15px;
     height: 40px;

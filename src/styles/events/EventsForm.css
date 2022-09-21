@@ -1,5 +1,12 @@
+input::file-selector-button {
+    display: none;
+}
+
+.events-form-photo-label {
+    margin-top: 0 !important;
+}
+
 .event-image-input-container {
-    margin: 10px 0;
     width: 100%;
     height: 300px;
 
@@ -17,14 +24,9 @@
 }
 
 .events-description {
-    height: unset;
-    padding: 7px 15px;
-    min-height: 40px;
-    max-height: 300px;
+    padding: 7px 15px !important;
 }
 
-.input-container {
-    background-color: red;
-    width: 100%;
-    height: 300px;
+.events-form-button {
+    margin-top: 20px;
 }

@@ -3,7 +3,7 @@
     background-position: center;
     background-size: cover;
     box-shadow: var(--shadow);
-    border-radius: 20px;
+    border-radius: 10px;
     height: 470px;
 }
 
@@ -18,6 +18,6 @@
 }
 
 .button-marketplace {
-    height: unset;
-    padding: 15px 30px;
+    height: unset !important;
+    padding: 15px 30px !important;
 }

@@ -7,6 +7,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
+import FormCard from '../FormCard';
+
 import "../../styles/events/EventsForm.css"
 
 function EventsForm() {
@@ -34,55 +36,60 @@ function EventsForm() {
 
         <Container className='page-container' fluid>
 
-            <Form.Group as={Col} md="6" controlId="validationCustom01">
-                <Form.Label className='input-label'>Foto</Form.Label>
-            </Form.Group>
-            <div>
-                <form className='event-image-input-container' onSubmit={handleSubmit(setRegister)}>
-                    <input className='event-image-input' type="file" {...register('image', { required: true })}></input>
-                </form>
-            </div>
+            <FormCard>
 
-            <Form noValidate validated={validated} onSubmit={submit}>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label className='input-label events-form-photo-label'>Foto</Form.Label>
+                </Form.Group>
+                <div>
+                    <form className='event-image-input-container' onSubmit={handleSubmit(setRegister)}>
+                        <input className='event-image-input' type="file" {...register('image', { required: true })}></input>
+                    </form>
+                </div>
 
-                <Row className="mb-3">
+                <Form noValidate validated={validated} onSubmit={submit}>
 
-                    <Form.Group as={Col} md="6" controlId="validationCustom01">
-                        <Form.Label className='input-label'>Título</Form.Label>
-                        <Form.Control
-                            className='input'
-                            type="text"
-                            required
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            Por favor escriba un título.
-                        </Form.Control.Feedback>
-                    </Form.Group>
+                    <Row className="mb-3">
 
-                    <Form.Group as={Col} md="6" controlId="validationCustom02">
-                        <Form.Label className='input-label'>Fecha</Form.Label>
-                        <Form.Control
-                            className='input'
-                            type="date"
-                            required 
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            Por favor seleccione una fecha.
-                        </Form.Control.Feedback>
-                    </Form.Group>
+                        <Form.Group as={Col} md="6" controlId="validationCustom01">
+                            <Form.Label className='input-label'>Título</Form.Label>
+                            <Form.Control
+                                className='input'
+                                type="text"
+                                required
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                Por favor escriba un título.
+                            </Form.Control.Feedback>
+                        </Form.Group>
 
-                </Row>
+                        <Form.Group as={Col} md="6" controlId="validationCustom02">
+                            <Form.Label className='input-label'>Fecha</Form.Label>
+                            <Form.Control
+                                className='input'
+                                type="date"
+                                required 
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                Por favor seleccione una fecha.
+                            </Form.Control.Feedback>
+                        </Form.Group>
 
-                <Row className="mb-3">
+                    </Row>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label className='input-label'>Descripción</Form.Label>
-                        <Form.Control className='input events-description' as="textarea" />
-                    </Form.Group>
-                    
-                </Row>
-                <Button className='button' type="submit">Submit form</Button>
-            </Form>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label className='input-label'>Descripción</Form.Label>
+                            <Form.Control className='input events-description' as="textarea" rows={3} />
+                            <Form.Control.Feedback type="invalid">
+                                Por favor seleccione una fecha.
+                            </Form.Control.Feedback>
+                        </Form.Group>
+                        
+                    <Button className='button events-form-button' type="submit">Enviar</Button>
+                </Form>
+                
+            </FormCard>
+
         </Container>
         
     );
