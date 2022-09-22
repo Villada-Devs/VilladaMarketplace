@@ -13,7 +13,7 @@ function EventDetailedView() {
 
         <Container className="page-container" fluid>
 
-            <Carousel className="det-event-carousel">
+            <Carousel className="det-event-carousel" fade>
 
                 <Carousel.Item className="det-event-carousel-item" interval={2000}>
                     <img

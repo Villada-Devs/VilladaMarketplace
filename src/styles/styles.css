@@ -47,11 +47,8 @@ p {
 }
 
 .form-container {
-    background-color: #fff;
-    box-shadow: var(--shadow);
-    border-radius: 10px;
-    width: 800px;
-    padding: 20px;
+    padding: 120px 4%;
+    max-width: 900px;
 }
 
 
