@@ -18,13 +18,13 @@ function CardR(props) {
         <Container className="event-card-r" fluid onClick={() => { navigate('/Eventos/detalles'); }} >
             <Row>
 
-                <Col lg={5} md={6} sm={12}>
+                <Col lg={5} md={12} sm={12}>
                     <div className="event-card-photo"></div>
                 </Col>
 
                 <Col className="event-card-content">
                     <div>
-                        <div className="event-card-top">
+                        <div className="event-card-top card-r">
                             <User 
                                 userName={props.userName}
                                 creationDate={props.creationDate}

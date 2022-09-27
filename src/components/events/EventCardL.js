@@ -33,12 +33,12 @@ function CardL(props) {
                         </div>
                     </div>
 
-                    <div className="event-card-footer">
+                    <div className="event-card-footer card-l">
                         <p className="event-date"> <span className="blue-section">Fecha del Evento: </span>{props.eventDate}</p>
                     </div>
                 </Col>
 
-                <Col lg={5} md={6} sm={12}>
+                <Col lg={5} md={12} sm={12}>
                     <div className="event-card-photo"></div>
                 </Col>
 

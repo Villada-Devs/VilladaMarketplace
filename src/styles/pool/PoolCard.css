@@ -1,5 +1,5 @@
 .pool-card{
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 25px;
     border-style: none;
     border-radius: 20px;
@@ -14,8 +14,8 @@
 }
 
 .pool-card-item {
-    padding-bottom: 7px;
-    margin-bottom: 7px;
+    padding-bottom: 7px !important;
+    margin-bottom: 7px !important;
 }
 
 .pool-button {

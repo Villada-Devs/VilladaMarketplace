@@ -53,3 +53,13 @@
 .event-card-footer {
     margin-top: 20px;
 }
+
+@media (max-width: 991px) {
+    .event-card-top.card-r {
+        margin-top: 10px;
+    }
+
+    .event-card-footer.card-l {
+        margin-bottom: 10px;
+    }
+}
