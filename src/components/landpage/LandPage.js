@@ -12,12 +12,10 @@ function LandPage() {
         <Container className="page-container" fluid>
             <Row>
 
-                <Col className="land-left" md={6} sm={12}>
-                    <div>
+                <Col className="land-left" lg={6} md={6} sm={12}>
                         <h1>Bienvenidos <br></br> a la <span className="blue-section"> Unión  <br></br>Padres de Familia </span></h1>
                         <p className="land-sub-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
                         <Button className='button button-marketplace' variant="primary" type="submit">Marketplace</Button>
-                    </div>
                 </Col>
 
                 <Col md sm={8}>

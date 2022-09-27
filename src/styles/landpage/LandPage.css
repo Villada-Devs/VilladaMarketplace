@@ -4,7 +4,8 @@
     background-size: cover;
     box-shadow: var(--shadow);
     border-radius: 10px;
-    height: 470px;
+    min-height: 400px;
+    height: 100%;
 }
 
 .land-left {
@@ -18,6 +19,18 @@
 }
 
 .button-marketplace {
+    width: fit-content;
     height: unset !important;
     padding: 15px 30px !important;
+}
+
+@media (max-width: 576px) {
+    .land-left {
+        align-items: center;
+        text-align: center;
+    }
+
+    .button-marketplace {
+        margin-bottom: 60px;
+    }
 }
