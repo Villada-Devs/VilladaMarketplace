@@ -59,11 +59,6 @@ export const setupInterceptorsTo = (
 
 export const api = setupInterceptorsTo(
   axios.create({
-    baseURL: "http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/",
-    headers: {
-        'Access-Control-Allow-Origin': '*',
-        "Content-Type": "application/json",
-    },
-    mode: 'no-cors', 
+    baseURL: "http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/"
   })
 );

@@ -8,6 +8,8 @@ import Form from 'react-bootstrap/Form';
 import ContextConnected from '../../context/ContextConnected';
 
 import "../../styles/navbar/Log-Reg.css";
+import { api } from "../../axios";
+import axios from "axios";
 
 
 function Login({handleCardClick}) {
@@ -37,7 +39,24 @@ function Login({handleCardClick}) {
 
         if(password !== "" && email !== "") {
 
-            const data = api.post(`login`).then(async (response) => {
+            const data1 = await axios({
+                method: 'post',
+                url: "http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/login/",
+                headers: {}, 
+                data: {
+                    email: email,
+                    password: password
+                }
+            });
+            console.log(data1)
+
+            const data = await api.post(`login`, {
+                data: {
+                    email: email,
+                    password: password,
+                },
+                headers: {}
+            }).then(async (response) => {
                 if (response) {
                   return await response.json();
                 }
