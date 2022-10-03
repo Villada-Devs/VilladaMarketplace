@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-
 import NavBar from "./components/navbar/NavBar";
 import LandPage from "./components/landpage/LandPage";
 import Login from "./components/navbar/Login";
@@ -11,86 +10,72 @@ import EventsForm from "./components/events/EventsForm";
 import MarketplaceMain from "./components/marketplace/MarketplaceMain";
 import Footer from "./components/Footer";
 import PoolMain from "./components/pool/PoolMain";
+import ContextConnected from './context/ContextConnected';
+import { api } from "./axios";
 
 import "./styles/styles.css";
 
 function App() {
 
-  const backendUrl = "https://upf-app-web.herokuapp.com/";
+  const backendUrl = "http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/";
 
   const [registerOpened, setRegisterOpened] = useState(false);
   const [loginOpened, setLoginOpened] = useState(false);
 
-  const [selectedView, setSelectedView] = useState("Inicio");
-  const views = ["Inicio", "Marketplace", "Eventos", "Pool"];
-
-  const [userToken, setUserToken] = useState(null);
-  const [userInfo, setUserInfo] = useState({username: ""});
-
-  const toggleLoginMenu = async () => {
-    if(loginOpened) {
-      setLoginOpened(false);
-    } else {
-      setRegisterOpened(false);
-      setLoginOpened(true);
-    }
-  }
-
-  const toggleRegisterMenu = async () => {
-    if(registerOpened) {
-      setRegisterOpened(false);
-    } else {
-      setLoginOpened(false);
-      setRegisterOpened(true); 
-    }
-  }
+  const [userInfo, setUserInfo] = useState(null);
 
   const handleCardClick = (e) => e.stopPropagation();
 
-  const login = async (email, password) => {
+  useEffect(() => {
+    const loadUserFromLocalStorage = async () => {
+      const token = await JSON.parse(localStorage.getItem("token"));
+      if (token) {
+        return await api.get(`user`).then((response) => {
+          if (response) {
+            setUserInfo(response.data);
+            return response.data;
+          }
+        });
+      }
+    };
+    loadUserFromLocalStorage();
+  }, []);
 
-    if(password !== "" && email !== "") {
-
-      const response = await fetch(backendUrl + "dj-rest-auth/login/", {
-        method: "POST",
-        body: JSON.stringify({ email: email, password: password}),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-
-      const res = await response.json();
-      console.log(res);
-
-      if("statusCode" in res === false) {
-        setUserToken(res);
-        // getUserInfo(res);
-      } else {
-        alert("Wrong Credentials.");
-      }   
-    }
-  }
 
   return (
     <>
+      <ContextConnected.Provider value={{
+        backendUrl: backendUrl,
+        userInfo: userInfo,
+        setUserInfo: setUserInfo,
+        registerOpened: registerOpened,
+        loginOpened: loginOpened,
+        setRegisterOpened: setRegisterOpened,
+        setLoginOpened: setLoginOpened,
+      }}>
 
-      <NavBar toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} selectedView={selectedView} setSelectedView={setSelectedView} views={views} />
 
-      <BrowserRouter>
+        <BrowserRouter>
+          <NavBar />
           <Routes>
-            <Route path="/" element= {<LandPage />} />
-            <Route path="/Marketplace" element= {<MarketplaceMain />} />
-            <Route path="/Eventos" element= {<EventsMain />} />
-            <Route path="/Eventos/detalles" element= {<EventDetailedView />} />
-            <Route path="/Eventos/formulario" element= {<EventsForm/>} />
-            <Route path="/Pool" element= {<PoolMain />} />
+            <Route exact path="/" element={<LandPage />} />
+            <Route exact path="/Marketplace" element={<MarketplaceMain />} />
+            <Route exact path="/Eventos" element={<EventsMain />} />
+            <Route exact path="/Eventos/detalles" element={<EventDetailedView />} />
+            <Route exact path="/Eventos/formulario" element={<EventsForm/>} />
+            <Route exact path="/Pool" element={<PoolMain />} />
           </Routes>
+
+          { !userInfo? (<>
+            { loginOpened? <Login handleCardClick={handleCardClick} /> : null }
+            { registerOpened? <Register handleCardClick={handleCardClick} /> : null }
+          </>) : null }
+
+          <Footer />
+          
         </BrowserRouter>
 
-      { loginOpened? <Login login={login} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
-      { registerOpened? <Register toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
-
-      <Footer />
+      </ContextConnected.Provider>
 
       
     </>

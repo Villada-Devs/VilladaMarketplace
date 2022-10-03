@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -7,12 +7,33 @@ import Button from 'react-bootstrap/Button';
 import CloseButton from 'react-bootstrap/CloseButton';
 import Form from 'react-bootstrap/Form';
 
+import ContextConnected from '../../context/ContextConnected';
+
 import "../../styles/navbar/Log-Reg.css";
 
 
-function Register({toggleLoginMenu, timeMessage, toggleRegisterMenu, handleCardClick}) {
+function Register({handleCardClick}) {
+    const Connected = useContext(ContextConnected)
 
     const [submited, setSubmited] = useState(false);
+
+    const toggleLoginMenu = async () => {
+        if(Connected.loginOpened) {
+            Connected.setLoginOpened(false);
+        } else {
+            Connected.setRegisterOpened(false);
+            Connected.setLoginOpened(true);
+        }
+    }
+
+    const toggleRegisterMenu = async () => {
+        if(Connected.registerOpened) {
+          Connected.setRegisterOpened(false);
+        } else {
+          Connected.setLoginOpened(false);
+          Connected.setRegisterOpened(true); 
+        }
+    }
 
     return (
 

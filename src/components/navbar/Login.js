@@ -1,14 +1,70 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import CloseButton from 'react-bootstrap/CloseButton';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+import ContextConnected from '../../context/ContextConnected';
+
 import "../../styles/navbar/Log-Reg.css";
 
 
-function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu, handleCardClick}) {
+function Login({handleCardClick}) {
+
+    const Connected = useContext(ContextConnected)
+    console.log(Connected)
+
+    const toggleLoginMenu = async () => {
+        if(Connected.loginOpened) {
+            Connected.setLoginOpened(false);
+        } else {
+            Connected.setRegisterOpened(false);
+            Connected.setLoginOpened(true);
+        }
+    }
+
+    const toggleRegisterMenu = async () => {
+        if(Connected.registerOpened) {
+          Connected.setRegisterOpened(false);
+        } else {
+          Connected.setLoginOpened(false);
+          Connected.setRegisterOpened(true); 
+        }
+    }
+
+    const login = async (email, password) => {
+
+        if(password !== "" && email !== "") {
+
+            const data = api.post(`login`).then(async (response) => {
+                if (response) {
+                  return await response.json();
+                }
+            });
+            console.log(data)
+    
+            const response = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/login/", {
+                method: "POST",
+                body: JSON.stringify({ email: email, password: password}),
+                headers: {
+                "Content-Type": "application/json",
+                },
+            })
+    
+          const res = await response.json();
+          console.log(res);
+    
+          if("statusCode" in res === false) {
+            Connected.setUserInfo(res);
+            const newToken = { access_token: res.access_token, refresh_token: res.refresh_token }
+            localStorage.setItem("token", JSON.stringify(newToken));
+            toggleLoginMenu();
+          } else {
+            alert("Wrong Credentials.");
+          }   
+        }
+      }
     
     return (
 
@@ -51,7 +107,6 @@ function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu, handleC
                         <Button 
                             className='button login-register-button' 
                             variant="primary" 
-                            type="submit"
                             onClick={() => {
                                 const mail = document.querySelector('#login-mail-input').value;
                                 const password = document.querySelector('#login-password-input').value;

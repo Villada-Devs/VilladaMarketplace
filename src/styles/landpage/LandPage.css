@@ -18,6 +18,14 @@
     margin: 20px 0;
 }
 
+.marketplace-button {
+    color: white;
+    text-decoration: none;
+}
+.marketplace-button:hover {
+    color: white;
+}
+
 .button-marketplace {
     width: fit-content;
     height: unset !important;
