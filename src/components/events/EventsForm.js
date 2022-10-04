@@ -32,17 +32,41 @@ function EventsForm() {
         const selectedFiles = event.target.files;
         const selectedFilesArray = Array.from(selectedFiles);
 
-        const imagesArray = selectedFilesArray.map((file) => {
-            return URL.createObjectURL(file);
+        const imagesArray = selectedFilesArray.map(async (file) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            return await new Promise((resolve, reject) => {
+                reader.onload = function () {
+                    resolve(reader.result);
+                };
+                reader.onerror = function (error) {
+                    reject(error);
+                }
+            });
         });
 
-        setSelectedImages((previousImages) => previousImages.concat(imagesArray));
+        const fIA = imagesArray.map(async (image) => {
+            const imageSrc = await image;
+            return imageSrc;
+        });
+
+
+        console.log(fIA)
+
+        setSelectedImages((previousImages) => previousImages.concat(fIA));
     };
 
-    const sendEvent = async (event) => {
-        event.preventDefault();
+    const sendEvent = async () => {
         const token = await JSON.parse(localStorage.getItem("token"));
         if (token) {
+            const title = document.querySelector('#validationCustom01').value;
+            const event_date = new Date(document.querySelector('#validationCustom02').value).toISOString();
+            const body = document.querySelector('#description').value;
+            const short_description = document.querySelector('#short_description').value;
+
+            console.log(title, event_date, body, short_description)
+            console.log(selectedImages)
+
             const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/events/", {
                 method: "POST",
                 headers: {
@@ -50,10 +74,11 @@ function EventsForm() {
                     "Authorization": `Bearer ${token.access_token}`
                 },
                 body: JSON.stringify({
-                    title: event.target.title.value,
-                    body: event.target.body.value,
-                    event_date: event.target.event_date.value,
-                    imagesevent: selectedImages
+                    title,
+                    body,
+                    short_description,
+                    event_date,
+                    uploaded_images: selectedImages
                 })
             })
             const data = await res.json();
@@ -132,17 +157,17 @@ function EventsForm() {
 
                     </Row>
 
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Group>
                         <Form.Label className='input-label'>Descripción corta</Form.Label>
-                        <Form.Control className='input events-form-description' required as="textarea" rows={3} />
+                        <Form.Control className='input events-form-description' id='short_description' required as="textarea" rows={3} />
                         <Form.Control.Feedback type="invalid">
                                 Por favor escriba una descripción.
                             </Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Group>
                         <Form.Label className='input-label'>Descripcion detallada</Form.Label>
-                        <Form.Control className='input events-form-description' required as="textarea" rows={6} />
+                        <Form.Control className='input events-form-description' id='description' required as="textarea" rows={6} />
                         <Form.Control.Feedback type="invalid">
                                 Por favor escriba una descripción.
                             </Form.Control.Feedback>
