@@ -43,6 +43,7 @@ p {
 
 
 .page-container {
+    min-height: 90vh;
     padding: 120px 4%;
 }
 
@@ -121,4 +122,9 @@ p {
 
 .blue-section {
     color: var(--main-color);
+}
+
+.flex-end {
+    display: flex;
+    justify-content: end;
 }

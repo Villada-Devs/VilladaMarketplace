@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 import Container from "react-bootstrap/esm/Container";
 
@@ -6,7 +6,29 @@ import PageHeader from "../PageHeader";
 import EventCardR from "./EventCardR";
 import EventCardL from "./EventCardL";
 
+import ContextConnected from "../../context/ContextConnected";
+
 function EventsMain() {
+    const Connected = useContext(ContextConnected)
+
+    useEffect(() => {
+        const loadEvents = async () => {
+          const token = await JSON.parse(localStorage.getItem("token"));
+          if (token) {
+            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/events/", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token.access_token}`
+              },
+            })
+            const data = await res.json();
+            Connected.setEvents(data);
+            console.log(data);
+          }
+        };
+        loadEvents();
+      }, [Connected.userInfo]);
     
     return(
         <>
@@ -20,20 +42,15 @@ function EventsMain() {
                 />
 
                 <div className="events-content">
-                    <EventCardR 
-                        userName="Matias"
-                        creationDate="16 de septiembre 2022"
-                        eventTitle="Titulo del Evento"
-                        eventDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                        eventDate="14 de octubre 2022"
-                    />
-                    <EventCardL 
-                        userName="Matias"
-                        creationDate="16 de septiembre 2022"
-                        eventTitle="Titulo del Evento"
-                        eventDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                        eventDate="14 de octubre 2022"
-                    />
+                    {
+                        Connected.events?.map((event, index) => {
+                            if (index % 2 === 0) {
+                                return <EventCardL key={index} userName={event.author} creationDate={event.created_date} eventTitle={event.title} eventDescription={event.body} eventDate={event.event_date} eventImage={event.imagesevent[0].image} />
+                            } else {
+                                return <EventCardR key={index} userName={event.author} creationDate={event.created_date} eventTitle={event.title} eventDescription={event.body} eventDate={event.event_date} eventImage={event.imagesevent[0].image} />
+                            }
+                        })
+                    }
                 </div>
 
             </Container>

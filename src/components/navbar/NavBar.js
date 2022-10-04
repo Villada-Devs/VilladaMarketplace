@@ -14,7 +14,6 @@ import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 function NavBar() {
     const Connected = useContext(ContextConnected)
-    console.log(Connected)
 
     const toggleLoginMenu = async () => {
         if(Connected.loginOpened) {
@@ -36,6 +35,7 @@ function NavBar() {
 
     const logout = async () => {
         Connected.setUserInfo(null);
+        localStorage.removeItem('token');
     }
 
     return(
@@ -74,8 +74,9 @@ function NavBar() {
                                     variant="primary"
                                     onClick={() => {
                                         logout();
+                                        window.location.reload();
                                     }}
-                                    >{Connected.userInfo.user.first_name} {Connected.userInfo.user.last_name} <FontAwesomeIcon className="logout-icon" icon={faArrowRightFromBracket} /></Button>
+                                    >{Connected.userInfo.first_name} {Connected.userInfo.last_name} <FontAwesomeIcon className="logout-icon" icon={faArrowRightFromBracket} /></Button>
                         </>
                     ) : (
                         <>

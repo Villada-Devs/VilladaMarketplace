@@ -11,7 +11,6 @@ import MarketplaceMain from "./components/marketplace/MarketplaceMain";
 import Footer from "./components/Footer";
 import PoolMain from "./components/pool/PoolMain";
 import ContextConnected from './context/ContextConnected';
-import { api } from "./axios";
 
 import "./styles/styles.css";
 
@@ -23,6 +22,8 @@ function App() {
   const [loginOpened, setLoginOpened] = useState(false);
 
   const [userInfo, setUserInfo] = useState(null);
+  const [events, setEvents] = useState(null);
+  const [pools, setPools] = useState(null);
 
   const handleCardClick = (e) => e.stopPropagation();
 
@@ -30,12 +31,15 @@ function App() {
     const loadUserFromLocalStorage = async () => {
       const token = await JSON.parse(localStorage.getItem("token"));
       if (token) {
-        return await api.get(`user`).then((response) => {
-          if (response) {
-            setUserInfo(response.data);
-            return response.data;
-          }
-        });
+        const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/user/", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token.access_token}`
+          },
+        })
+        const data = await res.json();
+        setUserInfo(data);
       }
     };
     loadUserFromLocalStorage();
@@ -45,13 +49,17 @@ function App() {
   return (
     <>
       <ContextConnected.Provider value={{
-        backendUrl: backendUrl,
-        userInfo: userInfo,
-        setUserInfo: setUserInfo,
-        registerOpened: registerOpened,
-        loginOpened: loginOpened,
-        setRegisterOpened: setRegisterOpened,
-        setLoginOpened: setLoginOpened,
+        backendUrl,
+        userInfo,
+        setUserInfo,
+        registerOpened,
+        loginOpened,
+        setRegisterOpened,
+        setLoginOpened,
+        events,
+        setEvents,
+        pools,
+        setPools
       }}>
 
 
