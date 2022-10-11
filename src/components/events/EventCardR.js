@@ -19,7 +19,9 @@ function CardR(props) {
             <Row>
 
                 <Col lg={5} md={12} sm={12}>
-                    <div className="event-card-photo"></div>
+                    <div className="event-card-photo-container">
+                        <img className="event-card-photo" alt='' src={props.eventImage}></img>
+                    </div>
                 </Col>
 
                 <Col className="event-card-content">

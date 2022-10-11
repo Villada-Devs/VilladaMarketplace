@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 import Container from "react-bootstrap/esm/Container";
 
@@ -6,9 +7,50 @@ import PageHeader from "../PageHeader";
 import EventCardR from "./EventCardR";
 import EventCardL from "./EventCardL";
 
+import Events from "./Events.json"
+
+class axiEvents {
+    id = 0;
+    axiEventAuthor = '';
+    axiEventTitle = '';
+    axiEventBody = '';
+    axiEventCreatedDate = '';
+    axiEventDate = '';
+    axiEventImages = '';
+  
+    constructor(id, axiEventAuthor, axiEventTitle, axiEventBody, axiEventCreatedDate, axiEventDate, axiEventImages) {
+        this.id = id;
+        this.axiEventAuthor = axiEventAuthor;
+        this.axiEventTitle = axiEventTitle;
+        this.axiEventBody = axiEventBody;
+        this.axiEventCreatedDate = axiEventCreatedDate;
+        this.axiEventDate = axiEventDate;
+        this.axiEventImages = axiEventImages;
+    }
+  
+}
+
 function EventsMain() {
+
+    const [event, setEvent] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/events/')
+        .then(res => {
+            console.log(res.data)
+            const eventMapped = res.data.map((e) => {
+                let event = new axiEvents(e.id, e.author, e.title, e.body, e.created_date, e.event_date, e.imagesevent);
+                return event;
+            });
+
+            setEvent(eventMapped);
+        }).catch(err => {
+            console.log(err)
+        })
+    }, [])
     
     return(
+
         <>
 
             <Container className="page-container " fluid>
@@ -20,34 +62,59 @@ function EventsMain() {
                 />
 
                 <div className="events-content">
-                    <EventCardR 
-                        userName="Matias"
-                        creationDate="16 de septiembre 2022"
-                        eventTitle="Titulo del Evento"
-                        eventDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                        eventDate="14 de octubre 2022"
-                    />
-                    <EventCardL 
-                        userName="Matias"
-                        creationDate="16 de septiembre 2022"
-                        eventTitle="Titulo del Evento"
-                        eventDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                        eventDate="14 de octubre 2022"
-                    />
+
+                    {
+                        Events.map((e) => {
+                            if(e.id % 2 === 0) {
+                                return (
+                                    <EventCardR
+                                        key={e.id}
+                                        userName={e.author}
+                                        creationDate={e.created_date}
+                                        eventTitle={e.title}
+                                        eventDescription={e.short_description}
+                                        eventDate={e.event_date}
+                                        eventImage={e.images_event}
+                                    />
+                                )
+                            }
+                            return(
+                                <EventCardL
+                                    key={e.id}
+                                    userName={e.author}
+                                    creationDate={e.created_date}
+                                    eventTitle={e.title}
+                                    eventDescription={e.short_description}
+                                    eventDate={e.event_date}
+                                    eventImage={e.images_event}
+                                />
+                            )
+                        })
+                    }
+
                 </div>
 
             </Container>
 
         </>
+
     );
 
 }
 
-/*
-<div className="events-content">
-    <EventCardR />
-    <EventCardL />
-</div>
-*/
-
 export default EventsMain;
+
+/* 
+{
+    event.map((e) => (
+        <EventCardR 
+            userName="Matias"
+            creationDate={e.axiEventCreatedDate}
+            eventTitle={e.axiEventTitle}
+            eventDescription={e.axiEventBody}
+            eventDate={e.axiEventDate}
+            eventImage={e.axiEventImages}
+        />
+    ))
+}
+*/

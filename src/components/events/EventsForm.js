@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
-import CloseButton from 'react-bootstrap/CloseButton';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
+import ImageInput from '../ImageInput';
 import FormCard from '../FormCard';
 
-import ImageInput from "../../img/Image Input.png"
-
-import "../../styles/events/EventsForm.css"
+import "../../styles/Forms.css"
 
 function EventsForm() {
 
@@ -27,58 +25,15 @@ function EventsForm() {
     setValidated(true);
     };
 
-    const [selectedImages, setSelectedImages] = useState([]);
-    const onSelectFile = (event) => {
-        const selectedFiles = event.target.files;
-        const selectedFilesArray = Array.from(selectedFiles);
-
-        const imagesArray = selectedFilesArray.map((file) => {
-            return URL.createObjectURL(file);
-        });
-
-        setSelectedImages((previousImages) => previousImages.concat(imagesArray));
-    };
-
     return (
 
         <Container className='form-container' fluid>
 
-            <h1 className='events-form-header blue-section'>Nuevo Evento</h1>
+            <h1 className='form-header blue-section'>Nuevo Evento</h1>
 
             <FormCard>
 
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label className='input-label events-form-image-label'>Foto</Form.Label>
-                    <div className='events-form-image-input-container'>
-
-                        <Form.Control 
-                            className='events-form-image-input' 
-                            type="file" 
-                            multiple 
-                            accept='image/png , image/jpeg'
-                            onChange={onSelectFile}
-                        />
-
-                        <img className='image-input-icon' alt='' src={ImageInput} />
-                        <p>Arrastra aquí tus imágenes, o <span className='blue-section'>Busca</span></p>
-                    </div>
-                </Form.Group>
-                
-                <div className='events-form-preview'>
-                    {selectedImages &&
-                        selectedImages.map((image, index) => {
-                            return(
-                                <div className='preview-image-container' key={index}>
-                                    <img className='preview-image' alt='' src={image}></img>
-                                    <CloseButton className='image-delete-button' onClick={() => 
-                                            setSelectedImages(selectedImages.filter((e) => e !== image))
-                                        }
-                                    />
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+                <ImageInput />
 
                 <Form noValidate validated={validated} onSubmit={submit}>
 
@@ -126,7 +81,7 @@ function EventsForm() {
                             </Form.Control.Feedback>
                     </Form.Group>
                         
-                    <Button className='button events-form-button' type="submit">Enviar</Button>
+                    <Button className='button form-button' type="submit">Enviar</Button>
                 </Form>
                 
             </FormCard>

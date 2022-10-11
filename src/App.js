@@ -5,12 +5,13 @@ import NavBar from "./components/navbar/NavBar";
 import LandPage from "./components/landpage/LandPage";
 import Login from "./components/navbar/Login";
 import Register from "./components/navbar/Register";
+import MarketplaceMain from "./components/marketplace/MarketplaceMain";
 import EventsMain from "./components/events/EventsMain";
 import EventDetailedView from "./components/events/EventDetailedView";
 import EventsForm from "./components/events/EventsForm";
-import MarketplaceMain from "./components/marketplace/MarketplaceMain";
-import Footer from "./components/Footer";
 import PoolMain from "./components/pool/PoolMain";
+import PoolForm from "./components/pool/PoolForm";
+import Footer from "./components/Footer";
 
 import "./styles/styles.css";
 
@@ -84,6 +85,7 @@ function App() {
             <Route path="/Eventos/detalles" element= {<EventDetailedView />} />
             <Route path="/Eventos/formulario" element= {<EventsForm/>} />
             <Route path="/Pool" element= {<PoolMain />} />
+            <Route path="/Pool/formulario" element= {<PoolForm />} />
           </Routes>
         </BrowserRouter>
 

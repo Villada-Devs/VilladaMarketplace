@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 
 import PageHeader from "../PageHeader";
-import PoolFilter from "./PoolFilter";
 import PoolCard from "./PoolCard";
 
+import PoolData from "./PoolData.json"
+
 import "../../styles/pool/PoolMain.css"
+import "leaflet/dist/leaflet.css";
 
 function PoolMain() {
+
+    const fillBlueOptions = { fillColor: 'blue' }
+
+    React.useEffect(() => {
+        
+        const L = require("leaflet");
+    
+        delete L.Icon.Default.prototype._getIconUrl;
+    
+        L.Icon.Default.mergeOptions({
+          iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+          iconUrl: require("../../img/its.png"),
+          shadowUrl: require("leaflet/dist/images/marker-shadow.png")
+        });
+      }, []);
+
     return (
 
         <Container className="page-container" fluid>
@@ -17,42 +35,44 @@ function PoolMain() {
             <PageHeader 
                 title="Villada Pool"
                 button="Nuevo Pool"
+                buttonURL="/Pool/formulario"
             />
 
-            <PoolFilter />
+            <MapContainer className='map-container' center={[-31.404829, -64.196187]} zoom={12} scrollWheelZoom={false}>
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+
+                <Marker position={[-31.362450, -64.276317]}>
+                    <Popup className='its'>
+                        <p>Instituto Técnico Salesiano Villada</p>
+                    </Popup>
+                </Marker>
                 
-            <Row>
-                <PoolCard 
-                    locality="Córdoba Capital"
-                    neighborhood="Alta Córdoba"
-                    days="Lu Ma Mi Ju Vi"
-                    places="2"
-                />
-                <PoolCard 
-                    locality="Córdoba Capital"
-                    neighborhood="Alta Córdoba"
-                    days="Lu Ma Mi Ju Vi"
-                    places="2"
-                />
-                <PoolCard 
-                    locality="Córdoba Capital"
-                    neighborhood="Alta Córdoba"
-                    days="Lu Ma Mi Ju Vi"
-                    places="2"
-                />
-                <PoolCard 
-                    locality="Córdoba Capital"
-                    neighborhood="Alta Córdoba"
-                    days="Lu Ma Mi Ju Vi"
-                    places="2"
-                />
-                <PoolCard 
-                    locality="Córdoba Capital"
-                    neighborhood="Alta Córdoba"
-                    days="Lu Ma Mi Ju Vi"
-                    places="2"
-                />
-            </Row>
+                
+                    {
+                        PoolData.map((e) => {
+                            const position = [e.lat, e.long];
+
+                            return(
+                                
+                                <Circle center={position} pathOptions={fillBlueOptions} radius={150} key={e.id}>
+                                    <Popup>
+                                        <PoolCard
+                                            key={e.id}
+                                            userName={e.author}
+                                            creationDate={e.created_date}
+                                            days={e.days}
+                                            places={e.places}
+                                            phoneNumber={e.phone_number}
+                                        />
+                                    </Popup>
+                                </Circle>
+                            )
+                        })
+                    }
+
+            </MapContainer>
 
         </Container>
     );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef, useState, useEffect} from "react";
 
 import CloseButton from 'react-bootstrap/CloseButton';
 import Container from 'react-bootstrap/Container';
@@ -9,6 +9,26 @@ import "../../styles/navbar/Log-Reg.css";
 
 
 function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu, handleCardClick}) {
+
+    const mailRef = useRef();
+    const errRef = useRef();
+
+    const [user, setUser] = useState('');
+    const [password, setPassword] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+
+    useEffect(() => {
+        mailRef.current.focus();
+    }, [])
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, password])
+
+    const handleSubmit = async (e) => {
+        setUser('');
+        setPassword('');
+    }
     
     return (
 
@@ -24,23 +44,31 @@ function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu, handleC
                     </div>
                     <hr className='log-reg-hr'></hr>
 
-                    <Form>
-                        <Form.Group className="mb-3 unmarging" controlId="Email">
-                            <Form.Label className="input-label">Mail Institucional</Form.Label>
+                    <Form onSubmit={handleSubmit}>
+
+                        <Form.Group className="mb-3 unmarging" controlId="Mail">
+                            <Form.Label className="input-label">Mail</Form.Label>
                             <Form.Control 
-                                id="login-mail-input" 
                                 className="input" 
+                                id="login-mail-input" 
                                 type="email" 
+                                ref={mailRef}
+                                autoComplete="off"
+                                onChange={(e) => setUser(e.target.value )}
+                                value={user}
+                                required
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3 unmarging" controlId="Password">
                             <Form.Label className='input-label'>Contraseña</Form.Label>
                             <Form.Control 
+                                className="input" 
                                 id="login-password-input" 
-                                className='input' 
-                                type="password" 
-                                placeholder="8+ carácteres" 
+                                type="password"
+                                onChange={(e) => setPassword(e.target.value )}
+                                value={password}
+                                required
                             />
                         </Form.Group>
 
