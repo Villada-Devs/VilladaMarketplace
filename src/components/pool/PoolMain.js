@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 
 import Container from 'react-bootstrap/Container';
@@ -10,6 +10,8 @@ import PoolData from "./PoolData.json"
 
 import "../../styles/pool/PoolMain.css"
 import "leaflet/dist/leaflet.css";
+
+import ContextConnected from "../../context/ContextConnected";
 
 function PoolMain() {
 
@@ -27,6 +29,27 @@ function PoolMain() {
           shadowUrl: require("leaflet/dist/images/marker-shadow.png")
         });
       }, []);
+
+    const Connected = useContext(ContextConnected)
+
+    useEffect(() => {
+        const loadPools = async () => {
+          const token = await JSON.parse(localStorage.getItem("token"));
+          if (token) {
+            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/pools/", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token.access_token}`
+              },
+            })
+            const data = await res.json();
+            Connected.setPools(data);
+            console.log(data);
+          }
+        };
+        loadPools();
+      }, [Connected.userInfo]);
 
     return (
 
