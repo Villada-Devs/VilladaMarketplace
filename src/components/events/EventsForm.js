@@ -32,28 +32,11 @@ function EventsForm() {
         const selectedFiles = event.target.files;
         const selectedFilesArray = Array.from(selectedFiles);
 
-        const imagesArray = selectedFilesArray.map(async (file) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            return await new Promise((resolve, reject) => {
-                reader.onload = function () {
-                    resolve(reader.result);
-                };
-                reader.onerror = function (error) {
-                    reject(error);
-                }
-            });
+        const imagesArray = selectedFilesArray.map((file) => {
+            return file;
         });
 
-        const fIA = imagesArray.map(async (image) => {
-            const imageSrc = await image;
-            return imageSrc;
-        });
-
-
-        console.log(fIA)
-
-        setSelectedImages((previousImages) => previousImages.concat(fIA));
+        setSelectedImages((previousImages) => previousImages.concat(imagesArray));
     };
 
     const sendEvent = async () => {
@@ -64,25 +47,25 @@ function EventsForm() {
             const body = document.querySelector('#description').value;
             const short_description = document.querySelector('#short_description').value;
 
-            console.log(title, event_date, body, short_description)
-            console.log(selectedImages)
+            var data = new FormData();
+            data.append('title', title);
+            data.append('body', body);
+            data.append('short_description', short_description);
+            data.append('event_date', event_date);
 
-            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/events/", {
+            for (let i = 0; i < selectedImages.length; i++) {
+                data.append('uploaded_images', selectedImages[i]);
+            };
+
+
+            await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/events/", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
                     "Authorization": `Bearer ${token.access_token}`
                 },
-                body: JSON.stringify({
-                    title,
-                    body,
-                    short_description,
-                    event_date,
-                    uploaded_images: selectedImages
-                })
+                body: data
             })
-            const data = await res.json();
-            console.log(data);
+
         }
     };
 
