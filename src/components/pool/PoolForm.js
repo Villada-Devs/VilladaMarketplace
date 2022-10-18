@@ -149,7 +149,7 @@ function PoolForm() {
                         </Form.Group>
 
                         <Form.Group controlId="validationCustom01">
-                            <Form.Label className='input-label'>Contacto</Form.Label>
+                            <Form.Label className='input-label'>Número de teléfono</Form.Label>
                             <Form.Control
                                 className='input'
                                 type="text"

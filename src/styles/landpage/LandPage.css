@@ -1,17 +1,24 @@
+.land-img-container {
+    background-color: red;
+    width: 100%;
+}
+
 .land-img {
-    background-image: url(/src/img/villada.jpg);
-    background-position: center;
-    background-size: cover;
-    box-shadow: var(--shadow);
-    border-radius: 10px;
-    min-height: 400px;
-    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .land-left {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.land-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .land-sub-title {
@@ -24,7 +31,7 @@
     padding: 15px 30px !important;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 767px) {
     .land-left {
         align-items: center;
         text-align: center;
