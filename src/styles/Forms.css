@@ -1,0 +1,33 @@
+.form-header {
+    margin-bottom: 40px;
+}
+
+
+/* EventForm */
+
+
+.events-form-description {
+    padding: 10px 15px !important;
+    height: unset !important;
+}
+
+
+/* PoolForm */
+
+
+.pool-form-map {
+    max-height: 400px;
+}
+
+.pool-check-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.pool-check {
+    color: #4D4D4D;
+}

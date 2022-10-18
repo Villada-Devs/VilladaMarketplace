@@ -1,13 +1,20 @@
 import React from "react";
+import Col from 'react-bootstrap/Col';
 
-function SectionButton() {
+import "../../styles/marketplace/SectionButton.css"
+
+function SectionButton(props) {
     return(
 
-        <div>
+        <Col md={4} sm={12}>
+            <div className="section-button">
 
-            
+                <img className="section-button-image" alt='' src={props.sectionImage}></img>
+                <p>{props.sectionName}</p>
 
-        </div>
+            </div>
+        </Col>
+
 
     );
 }

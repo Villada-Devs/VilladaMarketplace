@@ -13,6 +13,7 @@ import PoolMain from "./components/pool/PoolMain";
 import ContextConnected from './context/ContextConnected';
 
 import "./styles/styles.css";
+import PoolForm from "./components/pool/PoolForm";
 
 function App() {
 
@@ -66,12 +67,13 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route exact path="/" element={<LandPage />} />
-            <Route exact path="/Marketplace" element={<MarketplaceMain />} />
-            <Route exact path="/Eventos" element={<EventsMain />} />
-            <Route exact path="/Eventos/detalles" element={<EventDetailedView />} />
-            <Route exact path="/Eventos/formulario" element={<EventsForm/>} />
-            <Route exact path="/Pool" element={<PoolMain />} />
+            <Route path="/" element= {<LandPage />} />
+            <Route path="/Marketplace" element= {<MarketplaceMain />} />
+            <Route path="/Eventos" element= {<EventsMain />} />
+            <Route path="/Eventos/detalles" element= {<EventDetailedView />} />
+            <Route path="/Eventos/formulario" element= {<EventsForm/>} />
+            <Route path="/Pool" element= {<PoolMain />} />
+            <Route path="/Pool/formulario" element= {<PoolForm />} />
           </Routes>
 
           { !userInfo? (<>

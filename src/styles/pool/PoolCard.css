@@ -1,23 +1,27 @@
 .pool-card{
-    padding: 10px;
-    margin-bottom: 25px;
+    width: 100%;
     border-style: none;
-    border-radius: 20px;
-    box-shadow: var(--shadow);
 }
-
-.pool-ubic {
-    background-color: var(--main-color);
-    margin: 15px 0;
-    border-radius: 20px;
-    height: 250px;
-}
-
 .pool-card-item {
     padding-bottom: 7px !important;
     margin-bottom: 7px !important;
 }
 
+.whatsapp {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
 .pool-button {
+    background-color: #0ee850 !important;
     width: 100%;
+}
+
+.pool-button:link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.pool-button:visited {
+    color: #fff;
 }

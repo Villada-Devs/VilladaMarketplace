@@ -1,0 +1,22 @@
+.leaflet-popup {
+    height: fit-content;
+    width: 400px;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+    width: unset !important;
+}
+
+.leaflet-marker-icon {
+    width: auto !important;
+    height: 50px !important;
+}
+
+.leaflet-popup.its {
+    width: 200px;
+}
+
+.its p {
+    text-align: center;
+}

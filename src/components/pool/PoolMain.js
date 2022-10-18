@@ -1,17 +1,33 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect, useContext } from 'react';
+import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 
 import PageHeader from "../PageHeader";
-import PoolFilter from "./PoolFilter";
 import PoolCard from "./PoolCard";
 
 import "../../styles/pool/PoolMain.css"
+import "leaflet/dist/leaflet.css";
 
 import ContextConnected from "../../context/ContextConnected";
 
 function PoolMain() {
+
+    const fillBlueOptions = { fillColor: 'blue' }
+
+    React.useEffect(() => {
+        
+        const L = require("leaflet");
+    
+        delete L.Icon.Default.prototype._getIconUrl;
+    
+        L.Icon.Default.mergeOptions({
+          iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+          iconUrl: require("../../img/its.png"),
+          shadowUrl: require("leaflet/dist/images/marker-shadow.png")
+        });
+      }, []);
+
     const Connected = useContext(ContextConnected)
 
     useEffect(() => {
@@ -40,18 +56,44 @@ function PoolMain() {
             <PageHeader 
                 title="Villada Pool"
                 button="Nuevo Pool"
+                buttonURL="/Pool/formulario"
             />
 
-            <PoolFilter />
+            <MapContainer className='map-container' center={[-31.404829, -64.196187]} zoom={12} scrollWheelZoom={false}>
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+
+                <Marker position={[-31.362450, -64.276317]}>
+                    <Popup className='its'>
+                        <p>Instituto Técnico Salesiano Villada</p>
+                    </Popup>
+                </Marker>
                 
-            <Row>
-                {
-                    Connected.pools?.map((pool, index) => {
-                        const daysAv = `${pool.day_lunes? "Lu" : ""}${pool.day_martes? " Ma" : ""}${pool.day_miercoles? " Mi" : ""}${pool.day_jueves? " Ju" : ""}${pool.day_viernes? " Vi" : ""}`;
-                        return <PoolCard key={index} locality={pool.locality} neighborhood={pool.neighborhood} days={daysAv} places={pool.slots} userName={pool.author} />
-                    })
-                } 
-            </Row>
+                
+                    {
+                        Connected.pools?.map((e) => {
+                            const position = [e.lat, e.lng];
+
+                            return(
+                                
+                                <Circle center={position} pathOptions={fillBlueOptions} radius={150} key={e.id}>
+                                    <Popup>
+                                        <PoolCard
+                                            key={e.id}
+                                            userName={e.author}
+                                            creationDate={e.created_date}
+                                            days={e.days}
+                                            places={e.places}
+                                            phoneNumber={e.phone_number}
+                                        />
+                                    </Popup>
+                                </Circle>
+                            )
+                        })
+                    }
+
+            </MapContainer>
 
         </Container>
     );
