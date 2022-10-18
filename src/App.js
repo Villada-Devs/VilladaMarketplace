@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-
 import NavBar from "./components/navbar/NavBar";
 import Login from "./components/navbar/Login";
 import Register from "./components/navbar/Register";
@@ -18,72 +17,61 @@ import PoolMain from "./components/pool/PoolMain";
 import PoolForm from "./components/pool/PoolForm";
 
 import Footer from "./components/Footer";
+import ContextConnected from './context/ContextConnected';
 
 import "./styles/styles.css";
 
 function App() {
 
-  const backendUrl = "https://upf-app-web.herokuapp.com/";
+  const backendUrl = "http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/";
 
   const [registerOpened, setRegisterOpened] = useState(false);
   const [loginOpened, setLoginOpened] = useState(false);
 
-  const [selectedView, setSelectedView] = useState("Inicio");
-  const views = ["Inicio", "Marketplace", "Eventos", "Pool"];
-
-  const [userToken, setUserToken] = useState(null);
-  const [userInfo, setUserInfo] = useState({username: ""});
-
-  const toggleLoginMenu = async () => {
-    if(loginOpened) {
-      setLoginOpened(false);
-    } else {
-      setRegisterOpened(false);
-      setLoginOpened(true);
-    }
-  }
-
-  const toggleRegisterMenu = async () => {
-    if(registerOpened) {
-      setRegisterOpened(false);
-    } else {
-      setLoginOpened(false);
-      setRegisterOpened(true); 
-    }
-  }
+  const [userInfo, setUserInfo] = useState(null);
+  const [events, setEvents] = useState(null);
+  const [pools, setPools] = useState(null);
 
   const handleCardClick = (e) => e.stopPropagation();
 
-  const login = async (email, password) => {
+  useEffect(() => {
+    const loadUserFromLocalStorage = async () => {
+      const token = await JSON.parse(localStorage.getItem("token"));
+      if (token) {
+        const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/user/", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token.access_token}`
+          },
+        })
+        const data = await res.json();
+        setUserInfo(data);
+      }
+    };
+    loadUserFromLocalStorage();
+  }, []);
 
-    if(password !== "" && email !== "") {
-
-      const response = await fetch(backendUrl + "dj-rest-auth/login/", {
-        method: "POST",
-        body: JSON.stringify({ email: email, password: password}),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-
-      const res = await response.json();
-      console.log(res);
-
-      if("statusCode" in res === false) {
-        setUserToken(res);
-        // getUserInfo(res);
-      } else {
-        alert("Wrong Credentials.");
-      }   
-    }
-  }
 
   return (
     <>
+      <ContextConnected.Provider value={{
+        backendUrl,
+        userInfo,
+        setUserInfo,
+        registerOpened,
+        loginOpened,
+        setRegisterOpened,
+        setLoginOpened,
+        events,
+        setEvents,
+        pools,
+        setPools
+      }}>
 
-      <NavBar toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} selectedView={selectedView} setSelectedView={setSelectedView} views={views} />
 
-      <BrowserRouter>
+        <BrowserRouter>
+          <NavBar />
           <Routes>
 
             <Route path="/" element= {<LandPage />} />
@@ -99,12 +87,17 @@ function App() {
             <Route path="/Pool/formulario" element= {<PoolForm />} />
 
           </Routes>
+
+          { !userInfo? (<>
+            { loginOpened? <Login handleCardClick={handleCardClick} /> : null }
+            { registerOpened? <Register handleCardClick={handleCardClick} /> : null }
+          </>) : null }
+
+          <Footer />
+          
         </BrowserRouter>
 
-      { loginOpened? <Login login={login} toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
-      { registerOpened? <Register toggleLoginMenu={toggleLoginMenu} toggleRegisterMenu={toggleRegisterMenu} handleCardClick={handleCardClick} /> : null }
-
-      <Footer />
+      </ContextConnected.Provider>
 
       
     </>

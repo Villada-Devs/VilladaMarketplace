@@ -17,7 +17,7 @@ function PoolCard(props) {
                 <Card.Body className="unpadding">
                     <User 
                         userName={props.userName}
-                        creationDate={props.creationDate}
+                        // creationDate={props.creationDate}
                     />
                 </Card.Body>
 

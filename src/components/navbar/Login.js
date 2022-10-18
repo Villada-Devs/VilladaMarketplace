@@ -1,36 +1,64 @@
-import React, {useRef, useState, useEffect} from "react";
+import React, { useContext } from "react";
 
 import CloseButton from 'react-bootstrap/CloseButton';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+import ContextConnected from '../../context/ContextConnected';
+
 import "../../styles/navbar/Log-Reg.css";
 
 
-function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu, handleCardClick}) {
+function Login({handleCardClick}) {
 
-    const mailRef = useRef();
-    const errRef = useRef();
+    const Connected = useContext(ContextConnected)
+    console.log(Connected)
 
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
-    const [errMsg, setErrMsg] = useState('');
-
-    useEffect(() => {
-        mailRef.current.focus();
-    }, [])
-
-    useEffect(() => {
-        setErrMsg('');
-    }, [user, password])
-
-    const handleSubmit = async (e) => {
-        setUser('');
-        setPassword('');
+    const toggleLoginMenu = async () => {
+        if(Connected.loginOpened) {
+            Connected.setLoginOpened(false);
+        } else {
+            Connected.setRegisterOpened(false);
+            Connected.setLoginOpened(true);
+        }
     }
+
+    const toggleRegisterMenu = async () => {
+        if(Connected.registerOpened) {
+          Connected.setRegisterOpened(false);
+        } else {
+          Connected.setLoginOpened(false);
+          Connected.setRegisterOpened(true); 
+        }
+    }
+
+    const login = async (email, password) => {
+
+        if(password !== "" && email !== "") {
+
+            const response = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/login/", {
+                method: "POST",
+                body: JSON.stringify({ email: email, password: password}),
+                headers: {
+                "Content-Type": "application/json",
+                },
+            })
     
-    return (
+          const res = await response.json();
+    
+          if("statusCode" in res === false) {
+            Connected.setUserInfo(res.user);
+            const newToken = { access_token: res.access_token, refresh_token: res.refresh_token }
+            localStorage.setItem("token", JSON.stringify(newToken));
+            toggleLoginMenu();
+          } else {
+            alert("Wrong Credentials.");
+          }   
+        }
+      }
+    
+      return (
 
         <>
 
@@ -44,31 +72,23 @@ function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu, handleC
                     </div>
                     <hr className='log-reg-hr'></hr>
 
-                    <Form onSubmit={handleSubmit}>
-
-                        <Form.Group className="mb-3 unmarging" controlId="Mail">
-                            <Form.Label className="input-label">Mail</Form.Label>
+                    <Form>
+                        <Form.Group className="mb-3 unmarging" controlId="Email">
+                            <Form.Label className="input-label">Mail Institucional</Form.Label>
                             <Form.Control 
-                                className="input" 
                                 id="login-mail-input" 
+                                className="input" 
                                 type="email" 
-                                ref={mailRef}
-                                autoComplete="off"
-                                onChange={(e) => setUser(e.target.value )}
-                                value={user}
-                                required
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3 unmarging" controlId="Password">
                             <Form.Label className='input-label'>Contraseña</Form.Label>
                             <Form.Control 
-                                className="input" 
                                 id="login-password-input" 
-                                type="password"
-                                onChange={(e) => setPassword(e.target.value )}
-                                value={password}
-                                required
+                                className='input' 
+                                type="password" 
+                                placeholder="8+ carácteres" 
                             />
                         </Form.Group>
 
@@ -79,7 +99,6 @@ function Login({login, toggleLoginMenu, timeMessage, toggleRegisterMenu, handleC
                         <Button 
                             className='button login-register-button' 
                             variant="primary" 
-                            type="submit"
                             onClick={() => {
                                 const mail = document.querySelector('#login-mail-input').value;
                                 const password = document.querySelector('#login-password-input').value;
