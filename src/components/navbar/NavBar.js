@@ -63,6 +63,9 @@ function NavBar() {
                         <NavLink className="nav-link" to="/Pool">Pool</NavLink>
                     </Nav.Item>
                     
+                    <Nav.Item>
+                        <NavLink className="nav-link" to="/Sobre-Nosotros">Sobre Nosotros</NavLink>
+                    </Nav.Item>
 
                 </Nav>
                 <Form className="d-flex">

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 import NavBar from "./components/navbar/NavBar";
 import Login from "./components/navbar/Login";
 import Register from "./components/navbar/Register";
@@ -15,6 +16,8 @@ import EventsForm from "./components/events/EventsForm";
 
 import PoolMain from "./components/pool/PoolMain";
 import PoolForm from "./components/pool/PoolForm";
+
+import AboutUs from "./components/about-us/AboutUs";
 
 import Footer from "./components/Footer";
 import ContextConnected from './context/ContextConnected';
@@ -85,6 +88,8 @@ function App() {
 
             <Route path="/Pool" element= {<PoolMain />} />
             <Route path="/Pool/formulario" element= {<PoolForm />} />
+
+            <Route path="/Sobre-Nosotros" element= {<AboutUs />} />
 
           </Routes>
 

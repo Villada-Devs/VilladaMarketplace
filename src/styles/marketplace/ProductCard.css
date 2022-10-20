@@ -1,0 +1,23 @@
+.prod-card-container {
+    background-color: #fff;
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 15px;
+    height: 350px;
+    width: 100%;
+}
+
+.prod-img-cont {
+    background-color: var(--main-color);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: 75%;
+    width: 100%;
+}
+
+.prod-price {
+    margin-top: 10px;
+    font-weight: 400;
+    opacity: 70%;
+}

@@ -1,44 +1,5 @@
 [
-    {
-        "id": 1,
-        "author": "marcos",
-        "created_date": "2022-10-03T14:41:44.597576Z",
-        "days": "lu, ma, mi, ju, vi",
-        "places": "2",
-        "lat": -31.370268,
-        "long": -64.229644,
-        "phone_number": "+543517059561"
-    },
-    {
-        "id": 2,
-        "author": "gaston",
-        "created_date": "2022-10-03T14:41:44.597576Z",
-        "days": "lu, ma, mi",
-        "places": "2",
-        "lat": -31.370910,
-        "long": -64.229398,
-        "phone_number": "+543517059561"
-    },
-    {
-        "id": 3,
-        "author": "escroto",
-        "created_date": "2022-10-03T14:41:44.597576Z",
-        "days": "lu, ma, mi",
-        "places": "2",
-        "lat": -31.357153,
-        "long": -64.339495,
-        "phone_number": "+543517059561"
-    },
-    {
-        "id": 4,
-        "author": "paco",
-        "created_date": "2022-10-03T14:41:44.597576Z",
-        "days": "lu, ma, mi",
-        "places": "2",
-        "lat": -31.440997,
-        "long": -64.234461,
-        "phone_number": "+543517059561"
-    },
+    
     {
         "id": 5,
         "author": "pelado",
