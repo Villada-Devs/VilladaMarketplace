@@ -39,11 +39,13 @@ function MarketplaceMain() {
                     <SectionButton 
                         sectionImage={ToolsSection}
                         sectionName="Herramientas"
+                        sectionURL="Herramientas"
                     />
 
                     <SectionButton 
                         sectionImage={UniformsSection}
                         sectionName="Uniformes"
+                        sectionURL="Uniformes"
                     />
                 </Row>
 

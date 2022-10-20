@@ -13,8 +13,8 @@ function ProductCard(props) {
                     <img className="prod-img" src={props.prodImage} alt=""></img>
                 </div>
 
-                <h3>Libro de lengua</h3>
-                <h3 className='prod-price'>$2000</h3>
+                <h3>{props.prodTitle}</h3>
+                <h3 className='prod-price'>${props.prodPrice}</h3>
 
             </div>
         </Col>
