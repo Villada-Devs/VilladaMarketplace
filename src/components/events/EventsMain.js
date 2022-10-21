@@ -63,18 +63,3 @@ function EventsMain() {
 }
 
 export default EventsMain;
-
-/* 
-{
-    event.map((e) => (
-        <EventCardR 
-            userName="Matias"
-            creationDate={e.axiEventCreatedDate}
-            eventTitle={e.axiEventTitle}
-            eventDescription={e.axiEventBody}
-            eventDate={e.axiEventDate}
-            eventImage={e.axiEventImages}
-        />
-    ))
-}
-*/

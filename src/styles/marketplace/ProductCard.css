@@ -6,6 +6,8 @@
     padding: 15px;
     height: 350px;
     width: 100%;
+
+    cursor: pointer;
 }
 
 .prod-img-cont {

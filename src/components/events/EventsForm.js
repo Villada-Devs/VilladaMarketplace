@@ -73,7 +73,7 @@ function EventsForm() {
 
                     <Row>
 
-                        <Form.Group as={Col} md="6" controlId="validationCustom01">
+                        <Form.Group as={Col} md="4" controlId="validationCustom01">
                             <Form.Label className='input-label'>Título</Form.Label>
                             <Form.Control
                                 className='input'
@@ -85,7 +85,27 @@ function EventsForm() {
                             </Form.Control.Feedback>
                         </Form.Group>
 
-                        <Form.Group as={Col} md="6" controlId="validationCustom02">
+                        <Form.Group as={Col} md="4" controlId="validationCustom02">
+                            <Form.Label className='input-label'>Tipo</Form.Label>
+                            <Form.Select required className='input'>
+                                <option value=""></option>
+                                <option value="Bienvenida a familias de primer año">Bienvenida a familias de primer año</option>
+                                <option value="Talleres pedagógicos">Talleres pedagógicos</option>
+                                <option value="Retiros espirituales">Retiros espirituales</option>
+                                <option value="Integración de los padres a la labor educativa">Integración de los padres a la labor educativa</option>
+                                <option value="Locro del exalumno salesiano del villada">Locro del exalumno salesiano del villada</option>
+                                <option value="UPF solidaria">UPF solidaria</option>
+                                <option value="Dia del educador">Dia del educador</option>
+                                <option value="Bicicleteada salesiana">Bicicleteada salesiana</option>
+                                <option value="Asado de fin de año">Asado de fin de año</option>
+                                <option value="Valle de la inmaculada">Valle de la inmaculada</option>
+                            </Form.Select>
+                            <Form.Control.Feedback type="invalid">
+                                Por favor seleccione un tipo.
+                            </Form.Control.Feedback>
+                        </Form.Group>
+
+                        <Form.Group as={Col} md="4" controlId="validationCustom02">
                             <Form.Label className='input-label'>Fecha</Form.Label>
                             <Form.Control
                                 className='input'

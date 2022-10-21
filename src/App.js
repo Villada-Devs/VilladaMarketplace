@@ -11,6 +11,7 @@ import MarketplaceMain from "./components/marketplace/MarketplaceMain";
 import BooksSection from "./components/marketplace/BooksSection";
 import ToolsSection from "./components/marketplace/ToolsSection";
 import UniformsSection from "./components/marketplace/UniformsSection";
+import ArticleDetailedView from "./components/marketplace/ArticleDetailedView";
 
 import EventsMain from "./components/events/EventsMain";
 import EventDetailedView from "./components/events/EventDetailedView";
@@ -85,6 +86,7 @@ function App() {
             <Route path="/Marketplace/Libros" element= {<BooksSection />} />
             <Route path="/Marketplace/Herramientas" element= {<ToolsSection />} />
             <Route path="/Marketplace/Uniformes" element= {<UniformsSection />} />
+            <Route path="/Marketplace/articulo/detalles" element= {<ArticleDetailedView />} />
             
             <Route path="/Eventos" element= {<EventsMain />} />
             <Route path="/Eventos/detalles" element= {<EventDetailedView />} />

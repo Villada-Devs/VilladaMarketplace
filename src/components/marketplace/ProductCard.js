@@ -1,13 +1,17 @@
+import { useNavigate } from 'react-router-dom';
+
 import Col from 'react-bootstrap/Col';
 
 import "../../styles/marketplace/ProductCard.css"
 
 function ProductCard(props) {
 
+    const navigate = useNavigate();
+
     return(
 
         <Col md={4}>
-            <div className="prod-card-container">
+            <div className="prod-card-container" onClick={() => { navigate(`/Marketplace/articulo/detalles`); }}>
 
                 <div className="prod-img-cont">
                     <img className="prod-img" src={props.prodImage} alt=""></img>
