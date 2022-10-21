@@ -37,7 +37,8 @@ function EventsMain() {
             <Container className="page-container " fluid>
 
                 <PageHeader 
-                    title="Villada Eventos"
+                    pageHeader="Villada Eventos"
+                    pageDescription="Informate sobre nuestros próximos eventos y actividades para padres."
                     button="Nuevo Evento"
                     buttonURL="/Eventos/formulario"
                 />

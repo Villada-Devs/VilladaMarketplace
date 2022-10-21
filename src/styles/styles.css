@@ -1,5 +1,6 @@
 :root {
-    --main-color: rgb(94, 145, 221);
+    --main-color: #29235C;
+    --second-color: #BE1622;
     --shadow: 0 0 5px rgba(0, 0, 0, .20);
 }
 
@@ -79,7 +80,7 @@ p {
 
 .button {
     padding: 0 15px;
-    background-color: var(--main-color);
+    background-color: var(--second-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,7 +95,7 @@ p {
 
 .button:hover,
 .button:focus {
-  background-color: #719FEF;
+  background-color: #d12e38;
 }
 
 

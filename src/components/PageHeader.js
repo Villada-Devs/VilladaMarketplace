@@ -12,9 +12,9 @@ function PageHeader(props) {
     return (
 
         <div className="page-header">
-            <h1 className="page-title">{props.title}</h1>
+            <h1 className="page-title">{props.pageHeader}</h1>
             <hr className="bold-hr"></hr>
-            <p className="page-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
+            <p className="page-subtitle">{props.pageDescription}</p>
             <Button className='button' variant="primary" onClick={() => { navigate(props.buttonURL); }}>{props.button}</Button>
         </div>
         

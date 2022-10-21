@@ -22,7 +22,7 @@ function ArticleDetailedView() {
                     <div className='art-det-img-cont'></div>
                 </Col>
 
-                <Col md={6}>
+                <Col md={6} sm={12}>
                     <div className='art-det-info-cont'>
                         <User 
                             userName="Matias"

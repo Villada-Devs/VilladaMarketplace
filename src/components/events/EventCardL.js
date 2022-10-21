@@ -39,7 +39,7 @@ function CardL(props) {
                 </Col>
 
                 <Col lg={5} md={12} sm={12} className="flex-end">
-                    <img className="event-card-photo" src={props.eventImage} />
+                    <img alt="" className="event-card-photo" src={props.eventImage} />
                 </Col>
 
             </Row>

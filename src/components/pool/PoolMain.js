@@ -25,7 +25,7 @@ function PoolMain() {
     
         L.Icon.Default.mergeOptions({
           iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-          iconUrl: require("../../img/its.png"),
+          iconUrl: require("../../img/pool/its.png"),
           shadowUrl: require("leaflet/dist/images/marker-shadow.png")
         });
       }, []);
@@ -56,7 +56,8 @@ function PoolMain() {
         <Container className="page-container" fluid>
 
             <PageHeader 
-                title="Villada Pool"
+                pageHeader="Villada Pool"
+                pageDescription="Si no podés llevar a tu hijo al colegio o tenes lugar en el auto disponible, conectate con otros padres para organizar un pool."
                 button="Nuevo Pool"
                 buttonURL="/Pool/formulario"
             />

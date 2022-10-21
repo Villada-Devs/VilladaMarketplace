@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import UPFland from "../../img/UPF-land.png"
+import UPFland from "../../img/land/UPF-land.png"
 
 import "../../styles/landpage/LandPage.css"
 
@@ -17,8 +17,8 @@ function LandPage() {
             <Row className="land-row">
 
                 <Col className="land-left" md={6} sm={12}>
-                        <h1>Bienvenidos <br></br> a la <span className="blue-section"> Unión  <br></br>Padres de Familia </span></h1>
-                        <p className="land-sub-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <h1>Bienvenidos <br></br> a la <span className="blue-section"> Unión  <br></br>Padres de Familia</span></h1>
+                        <p className="land-sub-title">Sitio web oficial de la UPF, creado con el fin de facilitar la comunicacion entre la comunidad del ITS Villada.</p>
                         <NavLink className="marketplace-button" to="/Marketplace"><Button className='button button-marketplace' variant="primary">Marketplace</Button></NavLink>
                 </Col>
 
