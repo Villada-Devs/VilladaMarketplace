@@ -35,8 +35,8 @@ function App() {
   const [loginOpened, setLoginOpened] = useState(false);
 
   const [userInfo, setUserInfo] = useState(null);
-  const [events, setEvents] = useState(null);
-  const [pools, setPools] = useState(null);
+  const [events, setEvents] = useState([]);
+  const [pools, setPools] = useState([]);
 
   const handleCardClick = (e) => e.stopPropagation();
 

@@ -1,14 +1,21 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import Container from "react-bootstrap/esm/Container";
 
 import PageHeader from "../PageHeader";
+import EventsFilters from "./EventsFilters";
 import EventCardR from "./EventCardR";
 import EventCardL from "./EventCardL";
 
 import ContextConnected from "../../context/ContextConnected";
 
+import "../../styles/events/EventsMain.css";
+
 function EventsMain() {
+
+    const [eventsFiltered, setEventsFiltered] = useState([]);
+    const [activeEventType, setActiveEventType] = useState(0);
+
     const Connected = useContext(ContextConnected)
 
     useEffect(() => {
@@ -24,6 +31,7 @@ function EventsMain() {
             })
             const data = await res.json();
             Connected.setEvents(data);
+            setEventsFiltered(data);
             console.log(data);
           }
         };
@@ -43,9 +51,16 @@ function EventsMain() {
                     buttonURL="/Eventos/formulario"
                 />
 
+                <EventsFilters 
+                    events={Connected.events}
+                    setEventsFiltered={setEventsFiltered}
+                    activeEventType={activeEventType}
+                    setActiveEventType={setActiveEventType}
+                />
+
                 <div className="events-content">
                     {
-                        Connected.events?.map((event, index) => {
+                        eventsFiltered.map((event, index) => {
                             if (index % 2 === 0) {
                                 return <EventCardL key={index} userName={event.author} creationDate={event.created_date} eventTitle={event.title} eventDescription={event.short_description} eventDate={event.event_date} eventImage={event.imagesevent[0].image} />
                             } else {
