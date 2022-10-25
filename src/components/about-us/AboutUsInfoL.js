@@ -2,19 +2,21 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function AboutUsInfo(props) {
+import "../../styles/about-us/AboutUsInfo.css"
+
+function AboutUsInfoL(props) {
     return(
 
-        <Container fluid>
+        <Container className='about-info-cont' fluid>
 
             <Row>
 
-                <Col>
-                    <h2 className='about-event-title'>{props.aboutEventTitle}</h2>
+                <Col className='about-info-l' md={7} sm={12}>
+                    <h2 className='about-event-title blue-section'>{props.aboutEventTitle}</h2>
                     <p className='about-event-info'>{props.aboutEventInfo}</p>
                 </Col>
 
-                <Col>
+                <Col className='about-img'>
                     <img className='about-event-img' alt="" src={props.EventImg}></img>
                 </Col>
 
@@ -25,4 +27,4 @@ function AboutUsInfo(props) {
     );
 }
 
-export default AboutUsInfo;
+export default AboutUsInfoL;
