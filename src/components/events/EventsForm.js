@@ -135,7 +135,7 @@ function EventsForm() {
                             </Form.Control.Feedback>
                     </Form.Group>
                         
-                    <Button className='button events-form-button' onClick={() => sendEvent()}>Enviar</Button>
+                    <Button className='button events-form-button' onClick={sendEvent()}>Enviar</Button>
                 </Form>
                 
             </FormCard>

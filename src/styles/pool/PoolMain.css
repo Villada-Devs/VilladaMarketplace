@@ -20,3 +20,7 @@
 .its p {
     text-align: center;
 }
+
+.leaflet-bottom {
+    display: none;
+}

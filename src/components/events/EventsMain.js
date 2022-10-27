@@ -36,7 +36,7 @@ function EventsMain() {
           }
         };
         loadEvents();
-      }, [Connected.userInfo]);
+    }, [Connected.userInfo]);
     
     return(
 

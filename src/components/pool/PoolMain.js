@@ -75,8 +75,8 @@ function PoolMain() {
                 
                 
                     {
-                        PoolData.map((e) => {
-                            const position = [e.lat, e.long];
+                        Connected.pools.map((e) => {
+                            const position = [e.lat, e.lng]
 
                             return(
                                 
@@ -87,8 +87,8 @@ function PoolMain() {
                                             userName={e.author}
                                             creationDate={e.created_date}
                                             days={e.days}
-                                            places={e.places}
-                                            phoneNumber={e.phone_number}
+                                            places={e.slots}
+                                            phoneNumber={e.first_tel}
                                         />
                                     </Popup>
                                 </Circle>

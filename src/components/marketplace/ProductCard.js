@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Col from 'react-bootstrap/Col';
 
-import "../../styles/marketplace/ProductCard.css"
+import "../../styles/marketplace/ProductCard.css";
 
 function ProductCard(props) {
 
@@ -10,7 +10,7 @@ function ProductCard(props) {
 
     return(
 
-        <Col md={4}>
+        <Col xxl={3} lg={4} md={6} sm={6} >
             <div className="prod-card-container" onClick={() => { navigate(`/Marketplace/articulo/detalles`); }}>
 
                 <div className="prod-img-cont">
@@ -23,7 +23,7 @@ function ProductCard(props) {
             </div>
         </Col>
 
-    )
+    );
 
 }
 
