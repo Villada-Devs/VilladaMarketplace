@@ -17,7 +17,7 @@ function LandPage() {
             <Row className="land-row">
 
                 <Col className="land-left" md={6} sm={12}>
-                        <h1>Bienvenidos <br></br> a la <span className="blue-section"> Unión  <br></br>Padres de Familia</span></h1>
+                        <h1>Bienvenidos <br></br> a la <span className="blue-section"> Unión  <br></br>Padres de Familia</span> <br>Fquiene</br>Del Villada</h1>
                         <p className="land-sub-title">Sitio web oficial de la UPF, creado con el fin de facilitar la comunicacion entre la comunidad del ITS Villada.</p>
                         <NavLink className="marketplace-button" to="/Marketplace"><Button className='button button-marketplace' variant="primary">Marketplace</Button></NavLink>
                 </Col>
