@@ -11,11 +11,17 @@
 }
 
 .prod-img-cont {
-    background-color: var(--main-color);
     border-radius: 10px;
     margin-bottom: 10px;
     height: 75%;
     width: 100%;
+}
+
+.prod-img {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .prod-price {
