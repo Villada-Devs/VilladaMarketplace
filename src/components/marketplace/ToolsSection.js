@@ -1,3 +1,5 @@
+import React, { useContext, useEffect } from "react";
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -5,7 +7,31 @@ import Form from 'react-bootstrap/Form';
 
 import ProductCard from './ProductCard';
 
+import ContextConnected from "../../context/ContextConnected";
+
 function ToolsSection() {
+
+    const Connected = useContext(ContextConnected);
+
+    useEffect(() => {
+        const loadTools = async () => {
+          const token = await JSON.parse(localStorage.getItem("token"));
+          if (token) {
+            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/marketplace/tools/", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token.access_token}`
+              },
+            })
+            const data = await res.json();
+            Connected.setTools(data.results);
+            console.log(data.results);
+          }
+        };
+        loadTools();
+    }, [Connected.userInfo]);
+
     return(
 
         <>
@@ -88,42 +114,23 @@ function ToolsSection() {
                     
                     <Row>
 
-                        <ProductCard
-                            prodTitle="Set de limas"
-                            prodPrice="4000"
-                         />
-                         <ProductCard
-                            prodTitle="Set de limas"
-                            prodPrice="4000"
-                         />
-                         <ProductCard
-                            prodTitle="Set de limas"
-                            prodPrice="4000"
-                         />
-                         <ProductCard
-                            prodTitle="Set de limas"
-                            prodPrice="4000"
-                         />
-                         <ProductCard
-                            prodTitle="Set de limas"
-                            prodPrice="4000"
-                         />
-                         <ProductCard
-                            prodTitle="Set de limas"
-                            prodPrice="4000"
-                         />
-                         <ProductCard
-                            prodTitle="Set de limas"
-                            prodPrice="4000"
-                         />
-                         <ProductCard
-                            prodTitle="Set de limas"
-                            prodPrice="4000"
-                         />
-                         <ProductCard
-                            prodTitle="Set de limas"
-                            prodPrice="4000"
-                         />
+                        {
+                            Connected.tools.map((tool) => {
+
+                                return (
+
+                                    <ProductCard 
+                                        key={tool.id}
+                                        prodImage={tool.imagestool[0].image}
+                                        prodTitle={tool.tool}
+                                        prodPrice={tool.price}
+                                    />
+
+                                );
+
+
+                            })
+                        }
 
                     </Row>
 

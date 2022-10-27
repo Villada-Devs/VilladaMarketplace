@@ -1,3 +1,5 @@
+import React, { useContext, useEffect } from "react";
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -5,7 +7,31 @@ import Form from 'react-bootstrap/Form';
 
 import ProductCard from './ProductCard';
 
+import ContextConnected from "../../context/ContextConnected";
+
 function BooksSection() {
+
+    const Connected = useContext(ContextConnected);
+
+    useEffect(() => {
+        const loadBooks = async () => {
+          const token = await JSON.parse(localStorage.getItem("token"));
+          if (token) {
+            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/marketplace/books/", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token.access_token}`
+              },
+            })
+            const data = await res.json();
+            Connected.setBooks(data.results);
+            console.log(data.results);
+          }
+        };
+        loadBooks();
+    }, [Connected.userInfo]);
+
     return(
 
         <>
@@ -173,42 +199,23 @@ function BooksSection() {
                     
                     <Row>
 
-                        <ProductCard
-                            prodTitle="Libro de Lengua"
-                            prodPrice="2000"
-                         />
-                         <ProductCard
-                            prodTitle="Libro de Lengua"
-                            prodPrice="2000"
-                         />
-                         <ProductCard
-                            prodTitle="Libro de Lengua"
-                            prodPrice="2000"
-                         />
-                         <ProductCard
-                            prodTitle="Libro de Lengua"
-                            prodPrice="2000"
-                         />
-                         <ProductCard
-                            prodTitle="Libro de Lengua"
-                            prodPrice="2000"
-                         />
-                         <ProductCard
-                            prodTitle="Libro de Lengua"
-                            prodPrice="2000"
-                         />
-                         <ProductCard
-                            prodTitle="Libro de Lengua"
-                            prodPrice="2000"
-                         />
-                         <ProductCard
-                            prodTitle="Libro de Lengua"
-                            prodPrice="2000"
-                         />
-                         <ProductCard
-                            prodTitle="Libro de Lengua"
-                            prodPrice="2000"
-                         />
+                        {
+                            Connected.books.map((book) => {
+
+                                return (
+
+                                    <ProductCard 
+                                        key={book.id}
+                                        prodImage={book.imagesbook[0].image}
+                                        prodTitle={book.title}
+                                        prodPrice={book.price}
+                                    />
+
+                                );
+
+
+                            })
+                        }
 
                     </Row>
 

@@ -35,6 +35,9 @@ function App() {
   const [loginOpened, setLoginOpened] = useState(false);
 
   const [userInfo, setUserInfo] = useState(null);
+  const [books, setBooks] = useState([]);
+  const [tools, setTools] = useState([]);
+  const [uniforms, setUniforms] = useState([]);
   const [events, setEvents] = useState([]);
   const [pools, setPools] = useState([]);
 
@@ -65,12 +68,22 @@ function App() {
         backendUrl,
         userInfo,
         setUserInfo,
+
         registerOpened,
         loginOpened,
         setRegisterOpened,
         setLoginOpened,
+
+        books,
+        setBooks,
+        tools,
+        setTools,
+        uniforms,
+        setUniforms,
+
         events,
         setEvents,
+
         pools,
         setPools
       }}>

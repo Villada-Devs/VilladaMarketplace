@@ -6,9 +6,7 @@ import Container from 'react-bootstrap/Container';
 import PageHeader from "../PageHeader";
 import PoolCard from "./PoolCard";
 
-import PoolData from "./PoolData.json"
-
-import "../../styles/pool/PoolMain.css"
+import "../../styles/pool/PoolMain.css";
 import "leaflet/dist/leaflet.css";
 
 import ContextConnected from "../../context/ContextConnected";
@@ -75,24 +73,24 @@ function PoolMain() {
                 
                 
                     {
-                        Connected.pools.map((e) => {
-                            const position = [e.lat, e.lng]
+                        Connected.pools.map((pool) => {
+                            const position = [pool.lat, pool.lng]
 
                             return(
                                 
-                                <Circle center={position} pathOptions={fillBlueOptions} radius={150} key={e.id}>
+                                <Circle center={position} pathOptions={fillBlueOptions} radius={150} key={pool.id}>
                                     <Popup>
                                         <PoolCard
-                                            key={e.id}
-                                            userName={e.author}
-                                            creationDate={e.created_date}
-                                            days={e.days}
-                                            places={e.slots}
-                                            phoneNumber={e.first_tel}
+                                            key={pool.id}
+                                            userName={pool.author}
+                                            creationDate={pool.created_date}
+                                            days={pool.days}
+                                            places={pool.slots}
+                                            phoneNumber={pool.first_tel}
                                         />
                                     </Popup>
                                 </Circle>
-                            )
+                            );
                         })
                     }
 
