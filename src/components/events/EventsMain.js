@@ -62,9 +62,9 @@ function EventsMain() {
                     {
                         eventsFiltered.map((event, index) => {
                             if (index % 2 === 0) {
-                                return <EventCardL key={index} userName={event.author} creationDate={event.created_date} eventTitle={event.title} eventDescription={event.short_description} eventDate={event.event_date} eventImage={event.imagesevent[0].image} />
+                                return <EventCardL key={index} event={event} userName={event.author} creationDate={event.created_date} eventTitle={event.title} eventDescription={event.short_description} eventDate={event.event_date} eventImage={event.imagesevent[0].image} />
                             } else {
-                                return <EventCardR key={index} userName={event.author} creationDate={event.created_date} eventTitle={event.title} eventDescription={event.short_description} eventDate={event.event_date} eventImage={event.imagesevent[0].image} />
+                                return <EventCardR key={index} event={event} userName={event.author} creationDate={event.created_date} eventTitle={event.title} eventDescription={event.short_description} eventDate={event.event_date} eventImage={event.imagesevent[0].image} />
                             }
                         })
                     }

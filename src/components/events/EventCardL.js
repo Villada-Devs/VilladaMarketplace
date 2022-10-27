@@ -15,7 +15,7 @@ function CardL(props) {
 
     return (
         
-        <Container className="event-card-r" fluid onClick={() => { navigate('/Eventos/detalles'); }}>
+        <Container className="event-card-r" fluid onClick={() => { navigate('/Eventos/detalles', {state: props.event}); }}>
             <Row>
 
                 <Col className="event-card-content">
