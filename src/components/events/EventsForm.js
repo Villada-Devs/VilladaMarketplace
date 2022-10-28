@@ -38,7 +38,6 @@ function EventsForm() {
     };
 
     const sendEvent = async (event) => {
-        event.preventDefault();
         const token = await JSON.parse(localStorage.getItem("token"));
         if (token) {
             const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/events/", {
@@ -58,6 +57,9 @@ function EventsForm() {
             console.log(data);
         }
     };
+
+    console.log(typeof sendEvent);
+    
 
     return (
 
@@ -135,7 +137,7 @@ function EventsForm() {
                             </Form.Control.Feedback>
                     </Form.Group>
                         
-                    <Button className='button events-form-button' onClick={sendEvent()}>Enviar</Button>
+                    <button className='button events-form-button' onClick={() => sendEvent()}>Enviar</button>
                 </Form>
                 
             </FormCard>

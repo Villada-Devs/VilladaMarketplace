@@ -114,7 +114,7 @@ function Register({handleCardClick}) {
                 </Form>
 
                 <div className='card-footer'>
-                    <p>¿Ya tienes Cuenta?<br></br><span className='blue-section' onClick={() => {toggleLoginMenu()}}>Iniciar Sesion</span></p>
+                    <p>¿Ya tienes Cuenta?<br /><span className='blue-section' onClick={() => {toggleLoginMenu()}}>Iniciar Sesion</span></p>
                 </div> 
 
             </div>

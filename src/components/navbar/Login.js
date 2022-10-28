@@ -110,7 +110,7 @@ function Login({handleCardClick}) {
                             
                     
                     <div className='card-footer'>
-                        <p>¿No tienes Cuenta?<br></br><span className='blue-section' onClick={() => {toggleRegisterMenu()}}>Registrarse</span></p>
+                        <p>¿No tienes Cuenta?<br /><span className='blue-section' onClick={() => {toggleRegisterMenu()}}>Registrarse</span></p>
                     </div>
 
                 </div>
