@@ -74,6 +74,7 @@ function PoolMain() {
                 
                     {
                         Connected.pools.map((pool) => {
+                            console.log(pool)
                             const position = [pool.lat, pool.lng]
 
                             return(

@@ -11,8 +11,10 @@ import Row from 'react-bootstrap/Row';
 import FormCard from '../FormCard';
 
 import "../../styles/Forms.css"
+import { useNavigate } from 'react-router-dom';
 
 function PoolForm() {
+    const navigate = useNavigate();
 
     const [validated, setValidated] = useState(false);
     const [position, setPosition] = useState(null);
@@ -29,6 +31,39 @@ function PoolForm() {
         :
         <Marker position={position}></Marker>;
     };
+
+    const sendPool = async (event) => {
+        event.preventDefault();
+
+        const token = await JSON.parse(localStorage.getItem("token"));
+        if (token) {
+            const lat = position.lat;
+            const lng = position.lng;
+            const locality = "1";
+            const neighborhood = "1";
+            const slots = document.querySelector("#slots").value;
+            const first_tel = document.querySelector("#first_tel").value;
+
+            var formdata = new FormData();
+            formdata.append("lat", lat);
+            formdata.append("lng", lng);
+            formdata.append("locality", locality);
+            formdata.append("neighborhood", neighborhood);
+            formdata.append("slots", slots);
+            formdata.append("first_tel", first_tel);
+            formdata.append("alternative_tel", "3516271026");
+
+            await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/pools/", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token.access_token}`
+                },
+                body: formdata
+            }).then(() => {
+                navigate("/Pool");
+            })
+        }
+    }
 
     React.useEffect(() => {
         
@@ -87,6 +122,7 @@ function PoolForm() {
                                 className='input'
                                 type="text"
                                 required
+                                id='slots'
                             />
                             <Form.Control.Feedback type="invalid">
                                 Por favor seleccione sus lugares disponibles.
@@ -154,6 +190,7 @@ function PoolForm() {
                                 className='input'
                                 type="text"
                                 required
+                                id='first_tel'
                             />
                             <Form.Control.Feedback type="invalid">
                                 Por favor ingrese un contacto.
@@ -162,7 +199,7 @@ function PoolForm() {
 
                     </Row>
                         
-                    <Button className='button form-button' type="submit">Enviar</Button>
+                    <Button className='button form-button' type="submit" onClick={(e) => sendPool(e)}>Enviar</Button>
                 </Form>
                 
             </FormCard>
