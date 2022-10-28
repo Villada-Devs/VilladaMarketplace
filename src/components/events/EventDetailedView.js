@@ -12,6 +12,7 @@ import {useLocation} from 'react-router-dom';
 
 function EventDetailedView() {
     const location = useLocation();
+    console.log(location);
 
     return(
 

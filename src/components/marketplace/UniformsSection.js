@@ -187,7 +187,6 @@ function UniformsSection() {
                                         prodImage={uniform.imagescloth[0].image}
                                         prodTitle={uniform.description}
                                         prodPrice={uniform.price}
-                                        prod={uniform}
                                     />
 
                                 );

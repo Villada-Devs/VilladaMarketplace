@@ -209,7 +209,6 @@ function BooksSection() {
                                         prodImage={book.imagesbook[0].image}
                                         prodTitle={book.title}
                                         prodPrice={book.price}
-                                        prod={book}
                                     />
 
                                 );

@@ -124,7 +124,6 @@ function ToolsSection() {
                                         prodImage={tool.imagestool[0].image}
                                         prodTitle={tool.tool}
                                         prodPrice={tool.price}
-                                        prod={tool}
                                     />
 
                                 );

@@ -52,21 +52,20 @@ function NavBar() {
                 >
 
                     <Nav.Item>
-                        <NavLink className="nav-link" to="/Sobre-Nosotros">Quíenes Somos</NavLink>
+                        <NavLink className="nav-link" to="/Marketplace">Marketplace</NavLink>
                     </Nav.Item>
+
                     <Nav.Item>
                         <NavLink className="nav-link" to="/Eventos">Eventos</NavLink>
                     </Nav.Item>
 
                     <Nav.Item>
-                        <NavLink className="nav-link" to="/Marketplace">Marketplace</NavLink>
-                    </Nav.Item>
-
-
-                    <Nav.Item>
                         <NavLink className="nav-link" to="/Pool">Pool</NavLink>
                     </Nav.Item>
                     
+                    <Nav.Item>
+                        <NavLink className="nav-link" to="/Sobre-Nosotros">Quíenes Somos</NavLink>
+                    </Nav.Item>
 
                 </Nav>
                 <Form className="d-flex">
