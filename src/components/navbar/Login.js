@@ -46,6 +46,7 @@ function Login({handleCardClick}) {
             })
     
           const res = await response.json();
+          console.log(res)
     
           if("statusCode" in res === false) {
             Connected.setUserInfo(res.user);

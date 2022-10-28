@@ -10,8 +10,10 @@ import ImageInput from '../ImageInput';
 import FormCard from '../FormCard';
 
 import "../../styles/Forms.css"
+import { useNavigate } from 'react-router-dom';
 
 function EventsForm() {
+    const navigate = useNavigate();
 
     const [validated, setValidated] = useState(false);
 
@@ -25,40 +27,46 @@ function EventsForm() {
     setValidated(true);
     };
 
+    const [sendImages, setSendImages] = useState([]);
     const [selectedImages, setSelectedImages] = useState([]);
-    const onSelectFile = (event) => {
-        const selectedFiles = event.target.files;
-        const selectedFilesArray = Array.from(selectedFiles);
-
-        const imagesArray = selectedFilesArray.map((file) => {
-            return URL.createObjectURL(file);
-        });
-
-        setSelectedImages((previousImages) => previousImages.concat(imagesArray));
-    };
+    
 
     const sendEvent = async (event) => {
+        event.preventDefault();
+
         const token = await JSON.parse(localStorage.getItem("token"));
         if (token) {
-            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/events/", {
+
+            const title = document.querySelector("#title").value;
+            const short_description = document.querySelector("#description").value;
+            const body = document.querySelector("#longDescription").value;
+            const event_date = new Date(document.querySelector("#date").value).toISOString();
+            const event_type = document.querySelector("#type").value;
+
+            var formdata = new FormData();
+            formdata.append("title", title);
+            formdata.append("body", body);
+            formdata.append("short_description", short_description);
+            formdata.append("event_date", event_date);
+            formdata.append("event_type", event_type);
+
+            for (let i = 0; i < selectedImages.length; i++) {
+                formdata.append('uploaded_images', selectedImages[i]);
+            };
+
+
+            await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/events/", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
                     "Authorization": `Bearer ${token.access_token}`
                 },
-                body: JSON.stringify({
-                    title: event.target.title.value,
-                    body: event.target.body.value,
-                    event_date: event.target.event_date.value,
-                    imagesevent: selectedImages
-                })
+                body: formdata
+            }).then(() => {
+                navigate("/Eventos");
             })
-            const data = await res.json();
-            console.log(data);
+
         }
     };
-
-    console.log(typeof sendEvent);
     
 
     return (
@@ -69,7 +77,7 @@ function EventsForm() {
 
             <FormCard>
 
-                <ImageInput />
+                <ImageInput setSendImages={setSendImages} setSelectedImages={setSelectedImages} selectedImages={selectedImages} sendImages={sendImages} />
 
                 <Form noValidate validated={validated} onSubmit={submit}>
 
@@ -80,6 +88,7 @@ function EventsForm() {
                             <Form.Control
                                 className='input'
                                 type="text"
+                                id='title'
                                 required
                             />
                             <Form.Control.Feedback type="invalid">
@@ -89,7 +98,7 @@ function EventsForm() {
 
                         <Form.Group as={Col} md="4" controlId="validationCustom02">
                             <Form.Label className='input-label'>Tipo</Form.Label>
-                            <Form.Select required className='input'>
+                            <Form.Select required className='input' id='type'>
                                 <option value=""></option>
                                 <option value="Bienvenida a familias de primer año">Bienvenida a familias de primer año</option>
                                 <option value="Talleres pedagógicos">Talleres pedagógicos</option>
@@ -112,6 +121,7 @@ function EventsForm() {
                             <Form.Control
                                 className='input'
                                 type="date"
+                                id="date"
                                 required 
                             />
                             <Form.Control.Feedback type="invalid">
@@ -123,7 +133,7 @@ function EventsForm() {
 
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Label className='input-label'>Descripción corta</Form.Label>
-                        <Form.Control className='input events-form-description' required as="textarea" rows={3} />
+                        <Form.Control className='input events-form-description' required as="textarea" rows={3} id="description" />
                         <Form.Control.Feedback type="invalid">
                                 Por favor escriba una descripción.
                             </Form.Control.Feedback>
@@ -131,13 +141,13 @@ function EventsForm() {
 
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Label className='input-label'>Descripcion detallada</Form.Label>
-                        <Form.Control className='input events-form-description' required as="textarea" rows={6} />
+                        <Form.Control className='input events-form-description' required as="textarea" rows={6} id='longDescription' />
                         <Form.Control.Feedback type="invalid">
                                 Por favor escriba una descripción.
                             </Form.Control.Feedback>
                     </Form.Group>
                         
-                    <button className='button events-form-button' onClick={() => sendEvent()}>Enviar</button>
+                    <Button className='button events-form-button' onClick={(e) => sendEvent(e)}>Enviar</Button>
                 </Form>
                 
             </FormCard>

@@ -7,19 +7,24 @@ import Image from "../img/Image Input.png";
 
 import "../styles/ImageInput.css"
 
-function ImageInput() {
-
-    const [selectedImages, setSelectedImages] = useState([]);
+function ImageInput({ setSelectedImages, setSendImages, selectedImages, sendImages }) {
     const onSelectFile = (event) => {
         const selectedFiles = event.target.files;
         const selectedFilesArray = Array.from(selectedFiles);
 
         const imagesArray = selectedFilesArray.map((file) => {
-            return URL.createObjectURL(file);
+            return file;
         });
 
         setSelectedImages((previousImages) => previousImages.concat(imagesArray));
+
+        const showImagesArray = selectedFilesArray.map((file) => {
+            return URL.createObjectURL(file);
+        });
+
+        setSendImages((previousImages) => previousImages.concat(showImagesArray));
     };
+
 
     return(
 
@@ -42,13 +47,15 @@ function ImageInput() {
             </Form.Group>
 
             <div className='events-form-preview'>
-                {selectedImages &&
-                    selectedImages.map((image, index) => {
+                {sendImages &&
+                    sendImages.map((image, index) => {
                         return(
                             <div className='preview-image-container' key={index}>
                                 <img className='preview-image' alt='' src={image}></img>
-                                <CloseButton className='image-delete-button' onClick={() => 
-                                        setSelectedImages(selectedImages.filter((e) => e !== image))
+                                <CloseButton className='image-delete-button' onClick={() => {
+                                            setSelectedImages(selectedImages.filter((e) => e !== image))
+                                            setSendImages(sendImages.filter((e) => e !== image))
+                                        }   
                                     }
                                 />
                             </div>
