@@ -4,7 +4,7 @@
     border-radius: 10px;
     margin-bottom: 25px;
     padding: 15px;
-    height: 350px;
+    height: 400px;
     width: 100%;
 
     cursor: pointer;
@@ -17,6 +17,12 @@
     width: 100%;
 }
 
+.prod-info-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .prod-img {
     border-radius: 10px;
     height: 100%;
@@ -27,5 +33,5 @@
 .prod-price {
     margin-top: 10px;
     font-weight: 400;
-    opacity: 70%;
+    opacity: 75%;
 }

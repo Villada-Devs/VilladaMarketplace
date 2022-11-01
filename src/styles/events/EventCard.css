@@ -4,6 +4,7 @@
     box-shadow: var(--shadow);
     border-radius: 20px;
     margin-bottom: 40px;
+    height: fit-content;
     cursor: pointer;
 }
 
@@ -11,17 +12,10 @@
 /* Photo */
 
 
-.event-card-photo-container {
-    background-color: var(--main-color);
-    border-radius: 20px;
-    min-height: 360px;
-    height: 100%;
-}
-
 .event-card-photo {
     border-radius: 20px;
     width: 100%;
-    height: 100%;
+    height: 350px;
     object-fit: cover;
 }
 

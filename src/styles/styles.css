@@ -44,6 +44,7 @@ p {
 
 
 .page-container {
+    max-width: 1366px;
     min-height: 90vh;
     padding: 120px 4%;
 }

@@ -12,7 +12,7 @@ function AboutUsInfoR(props) {
             <Row>
 
                 <Col className='about-img'>
-                    <img className='about-event-img' alt="" src={props.EventImg}></img>
+                    <img className='about-event-img' alt="" src={props.aboutEventImg}></img>
                 </Col>
 
                 <Col className='about-info-r' md={7} sm={12}>

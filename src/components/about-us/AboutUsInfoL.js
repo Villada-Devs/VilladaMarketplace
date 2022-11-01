@@ -17,7 +17,7 @@ function AboutUsInfoL(props) {
                 </Col>
 
                 <Col className='about-img'>
-                    <img className='about-event-img' alt="" src={props.EventImg}></img>
+                    <img className='about-event-img' alt="" src={props.aboutEventImg}></img>
                 </Col>
 
             </Row>

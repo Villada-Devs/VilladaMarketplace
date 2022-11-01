@@ -6,6 +6,12 @@ import AboutUsCarousel from "./AboutUsCarousel";
 import AboutUsInfoL from "./AboutUsInfoL";
 import AboutUsInfoR from "./AboutUsInfoR";
 
+import Bienvenida from "../../img/about-us/Bienvenida.png";
+import Conferencias from "../../img/about-us/Conferencias.png";
+import Integracion from "../../img/about-us/Integración.png";
+import RetirosEsp from "../../img/about-us/RestirosEsp.png";
+import TalleresPed from "../../img/about-us/TalleresPed.png";   
+
 import "../../styles/about-us/AboutUs.css";
 
 function AboutUs() {
@@ -40,6 +46,7 @@ function AboutUs() {
             </div>
 
             <AboutUsInfoL
+                aboutEventImg={Bienvenida}
                 aboutEventTitle="Bienvenida a familias de primer año"
                 aboutEventInfo="Se realiza una jornada en la que se informa a las nuevas familias lo necesario para el
                                 desarrollo escolar, desde lo administrativo, pedagógico, económico, pastoral, social,
@@ -52,7 +59,8 @@ function AboutUs() {
                                 clima de alegría y de apertura."
             />
 
-            <AboutUsInfoR 
+            <AboutUsInfoR
+                aboutEventImg={TalleresPed}
                 aboutEventTitle="Talleres Pedagógicos"
                 aboutEventInfo="Como padres, buscamos facilitar en las familias la participación en los talleres
                                 organizados oportunamente por el colegio a través de la Lic. Asesora Pedagógica, y
@@ -63,7 +71,8 @@ function AboutUs() {
                                 rol de primeros y principales educadores"
             />
 
-            <AboutUsInfoL 
+            <AboutUsInfoL
+                aboutEventImg={Conferencias}
                 aboutEventTitle="Conferencias"
                 aboutEventInfo="Según los intereses e inquietudes que surgen dentro de la comunidad, se organizan
                                 conferencias dictadas por personas cuya idoneidad es reconocida y avalada por la
@@ -74,6 +83,7 @@ function AboutUs() {
             />
 
             <AboutUsInfoR 
+                aboutEventImg={RetirosEsp}
                 aboutEventTitle="Retiros Espirituales"
                 aboutEventInfo="Junto con el acompañamiento de sacerdotes salesianos y/o laicos, los padres
                                 compartimos una jornada que busca favorecer el encuentro personal con el Señor,
@@ -84,6 +94,7 @@ function AboutUs() {
             />
 
             <AboutUsInfoL 
+                aboutEventImg={Integracion}
                 aboutEventTitle="Integracion de los padres a la labor educativa"
                 aboutEventInfo="En cada reunión, consulta, taller, celebración, etc. se busca tanto la integración de
                                 los padres en la labor propiamente escolar y el compromiso frente a la elección del
@@ -95,6 +106,7 @@ function AboutUs() {
             />
             
             <AboutUsInfoR 
+                aboutEventImg={Bienvenida}
                 aboutEventTitle="Coordinacion con el centro de estudiantes"
                 aboutEventInfo="El Centro de Estudiantes del ITS Villada con las familias de la Unión de Padres son
                                 partes integrantes del COCEP, coordinan algunas de sus actividades anuales dando
@@ -118,6 +130,7 @@ function AboutUs() {
             </div>
 
             <AboutUsInfoL 
+                aboutEventImg={TalleresPed}
                 aboutEventTitle="Locro del exalumno salesiano del villada"
                 aboutEventInfo="Se realiza en fecha cercana al día del Exalumno salesiano (24 de junio) y de la Fiesta
                                 de María Auxiliadora (24 de mayo). Es también un homenaje a los que pasaron por
@@ -128,6 +141,7 @@ function AboutUs() {
             />
             
             <AboutUsInfoR 
+                aboutEventImg={Conferencias}
                 aboutEventTitle="Agosto mes de Don Bosco: UPF solidaria"
                 aboutEventInfo="Durante este mes,se acompañan las actividades propuestas por el equipo de gestión
                                 y pastoral en la concreción de proyectos solidarios, a ejemplo de Don Bosco, por
@@ -136,6 +150,7 @@ function AboutUs() {
             />
 
             <AboutUsInfoL 
+                aboutEventImg={RetirosEsp}
                 aboutEventTitle="Bicicleteada salesiana"
                 aboutEventInfo="Peregrinación en bicicleta que implica un desafío físico y un verdadero trabajo en
                                 equipo para alcanzar el objetivo. No se busca el éxito deportivo sino una experiencia
@@ -145,6 +160,7 @@ function AboutUs() {
             />
             
             <AboutUsInfoR 
+                aboutEventImg={Integracion}
                 aboutEventTitle="Asado de fin de año: Homenaje a los nuevos egresados"
                 aboutEventInfo="En esta ocasión, la fiesta familiar está dedicada a homenajear a los nuevos
                                 egresados, reconociendo su esfuerzo y el de sus familias para alcanzar este logro
@@ -153,6 +169,7 @@ function AboutUs() {
             />
 
             <AboutUsInfoL 
+                aboutEventImg={Bienvenida}
                 aboutEventTitle="Convivencia en el valle de la inmaculada"
                 aboutEventInfo="Esta ocasión es la culminación del año vivido en el colegio como familias. Se hace
                                 una convivencia, de mayor o menor duración, según las posibilidades, y en ella se

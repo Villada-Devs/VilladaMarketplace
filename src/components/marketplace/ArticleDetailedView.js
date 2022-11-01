@@ -18,14 +18,14 @@ function ArticleDetailedView(props) {
         <Container className='page-container' fluid>
 
             <Row>
-                <Col md={5}>
-                <img className='art-det-img-cont' src={location.state.imagesbook[0].image} />
+                <Col md={6}>
+                        <img className='art-det-img' src={location.state.imagesbook[0].image} />
                 </Col>
 
                 <Col md={6} sm={12}>
                     <div className='art-det-info-cont'>
                         <User 
-                            userName={location.state.author}
+                            userName={location.state.created_by_user}
                             creationDate={location.state.creation_date}
                         />
                         
@@ -62,9 +62,9 @@ function ArticleDetailedView(props) {
                         </div>
 
                         <Button 
-                            className='button' 
+                            className='button art-det-button' 
                             variant="primary" 
-                            href={`https://api.whatsapp.com/send?phone=${location.state.tel}&text=Hola. Me interesa contactarte por el pool!`}
+                            href={`https://api.whatsapp.com/send?phone=${location.state.tel}&text=Hola ${location.state.created_by_user}. Me interesa la publicación de tu libro ${location.state.title}!`}
                         ><FaWhatsapp className="whatsapp" />Contactar</Button>
 
                     </div>

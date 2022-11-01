@@ -10,15 +10,17 @@ function ProductCard(props) {
 
     return(
 
-        <Col xxl={3} lg={4} md={6} sm={6} >
+        <Col lg={4} md={6} sm={6} >
             <div className="prod-card-container" onClick={() => { navigate(`/Marketplace/articulo/detalles`, {state: props.prod}); }}>
 
                 <div className="prod-img-cont">
                     <img className="prod-img" src={props.prodImage} alt=""></img>
                 </div>
 
-                <h3>{props.prodTitle}</h3>
-                <h3 className='prod-price'>${props.prodPrice}</h3>
+                <div className='prod-info-cont'>
+                    <h3>{props.prodTitle}</h3>
+                    <h3 className='prod-price'>${props.prodPrice}</h3>
+                </div>
 
             </div>
         </Col>

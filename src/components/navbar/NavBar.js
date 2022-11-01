@@ -52,7 +52,7 @@ function NavBar() {
                 >
 
                     <Nav.Item>
-                        <NavLink className="nav-link" to="/Sobre-Nosotros">Quíenes Somos</NavLink>
+                        <NavLink className="nav-link" to="/Sobre-Nosotros">Quiénes Somos</NavLink>
                     </Nav.Item>
 
                     <Nav.Item>
