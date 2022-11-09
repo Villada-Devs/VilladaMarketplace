@@ -89,7 +89,7 @@ function Register({handleCardClick}) {
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="Email">
-                                <Form.Label className='input-label'>Mail Institucional</Form.Label>
+                                <Form.Label className='input-label'>Mail</Form.Label>
                                 <Form.Control required className='input' type="email" />
                             </Form.Group>
 

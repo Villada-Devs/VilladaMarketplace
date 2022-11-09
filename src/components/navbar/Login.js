@@ -74,8 +74,8 @@ function Login({handleCardClick}) {
                     <hr className='log-reg-hr'></hr>
 
                     <Form>
-                        <Form.Group className="mb-3 unmarging" controlId="Email">
-                            <Form.Label className="input-label">Mail Institucional</Form.Label>
+                        <Form.Group className="mb-3 unmarging">
+                            <Form.Label className="input-label">Mail</Form.Label>
                             <Form.Control 
                                 id="login-mail-input" 
                                 className="input" 
@@ -83,7 +83,7 @@ function Login({handleCardClick}) {
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3 unmarging" controlId="Password">
+                        <Form.Group className="mb-3 unmarging">
                             <Form.Label className='input-label'>Contraseña</Form.Label>
                             <Form.Control 
                                 id="login-password-input" 

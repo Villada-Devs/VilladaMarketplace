@@ -5,6 +5,8 @@ import NavBar from "./components/navbar/NavBar";
 import Login from "./components/navbar/Login";
 import Register from "./components/navbar/Register";
 
+import ProfileView from "./components/profile/ProfileView";
+
 import LandPage from "./components/landpage/LandPage";
 
 import MarketplaceMain from "./components/marketplace/MarketplaceMain";
@@ -94,6 +96,8 @@ function App() {
           <Routes>
 
             <Route path="/" element= {<LandPage />} />
+
+            <Route path="/Perfil" element= {<ProfileView />} />
 
             <Route path="/Marketplace" element= {<MarketplaceMain />} />
             <Route path="/Marketplace/Libros" element= {<BooksSection />} />
