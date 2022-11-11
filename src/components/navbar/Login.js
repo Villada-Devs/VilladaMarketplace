@@ -46,6 +46,7 @@ function Login({handleCardClick}) {
             })
     
           const res = await response.json();
+          console.log(response.status)
     
           if(response.status == 200) {
             Connected.setUserInfo(res.user);
