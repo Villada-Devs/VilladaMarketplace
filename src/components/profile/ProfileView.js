@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ContextConnected from "../../context/ContextConnected";
 
+import ProfileSections from "./ProfileSections";
+
 import "../../styles/profile/ProfileView.css"
 import Logout from "../Logout";
 
@@ -53,27 +55,7 @@ function ProfileView() {
                             </div>
                         </div>
                             
-                        <div className="profile-section user-info">
-
-                            <h3>Mi Perfil</h3>
-                            <hr className="bold-hr"></hr>
-
-                            <button className="profile-section-button">Perfil</button>
-
-                        </div>
-
-                        <div className="profile-section posts">
-
-                            <h3>Mis Publicaciones</h3>
-                            <hr className="bold-hr"></hr>
-
-                            <button className="profile-section-button">Libros</button>
-                            <button className="profile-section-button">Herramientas</button>
-                            <button className="profile-section-button">Uniformes</button>
-                            <button className="profile-section-button">Pools</button>
-                            <button className="profile-section-button">Eventos</button>
-
-                        </div>
+                        <ProfileSections />
 
                     </Col>
 

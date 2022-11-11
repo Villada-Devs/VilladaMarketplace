@@ -13,10 +13,10 @@ import "../../styles/events/EventsMain.css";
 
 function EventsMain() {
 
+    const Connected = useContext(ContextConnected)
+
     const [eventsFiltered, setEventsFiltered] = useState([]);
     const [activeEventType, setActiveEventType] = useState(0);
-
-    const Connected = useContext(ContextConnected)
 
     useEffect(() => {
         const loadEvents = async () => {
