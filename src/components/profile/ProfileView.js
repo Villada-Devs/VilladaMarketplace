@@ -15,8 +15,8 @@ function ProfileView() {
         const loadProfile = async () => {
           const token = await JSON.parse(localStorage.getItem("token"));
           if (token) {
-            const url = `http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/profile/${Connected.userInfo.pk}`
-
+            const url = `http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/profile/${Connected.userInfo.profile_image.pk}`
+            
             const res = await fetch(url, {
               method: "GET",
               headers: {
@@ -26,7 +26,6 @@ function ProfileView() {
             })
             const data = await res.json();
             Connected.setProfile(data);
-            console.log(data);
           }
         };
         loadProfile();
@@ -43,7 +42,9 @@ function ProfileView() {
                     <Col>
 
                         <div className="profile-user">
-                            <div className="profile-user-img"></div>
+                            <div className="profile-user-img">
+                                <img className="profile-user-img" src={Connected.profile.image}></img>
+                            </div>
                             <div>
                                 <h2 className="profile-user-name">{Connected.userInfo.first_name}</h2>
                                 

@@ -11,6 +11,7 @@
     border-radius: 50%;
     height: 75px;
     width: 75px;
+    object-fit: cover;
 }
 
 .profile-section {
