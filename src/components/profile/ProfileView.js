@@ -47,7 +47,7 @@ function ProfileView() {
                                 <img className="profile-user-img" src={Connected.profile.image}></img>
                             </div>
                             <div>
-                                <h2 className="profile-user-name">{Connected.userInfo.first_name}</h2>
+                                <h2 className="profile-user-name">{Connected.userInfo.first_name} {Connected.userInfo.last_name}</h2>
                                 
                                 <p>{Connected.userInfo.email}</p>
                             </div>
