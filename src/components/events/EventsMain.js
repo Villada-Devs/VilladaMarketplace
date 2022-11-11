@@ -20,13 +20,13 @@ function EventsMain() {
 
     useEffect(() => {
         const loadEvents = async () => {
-          const token = await JSON.parse(localStorage.getItem("token"));
-          if (token) {
+          //const token = await JSON.parse(localStorage.getItem("token"));
+          if (true) {
             const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/events/", {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token.access_token}`
+                //"Authorization": `Bearer ${token.access_token}`
               },
             })
             const data = await res.json();
@@ -41,7 +41,7 @@ function EventsMain() {
     return(
 
         <>
-
+        
             <Container className="page-container " fluid>
 
                 <PageHeader 

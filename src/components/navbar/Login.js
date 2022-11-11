@@ -46,15 +46,14 @@ function Login({handleCardClick}) {
             })
     
           const res = await response.json();
-          console.log(res)
     
-          if("statusCode" in res === false) {
+          if(response.status == 200) {
             Connected.setUserInfo(res.user);
             const newToken = { access_token: res.access_token, refresh_token: res.refresh_token }
             localStorage.setItem("token", JSON.stringify(newToken));
             toggleLoginMenu();
           } else {
-            alert("Wrong Credentials.");
+            alert("No se puede iniciar sesión con las credenciales ingresadas");
           }   
         }
       }
