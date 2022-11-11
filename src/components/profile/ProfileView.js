@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import ContextConnected from "../../context/ContextConnected";
 
 import "../../styles/profile/ProfileView.css"
+import Logout from "../Logout";
 
 function ProfileView() {
     const Connected = useContext(ContextConnected);
@@ -82,7 +83,7 @@ function ProfileView() {
 
             
         ) :(
-            <h1>hola</h1>
+            <Logout />
         )}
         </Container>
 
