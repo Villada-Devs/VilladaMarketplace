@@ -1,57 +1,88 @@
-import React from "react";
+import React, { useContext ,  useState, useEffect}from "react";
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import ContextConnected from "../../context/ContextConnected";
 
 import "../../styles/profile/ProfileView.css"
 
 function ProfileView() {
+    const Connected = useContext(ContextConnected);
+
+    useEffect(() => {
+        const loadProfile = async () => {
+          const token = await JSON.parse(localStorage.getItem("token"));
+          if (token) {
+            const url = `http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/profile/${Connected.userInfo.pk}`
+
+            const res = await fetch(url, {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token.access_token}`
+              },
+            })
+            const data = await res.json();
+            Connected.setProfile(data);
+            console.log(data);
+          }
+        };
+        loadProfile();
+    }, [Connected.userInfo]);
+    console.log()
+    
     return(
+        
+            <Container className="page-container">
+                {Connected.userInfo? (
 
-        <Container className="page-container">
+                <Row>
 
-            <Row>
+                    <Col>
 
-                <Col>
-
-                    <div className="profile-user">
-                        <div className="profile-user-img"></div>
-                        <div>
-                            <h2 className="profile-user-name">Nombre de Usuario.</h2>
-                            <p>usuario@gmail.com</p>
+                        <div className="profile-user">
+                            <div className="profile-user-img"></div>
+                            <div>
+                                <h2 className="profile-user-name">{Connected.userInfo.first_name}</h2>
+                                
+                                <p>{Connected.userInfo.email}</p>
+                            </div>
                         </div>
-                    </div>
-                        
-                    <div className="profile-section user-info">
+                            
+                        <div className="profile-section user-info">
 
-                        <h3>Mi Perfil</h3>
-                        <hr className="bold-hr"></hr>
+                            <h3>Mi Perfil</h3>
+                            <hr className="bold-hr"></hr>
 
-                        <button className="profile-section-button">Perfil</button>
+                            <button className="profile-section-button">Perfil</button>
 
-                    </div>
+                        </div>
 
-                    <div className="profile-section posts">
+                        <div className="profile-section posts">
 
-                        <h3>Mis Publicaciones</h3>
-                        <hr className="bold-hr"></hr>
+                            <h3>Mis Publicaciones</h3>
+                            <hr className="bold-hr"></hr>
 
-                        <button className="profile-section-button">Libros</button>
-                        <button className="profile-section-button">Herramientas</button>
-                        <button className="profile-section-button">Uniformes</button>
-                        <button className="profile-section-button">Pools</button>
-                        <button className="profile-section-button">Eventos</button>
+                            <button className="profile-section-button">Libros</button>
+                            <button className="profile-section-button">Herramientas</button>
+                            <button className="profile-section-button">Uniformes</button>
+                            <button className="profile-section-button">Pools</button>
+                            <button className="profile-section-button">Eventos</button>
 
-                    </div>
+                        </div>
 
-                </Col>
+                    </Col>
 
-                <Col></Col>
+                    <Col></Col>
 
-            </Row>
+                </Row>
 
+            
+        ) :(
+            <h1>hola</h1>
+        )}
         </Container>
 
     );

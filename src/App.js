@@ -37,11 +37,13 @@ function App() {
   const [loginOpened, setLoginOpened] = useState(false);
 
   const [userInfo, setUserInfo] = useState(null);
+  const [profile, setProfile] = useState([]);
   const [books, setBooks] = useState([]);
   const [tools, setTools] = useState([]);
   const [uniforms, setUniforms] = useState([]);
   const [events, setEvents] = useState([]);
   const [pools, setPools] = useState([]);
+  
 
   const handleCardClick = (e) => e.stopPropagation();
 
@@ -70,6 +72,9 @@ function App() {
         backendUrl,
         userInfo,
         setUserInfo,
+
+        profile,
+        setProfile,
 
         registerOpened,
         loginOpened,
