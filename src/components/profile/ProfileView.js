@@ -1,4 +1,7 @@
 import React, { useContext ,  useState, useEffect}from "react";
+import {Navigate} from 'react-router-dom';
+
+
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -8,6 +11,10 @@ import ContextConnected from "../../context/ContextConnected";
 
 import "../../styles/profile/ProfileView.css"
 import Logout from "../Logout";
+
+import LandPage from "../landpage/LandPage"
+
+import { ToastContainer, toast } from 'react-toastify';
 
 function ProfileView() {
     const Connected = useContext(ContextConnected);
@@ -31,7 +38,7 @@ function ProfileView() {
         };
         loadProfile();
     }, [Connected.userInfo]);
-    console.log()
+    console.log(Connected.userInfo.is_staff)
     
     return(
         
@@ -83,7 +90,7 @@ function ProfileView() {
 
             
         ) :(
-            <Logout />
+            <Navigate to="/" />            
         )}
         </Container>
 

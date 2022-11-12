@@ -17,11 +17,13 @@ function PageHeader(props) {
             <h1 className="page-title">{props.pageHeader}</h1>
             <hr className="bold-hr" />
             <p className="page-subtitle">{props.pageDescription}</p>
-            { 
-                Connected && Connected.userInfo && Connected.userInfo.is_staff?
+            
+            {
+                Connected && Connected.userInfo && Connected.userInfo.is_staff ?
                 (<Button className='button' variant="primary" onClick={() => { navigate(props.buttonURL); }}>{props.button}</Button>) :
                 null
             }
+
         </div>
         
     );

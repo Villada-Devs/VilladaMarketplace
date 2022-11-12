@@ -56,7 +56,7 @@ function MarketplaceMain() {
                     <PageHeader
                         pageHeader="Villada Marketplace"
                         pageDescription="Publicá, comprá o vendé herramientas, libros y uniformes que no utilices más."
-                        button="Vender"
+                        button="Publicá"
                     />
 
                     <div className="marketplace-categories">

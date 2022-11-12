@@ -29,6 +29,8 @@ import ContextConnected from './context/ContextConnected';
 
 import "./styles/styles.css";
 
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
   const backendUrl = "http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/";
@@ -132,7 +134,7 @@ function App() {
 
       </ContextConnected.Provider>
 
-      
+      <ToastContainer position="top-center" />
     </>
 
   );
