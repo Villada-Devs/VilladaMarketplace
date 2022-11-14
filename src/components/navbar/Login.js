@@ -9,6 +9,7 @@ import ContextConnected from '../../context/ContextConnected';
 
 import "../../styles/navbar/Log-Reg.css";
 
+import { ToastContainer, toast } from 'react-toastify';
 
 function Login({handleCardClick}) {
 
@@ -46,15 +47,22 @@ function Login({handleCardClick}) {
             })
     
           const res = await response.json();
-          console.log(res)
+          console.log(response.status)
     
-          if("statusCode" in res === false) {
+          if(response.status == 200) {
             Connected.setUserInfo(res.user);
             const newToken = { access_token: res.access_token, refresh_token: res.refresh_token }
             localStorage.setItem("token", JSON.stringify(newToken));
             toggleLoginMenu();
           } else {
-            alert("Wrong Credentials.");
+            toast.error('Email o contraseña incorrectos', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
           }   
         }
       }

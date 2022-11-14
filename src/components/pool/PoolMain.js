@@ -60,42 +60,49 @@ function PoolMain() {
                 buttonURL="/Pool/formulario"
             />
 
-            <MapContainer className='map-container' center={[-31.404829, -64.196187]} zoom={12} scrollWheelZoom={false}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
+            {Connected.userInfo? (
+                <MapContainer className='map-container' center={[-31.404829, -64.196187]} zoom={12} scrollWheelZoom={false}>
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
 
-                <Marker position={[-31.362450, -64.276317]}>
-                    <Popup className='its'>
-                        <p>Instituto Técnico Salesiano Villada</p>
-                    </Popup>
-                </Marker>
-                
-                
-                    {
-                        Connected.pools.map((pool) => {
-                            console.log(pool)
-                            const position = [pool.lat, pool.lng]
+                    <Marker position={[-31.362450, -64.276317]}>
+                        <Popup className='its'>
+                            <p>Instituto Técnico Salesiano Villada</p>
+                        </Popup>
+                    </Marker>
+                    
+                    
+                        {
+                            Connected.pools.map((pool) => {
+                                console.log(pool)
+                                const position = [pool.lat, pool.lng]
 
-                            return(
-                                
-                                <Circle center={position} pathOptions={fillBlueOptions} radius={150} key={pool.id}>
-                                    <Popup>
-                                        <PoolCard
-                                            key={pool.id}
-                                            userName={pool.author}
-                                            creationDate={pool.created_date}
-                                            days={pool.days}
-                                            places={pool.slots}
-                                            phoneNumber={pool.first_tel}
-                                        />
-                                    </Popup>
-                                </Circle>
-                            );
-                        })
-                    }
+                                return(
+                                    
+                                    <Circle center={position} pathOptions={fillBlueOptions} radius={150} key={pool.id}>
+                                        <Popup>
+                                            <PoolCard
+                                                key={pool.id}
+                                                userName={pool.author}
+                                                creationDate={pool.created_date}
+                                                days={pool.days}
+                                                places={pool.slots}
+                                                phoneNumber={pool.first_tel}
+                                            />
+                                        </Popup>
+                                    </Circle>
+                                );
+                            })
+                        }
 
-            </MapContainer>
+                </MapContainer>
+            ) :
+            (
+                <div className="marketplace-categories">
+                        <p className="categories-header">Inicia sesión y comenzá a publicar !</p>
+                </div>
+            )}
 
         </Container>
     );
