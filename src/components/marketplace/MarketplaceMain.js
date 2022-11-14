@@ -22,17 +22,21 @@ function MarketplaceMain() {
     const navigate = useNavigate();
     
     return ( 
+
         <Container className="page-container" fluid>
+
             {Connected.userInfo? (
+
+                <>
             
-                <PageHeader
-                    pageHeader="Villada Marketplace"
-                    pageDescription="Publicá, comprá o vendé herramientas, libros y uniformes que no utilices más."
-                >
+                    <PageHeader
+                        pageHeader="Villada Marketplace"
+                        pageDescription="Publicá, comprá o vendé herramientas, libros y uniformes que no utilices más."
+                    >
+                        
+                        <Button className='button' variant="primary" onClick={() => { navigate("/Marketplace/formulario"); }}>Nueva Publicación</Button>
                     
-                    <Button className='button' variant="primary" onClick={() => { navigate("/Marketplace/formulario"); }}>Nueva Publicación</Button>
-                
-                </PageHeader>
+                    </PageHeader>
 
                     <div className="marketplace-categories">
 
