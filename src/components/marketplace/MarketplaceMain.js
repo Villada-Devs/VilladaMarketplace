@@ -1,7 +1,10 @@
 import React, {useContext} from "react";
 import ContextConnected from "../../context/ContextConnected";
+import { useNavigate } from 'react-router-dom';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Button from "react-bootstrap/esm/Button";
 
 import PageHeader from "../PageHeader";
 import SectionButton from "./SectionButton";
@@ -13,16 +16,23 @@ import UniformsSection from "../../img/marketplace/UniformsSectionImg.png";
 import "../../styles/marketplace/MarketplaceMain.css";
 
 function MarketplaceMain() {
+
     const Connected = useContext(ContextConnected);
+    
+    const navigate = useNavigate();
+    
     return ( 
         <Container className="page-container" fluid>
             {Connected.userInfo? (
-                <>
-                    <PageHeader
-                        pageHeader="Villada Marketplace"
-                        pageDescription="Publicá, comprá o vendé herramientas, libros y uniformes que no utilices más."
-                        button="Vender"
-                    />
+            
+                <PageHeader
+                    pageHeader="Villada Marketplace"
+                    pageDescription="Publicá, comprá o vendé herramientas, libros y uniformes que no utilices más."
+                >
+                    
+                    <Button className='button' variant="primary" onClick={() => { navigate("/Marketplace/formulario"); }}>Nueva Publicación</Button>
+                
+                </PageHeader>
 
                     <div className="marketplace-categories">
 
@@ -56,7 +66,6 @@ function MarketplaceMain() {
                     <PageHeader
                         pageHeader="Villada Marketplace"
                         pageDescription="Publicá, comprá o vendé herramientas, libros y uniformes que no utilices más."
-                        button="Publicá"
                     />
 
                     <div className="marketplace-categories">

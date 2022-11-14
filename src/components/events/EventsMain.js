@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import Container from "react-bootstrap/esm/Container";
+import Button from "react-bootstrap/esm/Button";
 
 import PageHeader from "../PageHeader";
 import EventsFilters from "./EventsFilters";
@@ -13,10 +15,11 @@ import "../../styles/events/EventsMain.css";
 
 function EventsMain() {
 
+    const Connected = useContext(ContextConnected)
+    const navigate = useNavigate();
+
     const [eventsFiltered, setEventsFiltered] = useState([]);
     const [activeEventType, setActiveEventType] = useState(0);
-
-    const Connected = useContext(ContextConnected)
 
     useEffect(() => {
         const loadEvents = async () => {
@@ -44,12 +47,16 @@ function EventsMain() {
         
             <Container className="page-container " fluid>
 
-                <PageHeader 
+                <PageHeader
                     pageHeader="Villada Eventos"
                     pageDescription="Informate sobre nuestros próximos eventos y actividades para padres."
-                    button="Nuevo Evento"
-                    buttonURL="/Eventos/formulario"
-                />
+                >
+                    { 
+                        Connected && Connected.userInfo && Connected.userInfo.is_staff?
+                            (<Button className='button' variant="primary" onClick={() => { navigate("/Eventos/formulario"); }}>Nuevo Evento</Button>) :
+                        null
+                    }
+                </PageHeader>
 
                 <EventsFilters 
                     events={Connected.events}
