@@ -27,7 +27,7 @@ function CardR(props) {
                         <div className="event-card-top card-r">
                             <User 
                                 userName={props.userName}
-                                creationDate={props.creationDate}
+                                creationDate={new Date(props.creationDate).toDateString()}
                             />
                         </div>
 
@@ -38,7 +38,7 @@ function CardR(props) {
                     </div>
 
                     <div className="event-card-footer">
-                        <p className="event-date"> <span className="blue-section">Fecha del Evento: </span>{props.eventDate}</p>
+                        <p className="event-date"> <span className="blue-section">Fecha del Evento: </span>{new Date(props.eventDate).toDateString()}</p>
                     </div>
                 </Col>
 

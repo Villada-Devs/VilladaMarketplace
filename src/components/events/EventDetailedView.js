@@ -38,7 +38,7 @@ function EventDetailedView() {
 
             <User
                 userName={location.state.author}
-                creationDate={location.state.created_date}
+                creationDate={"Fecha de Creacion: " + new Date(location.state.created_date).toDateString()}
             />
 
             <h1 className="detailed-event-title blue-section">{location.state.eventTitle}</h1>

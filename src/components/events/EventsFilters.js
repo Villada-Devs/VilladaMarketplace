@@ -22,7 +22,7 @@ function EventsFilters({ events, setEventsFiltered, activeEventType, setActiveEv
         <>
 
         <Dropdown className="d-inline mx-2">
-            <Dropdown.Toggle id="dropdown-autoclose-true">
+            <Dropdown.Toggle id="dropdown-autoclose-true" className="margin-80">
                 Filtros
             </Dropdown.Toggle>
 

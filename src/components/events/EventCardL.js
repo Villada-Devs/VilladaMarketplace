@@ -23,7 +23,7 @@ function CardL(props) {
                         <div className="event-card-top">
                             <User 
                                 userName={props.userName}
-                                creationDate={props.creationDate}
+                                creationDate={new Date(props.creationDate).toDateString()}
                             />
                         </div>
 
@@ -34,7 +34,7 @@ function CardL(props) {
                     </div>
 
                     <div className="event-card-footer card-l">
-                        <p className="event-date"> <span className="blue-section">Fecha del Evento: </span>{props.eventDate}</p>
+                        <p className="event-date"> <span className="blue-section">Fecha del Evento: </span>{new Date(props.eventDate).toDateString()}</p>
                     </div>
                 </Col>
 

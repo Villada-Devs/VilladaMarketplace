@@ -37,7 +37,7 @@ function AboutUs() {
                 <hr className="bold-hr"></hr>
 
                 <h2 className="about-subtitle">Escuela para Padres</h2>
-                <p>Junto a toda la Comunidad Educativa del
+                <p className="margin-80">Junto a toda la Comunidad Educativa del
                 Villada, acompañamos a los padres y familias de los alumnos ofreciendo distintos eventos que
                 contribuyen al crecimiento espiritual, a la integración en la comunidad, con
                 herramientas para ayudar según la edad de los hijos y según las distintas situaciones de desafío social. Así como también acompañar a otras familias más vulnerables, que no pertenecen al colegio, con acciones concretas de caridad y compromiso social.
@@ -117,7 +117,7 @@ function AboutUs() {
             <div className="about-content">
 
                 <h2 className="about-subtitle">Acción económico social</h2>
-                <p>Las distintas actividades que se proponen durante el año buscan la integración de
+                <p className="margin-80">Las distintas actividades que se proponen durante el año buscan la integración de
                     los alumnos y sus familias, así como su adhesión al proyecto salesiano. Otras están
                     destinadas a la celebración como familia salesiana y como familia del ITS Villada,
                     reconociendo los logros y el paso por la institución de alumnos, docentes y padres.

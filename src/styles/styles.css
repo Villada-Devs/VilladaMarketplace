@@ -46,7 +46,7 @@ p {
 .page-container {
     max-width: 1366px;
     min-height: 90vh;
-    padding: 120px 4%;
+    padding: 120px 4% 0;
 }
 
 .form-container {

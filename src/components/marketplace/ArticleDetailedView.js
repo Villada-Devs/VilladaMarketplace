@@ -9,6 +9,7 @@ import User from '../User';
 
 import "../../styles/marketplace/ArticleDetailedView.css"
 import { useLocation } from "react-router-dom";
+import { map } from "leaflet";
 
 function ArticleDetailedView(props) {
     const location = useLocation();
@@ -37,22 +38,19 @@ function ArticleDetailedView(props) {
                         <div className="art-det-table">
 
                             <table>
-                                <tr>
-                                    <th className="top-left-corner">Autor</th>
-                                    <td>{location.state.author}</td>
-                                </tr>
-                                <tr>
-                                    <th>Editorial</th>
-                                    <td>{location.state.editorial}</td>
-                                </tr>
-                                <tr>
-                                    <th>Materia</th>
-                                    <td>{location.state.subject}</td>
-                                </tr>
-                                <tr>
-                                    <th>Año</th>
-                                    <td>{location.state.course}</td>
-                                </tr>
+                                {
+                                    Object.keys(location.state.props).map((val, k) => {
+                                        return(
+                                            <tr>
+                                                <th className={k === 0? "top-left-corner no-border" : "no-border"}>{val}</th>
+                                                <td className="no-border">{location.state.props[val]}</td>
+                                            </tr>
+                                        )
+                                    })
+                                    
+
+                                }
+                                
                                 <tr>
                                     <th className="bottom-left-corner no-border">Estado</th>
                                     <td className="no-border">{location.state.status}</td>
