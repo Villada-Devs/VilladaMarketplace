@@ -1,7 +1,5 @@
 import React, { useContext ,  useState, useEffect}from "react";
-import {Navigate} from 'react-router-dom';
-
-
+import { Navigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -14,12 +12,14 @@ import ProfileSections from "./ProfileSections";
 import "../../styles/profile/ProfileView.css"
 import Logout from "../Logout";
 
-import LandPage from "../landpage/LandPage"
-
 import { ToastContainer, toast } from 'react-toastify';
 
 function ProfileView() {
+
     const Connected = useContext(ContextConnected);
+
+    const [profileSection, setProfileSection] = useState([]);
+    const [activeSection, setActiveSection] = useState(0);
 
     useEffect(() => {
         const loadProfile = async () => {
@@ -53,7 +53,7 @@ function ProfileView() {
 
                         <div className="profile-user">
                             <div className="profile-user-img">
-                                <img className="profile-user-img" src={Connected.profile.image}></img>
+                                <img alt="" className="profile-user-img" src={Connected.profile.image}></img>
                             </div>
                             <div>
                                 <h2 className="profile-user-name">{Connected.userInfo.first_name} {Connected.userInfo.last_name}</h2>
@@ -62,7 +62,9 @@ function ProfileView() {
                             </div>
                         </div>
                             
-                        <ProfileSections />
+                        <ProfileSections 
+                            profile={Connected.userInfo}
+                        />
 
                     </Col>
 
@@ -72,7 +74,7 @@ function ProfileView() {
 
             
         ) :(
-            <Navigate to="/" />            
+            <Navigate to="/" />          
         )}
         </Container>
 

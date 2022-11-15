@@ -1,7 +1,9 @@
 import React, { useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 
 import Container from 'react-bootstrap/Container';
+import Button from "react-bootstrap/esm/Button";
 
 import PageHeader from "../PageHeader";
 import PoolCard from "./PoolCard";
@@ -30,6 +32,8 @@ function PoolMain() {
 
     const Connected = useContext(ContextConnected)
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         const loadPools = async () => {
           const token = await JSON.parse(localStorage.getItem("token"));
@@ -53,12 +57,14 @@ function PoolMain() {
 
         <Container className="page-container" fluid>
 
-            <PageHeader 
+            <PageHeader
                 pageHeader="Villada Pool"
                 pageDescription="Si no podés llevar a tu hijo al colegio o tenes lugar en el auto disponible, conectate con otros padres para organizar un pool."
-                button="Nuevo Pool"
-                buttonURL="/Pool/formulario"
-            />
+            >
+                
+                <Button className='button' variant="primary" onClick={() => { navigate("/Pool/formulario"); }}>Nuevo Pool</Button>
+            
+            </PageHeader>
 
             {Connected.userInfo? (
                 <MapContainer className='map-container' center={[-31.404829, -64.196187]} zoom={12} scrollWheelZoom={false}>
