@@ -31,6 +31,9 @@ import "./styles/styles.css";
 
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import loadingGif from "./img/loading.gif";
+
 function App() {
 
   const backendUrl = "http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/";
@@ -45,6 +48,8 @@ function App() {
   const [uniforms, setUniforms] = useState([]);
   const [events, setEvents] = useState([]);
   const [pools, setPools] = useState([]);
+
+  const [spinnerShowing, setSpinnerShowing] = useState(false);
   
 
   const handleCardClick = (e) => e.stopPropagation();
@@ -94,7 +99,10 @@ function App() {
         setEvents,
 
         pools,
-        setPools
+        setPools,
+
+        spinnerShowing,
+        setSpinnerShowing,
       }}>
 
 
@@ -129,6 +137,14 @@ function App() {
           </>) : null }
 
           <Footer />
+
+          {
+            spinnerShowing? (
+              <div className="spinner-container">
+                <img className="spinner" src={loadingGif} alt="loading" />
+              </div>
+            ) : null
+          }
           
         </BrowserRouter>
 

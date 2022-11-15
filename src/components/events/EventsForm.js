@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -11,8 +11,10 @@ import FormCard from '../FormCard';
 
 import "../../styles/Forms.css"
 import { useNavigate } from 'react-router-dom';
+import ContextConnected from '../../context/ContextConnected';
 
 function EventsForm() {
+    const context = useContext(ContextConnected);
     const navigate = useNavigate();
 
     const [validated, setValidated] = useState(false);
@@ -33,6 +35,7 @@ function EventsForm() {
 
     const sendEvent = async (event) => {
         event.preventDefault();
+        context.setSpinnerShowing(true)
 
         const token = await JSON.parse(localStorage.getItem("token"));
         if (token) {
@@ -63,9 +66,12 @@ function EventsForm() {
                 body: formdata
             }).then(() => {
                 navigate("/Eventos");
+                context.setSpinnerShowing(false)
             })
 
         }
+
+        context.setSpinnerShowing(false)
     };
     
 

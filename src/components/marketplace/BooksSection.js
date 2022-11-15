@@ -206,7 +206,7 @@ function BooksSection() {
 
                                     <ProductCard 
                                         key={book.id}
-                                        prodImage={book.imagesbook[0].image}
+                                        prodImage={book.product_images[0].image}
                                         prodTitle={book.title}
                                         prodPrice={book.price}
                                         prod={book}

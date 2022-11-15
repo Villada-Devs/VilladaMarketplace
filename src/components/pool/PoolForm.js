@@ -44,6 +44,12 @@ function PoolForm() {
             const slots = document.querySelector("#slots").value;
             const first_tel = document.querySelector("#first_tel").value;
 
+            const day_lunes = document.querySelector("#lunes").checked;
+            const day_martes = document.querySelector("#martes").checked;
+            const day_miercoles = document.querySelector("#miercoles").checked;
+            const day_jueves = document.querySelector("#jueves").checked;
+            const day_viernes = document.querySelector("#viernes").checked;
+
             var formdata = new FormData();
             formdata.append("lat", lat);
             formdata.append("lng", lng);
@@ -51,6 +57,11 @@ function PoolForm() {
             formdata.append("neighborhood", neighborhood);
             formdata.append("slots", slots);
             formdata.append("first_tel", first_tel);
+            formdata.append("day_lunes", day_lunes);
+            formdata.append("day_martes", day_martes);
+            formdata.append("day_miercoles", day_miercoles);
+            formdata.append("day_jueves", day_jueves);
+            formdata.append("day_viernes", day_viernes);
             formdata.append("alternative_tel", "3516271026");
 
             await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/pools/", {

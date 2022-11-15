@@ -22,7 +22,7 @@ function PoolCard(props) {
                 </Card.Body>
 
                 <ListGroup className="list-group-flush unpadding">
-                    <ListGroup.Item className="unpadding pool-card-item">Días disponibles: Lu Mi Ju</ListGroup.Item>
+                    <ListGroup.Item className="unpadding pool-card-item">Días disponibles: {props.days}</ListGroup.Item>
                     <ListGroup.Item className="unpadding pool-card-item">Lugares disponibles: {props.places}</ListGroup.Item>
                 </ListGroup>
 

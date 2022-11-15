@@ -184,7 +184,7 @@ function UniformsSection() {
 
                                     <ProductCard 
                                         key={uniform.id}
-                                        prodImage={uniform.imagescloth[0].image}
+                                        prodImage={uniform.product_images[0].image}
                                         prodTitle={uniform.description}
                                         prodPrice={uniform.price}
                                         prod={uniform}

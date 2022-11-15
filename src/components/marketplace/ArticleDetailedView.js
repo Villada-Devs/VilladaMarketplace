@@ -9,7 +9,6 @@ import User from '../User';
 
 import "../../styles/marketplace/ArticleDetailedView.css"
 import { useLocation } from "react-router-dom";
-import { map } from "leaflet";
 
 function ArticleDetailedView(props) {
     const location = useLocation();
@@ -20,7 +19,7 @@ function ArticleDetailedView(props) {
 
             <Row>
                 <Col md={6}>
-                        <img className='art-det-img' src={location.state.imagesbook[0].image} />
+                        <img className='art-det-img' src={location.state.product_images[0].image} alt="Article" />
                 </Col>
 
                 <Col md={6} sm={12}>

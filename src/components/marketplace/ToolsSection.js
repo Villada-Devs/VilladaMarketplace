@@ -121,7 +121,7 @@ function ToolsSection() {
 
                                     <ProductCard 
                                         key={tool.id}
-                                        prodImage={tool.imagestool[0].image}
+                                        prodImage={tool.product_images[0].image}
                                         prodTitle={tool.tool}
                                         prodPrice={tool.price}
                                         prod={tool}

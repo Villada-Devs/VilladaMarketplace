@@ -92,7 +92,7 @@ function PoolMain() {
                                                 key={pool.id}
                                                 userName={pool.author}
                                                 creationDate={pool.created_date}
-                                                days={pool.days}
+                                                days={(pool.day_lunes? "Lu " : "") + (pool.day_martes? "Ma " : "") + (pool.day_miercoles? "Mi " : "") + (pool.day_jueves? "Ju " : "") + (pool.day_viernes? "Vi" : "")}
                                                 places={pool.slots}
                                                 phoneNumber={pool.first_tel}
                                             />
