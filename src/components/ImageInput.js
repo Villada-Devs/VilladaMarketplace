@@ -30,7 +30,7 @@ function ImageInput({ setSelectedImages, setSendImages, selectedImages, sendImag
 
         <>
             <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label className='input-label'>Foto</Form.Label>
+                <Form.Label className='input-label'>Fotos</Form.Label>
                 <div className='events-form-image-input-container'>
 
                     <Form.Control 

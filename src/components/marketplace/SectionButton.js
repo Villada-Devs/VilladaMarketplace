@@ -12,12 +12,12 @@ function SectionButton(props) {
     return(
 
         <Col md={4} sm={12}>
-            <div className="section-button" onClick={() => { navigate(`/Marketplace/${props.sectionURL}`); }}>
+            <button className="section-button" onClick={() => { navigate(`/Marketplace/${props.sectionURL}`); }}>
 
                 <img className="section-button-image" alt='' src={props.sectionImage}></img>
                 <p>{props.sectionName}</p>
 
-            </div>
+            </button>
         </Col>
 
 

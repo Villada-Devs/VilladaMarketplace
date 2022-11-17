@@ -73,7 +73,7 @@ function MarketplaceMain() {
                     />
 
                     <div className="marketplace-categories">
-                        <p className="categories-header">Inicia sesión y comenzá a publicar !</p>
+                        <p className="categories-header">Iniciá sesión y comenzá a publicar!</p>
                     </div>
 
                 </>

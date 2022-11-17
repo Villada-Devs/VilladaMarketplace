@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -6,15 +7,16 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
+import ContextConnected from '../../context/ContextConnected';
 import ImageInput from '../ImageInput';
 import FormCard from '../FormCard';
 
 import "../../styles/Forms.css"
-import { useNavigate } from 'react-router-dom';
-import ContextConnected from '../../context/ContextConnected';
 
 function EventsForm() {
+
     const context = useContext(ContextConnected);
+
     const navigate = useNavigate();
 
     const [validated, setValidated] = useState(false);
@@ -89,7 +91,7 @@ function EventsForm() {
 
                     <Row>
 
-                        <Form.Group as={Col} md="4" controlId="validationCustom01">
+                        <Form.Group as={Col} md="4">
                             <Form.Label className='input-label'>Título</Form.Label>
                             <Form.Control
                                 className='input'
@@ -102,7 +104,7 @@ function EventsForm() {
                             </Form.Control.Feedback>
                         </Form.Group>
 
-                        <Form.Group as={Col} md="4" controlId="validationCustom02">
+                        <Form.Group as={Col} md="4">
                             <Form.Label className='input-label'>Tipo</Form.Label>
                             <Form.Select required className='input' id='type'>
                                 <option value=""></option>
@@ -122,7 +124,7 @@ function EventsForm() {
                             </Form.Control.Feedback>
                         </Form.Group>
 
-                        <Form.Group as={Col} md="4" controlId="validationCustom02">
+                        <Form.Group as={Col} md="4">
                             <Form.Label className='input-label'>Fecha</Form.Label>
                             <Form.Control
                                 className='input'
@@ -137,7 +139,7 @@ function EventsForm() {
 
                     </Row>
 
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Group>
                         <Form.Label className='input-label'>Descripción corta</Form.Label>
                         <Form.Control className='input events-form-description' required as="textarea" rows={3} id="description" />
                         <Form.Control.Feedback type="invalid">
@@ -145,7 +147,7 @@ function EventsForm() {
                             </Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Group>
                         <Form.Label className='input-label'>Descripcion detallada</Form.Label>
                         <Form.Control className='input events-form-description' required as="textarea" rows={6} id='longDescription' />
                         <Form.Control.Feedback type="invalid">

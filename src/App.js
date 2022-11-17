@@ -10,6 +10,7 @@ import ProfileView from "./components/profile/ProfileView";
 import LandPage from "./components/landpage/LandPage";
 
 import MarketplaceMain from "./components/marketplace/MarketplaceMain";
+import MarketplaceForm from "./components/marketplace/MarketplaceForm";
 import BooksSection from "./components/marketplace/BooksSection";
 import ToolsSection from "./components/marketplace/ToolsSection";
 import UniformsSection from "./components/marketplace/UniformsSection";
@@ -115,6 +116,7 @@ function App() {
             <Route path="/Perfil" element= {<ProfileView />} />
 
             <Route path="/Marketplace" element= {<MarketplaceMain />} />
+            <Route path="/Marketplace/formulario" element= {<MarketplaceForm />} />
             <Route path="/Marketplace/Libros" element= {<BooksSection />} />
             <Route path="/Marketplace/Herramientas" element= {<ToolsSection />} />
             <Route path="/Marketplace/Uniformes" element= {<UniformsSection />} />
