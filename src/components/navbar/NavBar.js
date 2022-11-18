@@ -88,8 +88,7 @@ function NavBar() {
                     ) : (
                         <>
                             <Button 
-                                className="button nav-login-button" 
-                                variant="primary"
+                                className="button nav-login-button"
                                 onClick={() => {
                                     toggleLoginMenu();
                                 }}

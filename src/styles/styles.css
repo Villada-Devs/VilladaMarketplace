@@ -9,6 +9,7 @@
 }
 
 body {
+    background-color: #F9F8FF;
     margin: 0;
 }
 
@@ -50,7 +51,8 @@ p {
 }
 
 .form-container {
-    padding: 120px 4%;
+    min-height: 90vh;
+    padding: 120px 4% 50px;
     max-width: 900px;
 }
 
@@ -73,6 +75,8 @@ p {
     margin: 10px 0;
     padding: 0 15px;
     height: 40px;
+
+    --bs-input-focus-shadow-rgb: 246,146,153;
 }
 
 
@@ -82,16 +86,19 @@ p {
 .button {
     padding: 0 15px;
     background-color: var(--second-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #fff;
-    font-size: 14px;
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
+    font-size: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     height: 40px;
     transition: all .3s ease;
+    --bs-btn-focus-shadow-rgb: 246,146,153;
 }
 
 .button:hover,

@@ -52,10 +52,12 @@
     border-style: solid !important;
     border-width: 2px !important;
     border-color: var(--main-color) !important;
+    
+    --bs-btn-focus-shadow-rgb: 158,149,236;
 }
 
 .nav-register-button:hover {
-    background-color: #719FEF !important;
-    border-color: #719FEF !important;
+    background-color: #29235C !important;
+    border-color: #29235C !important;
     color: #fff !important;
 }
