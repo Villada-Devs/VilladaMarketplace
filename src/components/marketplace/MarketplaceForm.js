@@ -234,7 +234,7 @@ function MarketplaceForm() {
 
                                     <Row>
 
-                                        <Form.Group>
+                                        <Form.Group as={Col} md="7">
                                             <Form.Label className='input-label'>Título</Form.Label>
                                             <Form.Control
                                                 className='input'
@@ -247,7 +247,7 @@ function MarketplaceForm() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
 
-                                        <Form.Group as={Col} md="6">
+                                        <Form.Group as={Col} sm="6" md="5">
                                             <Form.Label className='input-label'>Autor</Form.Label>
                                             <Form.Control
                                                 className='input'
@@ -257,7 +257,7 @@ function MarketplaceForm() {
                                             />
                                         </Form.Group>
 
-                                        <Form.Group as={Col} md="6">
+                                        <Form.Group as={Col} sm="6" md="5">
                                             <Form.Label className='input-label'>Editorial</Form.Label>
                                             <Form.Control
                                                 className='input'
@@ -267,7 +267,7 @@ function MarketplaceForm() {
                                             />
                                         </Form.Group>
 
-                                        <Form.Group as={Col} md="4">
+                                        <Form.Group as={Col} xs="8" sm="6" md="5">
                                             <Form.Label className='input-label'>Materia</Form.Label>
                                             <Form.Select required className='input' id='book-subject'>
                                                 <option value=""></option>
@@ -283,7 +283,7 @@ function MarketplaceForm() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
 
-                                        <Form.Group as={Col} md="4">
+                                        <Form.Group as={Col} xs="4" sm="2" md="2">
                                             <Form.Label className='input-label'>Curso</Form.Label>
                                             <Form.Select required className='input' id='book-course'>
                                                 <option value=""></option>
@@ -300,7 +300,7 @@ function MarketplaceForm() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
 
-                                        <Form.Group as={Col} md="4">
+                                        <Form.Group as={Col} sm="4" md="4">
                                             <Form.Label className='input-label'>Estado</Form.Label>
                                             <Form.Select required className='input' id='book-state'>
                                                 <option value=""></option>
@@ -313,22 +313,30 @@ function MarketplaceForm() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
 
-                                        <Form.Group as={Col} md="6">
-                                            <Form.Label className='input-label'>Telefono</Form.Label>
+                                        <Form.Group as={Col} md="4">
+                                            <Form.Label className='input-label'>Teléfono</Form.Label>
                                             <Form.Control
                                                 className='input'
                                                 type="text"
                                                 id='book-tel'
+                                                required
                                             />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor ingrese un teléfono.
+                                            </Form.Control.Feedback>
                                         </Form.Group>
 
-                                        <Form.Group as={Col} md="6">
+                                        <Form.Group as={Col} md="4">
                                             <Form.Label className='input-label'>Precio</Form.Label>
                                             <Form.Control
                                                 className='input'
                                                 type="text"
                                                 id='book-price'
+                                                required
                                             />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor ponga un precio.
+                                            </Form.Control.Feedback>
                                         </Form.Group>
 
                                     </Row>
@@ -343,75 +351,83 @@ function MarketplaceForm() {
 
                             <>
 
-                            <FormCard>
+                                <FormCard>
 
-                                <h2 className="form-type-header-type">Herramientas</h2>
+                                    <h2 className="form-type-header-type">Herramientas</h2>
 
-                                <ImageInput setSendImages={setSendImages} setSelectedImages={setSelectedImages} selectedImages={selectedImages} sendImages={sendImages} />
+                                    <ImageInput setSendImages={setSendImages} setSelectedImages={setSelectedImages} selectedImages={selectedImages} sendImages={sendImages} />
 
-                                <Row>
+                                    <Row>
 
-                                    <Form.Group as={Col} md="6">
-                                        <Form.Label className='input-label'>Artículo</Form.Label>
-                                        <Form.Control
-                                            className='input'
-                                            type="text"
-                                            id='tool-title'
-                                            required
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor escriba cuál es su artículo.
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
+                                        <Form.Group as={Col} sm="8" md="8">
+                                            <Form.Label className='input-label'>Artículo</Form.Label>
+                                            <Form.Control
+                                                className='input'
+                                                type="text"
+                                                id='tool-title'
+                                                required
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor escriba cuál es su artículo.
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
 
-                                    <Form.Group as={Col} md="6">
-                                        <Form.Label className='input-label'>Estado</Form.Label>
-                                        <Form.Select required className='input' id='tool-state'>
-                                            <option value=""></option>
-                                            <option value="1">Usado</option>
-                                            <option value="2">Casi nuevo</option>
-                                            <option value="3">Excelente</option>
-                                        </Form.Select>
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor seleccione un estado.
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
-                                    
-                                    <Form.Group>
-                                        <Form.Label className='input-label'>Descripción</Form.Label>
-                                        <Form.Control 
-                                            className='input events-form-description' 
-                                            required 
-                                            as="textarea" 
-                                            rows={3} 
-                                            id="tool-description"
-                                            placeholder="Opcional"
-                                        />
-                                    </Form.Group>
+                                        <Form.Group as={Col} sm="4" md="4">
+                                            <Form.Label className='input-label'>Estado</Form.Label>
+                                            <Form.Select required className='input' id='tool-state'>
+                                                <option value=""></option>
+                                                <option value="1">Usado</option>
+                                                <option value="2">Casi nuevo</option>
+                                                <option value="3">Excelente</option>
+                                            </Form.Select>
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor seleccione un estado.
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
 
-                                    <Form.Group as={Col} md="6">
-                                        <Form.Label className='input-label'>Telefono</Form.Label>
-                                        <Form.Control
-                                            className='input'
-                                            type="text"
-                                            id='tool-tel'
-                                        />
-                                    </Form.Group>
+                                        <Form.Group as={Col} sm="6" md="6">
+                                            <Form.Label className='input-label'>Teléfono</Form.Label>
+                                            <Form.Control
+                                                className='input'
+                                                type="text"
+                                                id='tool-tel'
+                                                required
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor ingrese un teléfono.
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
 
-                                    <Form.Group as={Col} md="6">
-                                        <Form.Label className='input-label'>Precio</Form.Label>
-                                        <Form.Control
-                                            className='input'
-                                            type="text"
-                                            id='tool-price'
-                                        />
-                                    </Form.Group>
+                                        <Form.Group as={Col} sm="6" md="6">
+                                            <Form.Label className='input-label'>Precio</Form.Label>
+                                            <Form.Control
+                                                className='input'
+                                                type="text"
+                                                id='tool-price'
+                                                required
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor ponga un precio.
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                        
+                                        <Form.Group>
+                                            <Form.Label className='input-label'>Descripción</Form.Label>
+                                            <Form.Control 
+                                                className='input events-form-description' 
+                                                required 
+                                                as="textarea" 
+                                                rows={3} 
+                                                id="tool-description"
+                                                placeholder="Opcional"
+                                            />
+                                        </Form.Group>
 
-                                </Row>
+                                    </Row>
 
-                                <Button className='button' onClick={(e) => sendEvent(e)}>Publicar</Button>
+                                    <Button className='button' onClick={(e) => sendEvent(e)}>Publicar</Button>
 
-                            </FormCard>
+                                </FormCard>
 
                                     
                             </>
@@ -427,7 +443,7 @@ function MarketplaceForm() {
 
                                     <Row>
 
-                                        <Form.Group>
+                                        <Form.Group as={Col} md="6">
                                             <Form.Label className='input-label'>Artículo</Form.Label>
                                             <Form.Control
                                                 className='input'
@@ -440,7 +456,7 @@ function MarketplaceForm() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
 
-                                        <Form.Group as={Col} md="6">
+                                        <Form.Group as={Col} xs="4" sm="4" md="2">
                                             <Form.Label className='input-label'>Talle</Form.Label>
                                             <Form.Select required className='input' id='uniform-size'>
                                                 <option value=""></option>
@@ -456,7 +472,7 @@ function MarketplaceForm() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
 
-                                        <Form.Group as={Col} md="6">
+                                        <Form.Group as={Col} xs="8" sm="8" md="4">
                                             <Form.Label className='input-label'>Estado</Form.Label>
                                             <Form.Select required className='input' id='uniform-state'>
                                                 <option value=""></option>
@@ -466,6 +482,33 @@ function MarketplaceForm() {
                                             </Form.Select>
                                             <Form.Control.Feedback type="invalid">
                                                 Por favor seleccione un estado.
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+
+
+                                        <Form.Group as={Col} md="6">
+                                            <Form.Label className='input-label'>Teléfono</Form.Label>
+                                            <Form.Control
+                                                className='input'
+                                                type="text"
+                                                id='uniform-number'
+                                                required
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor ingrese un teléfono.
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+
+                                        <Form.Group as={Col} md="6">
+                                            <Form.Label className='input-label'>Precio</Form.Label>
+                                            <Form.Control
+                                                className='input'
+                                                type="text"
+                                                id='uniform-price'
+                                                required
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                Por favor ponga un precio.
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                         
@@ -506,6 +549,7 @@ function MarketplaceForm() {
                                 </FormCard>
 
                             </>
+                            
                         : null
                     }
 
