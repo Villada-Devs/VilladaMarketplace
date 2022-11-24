@@ -96,16 +96,36 @@ function MarketplaceForm() {
                 editorial: editorial
             }
 
+            console.log(token)
+            console.log(title)
+            console.log(author)
+            console.log(editorial)
+            console.log(materia)
+            console.log(curso)
+            console.log(estado)
+            console.log(precio)
+            console.log(tel)
+            console.log(selectedImages)
+            console.log(JSON.stringify(props))
+
+            // var formdata = new FormData();
+            // formdata.append("product_name", title);
+            // formdata.append("props", JSON.stringify(props));
+            // formdata.append("status", estado);
+            // formdata.append("price", precio);
+            // formdata.append("tel", tel);
+
             var formdata = new FormData();
-            formdata.append("product_name", title);
             formdata.append("props", JSON.stringify(props));
-            formdata.append("status", estado);
-            formdata.append("price", precio);
-            formdata.append("tel", tel);
+            formdata.append("product_name", "askjlndas");
+            formdata.append("status", "Usado");
+            formdata.append("price", "100");
+            formdata.append("tel", "3516271027");
 
             for (let i = 0; i < selectedImages.length; i++) {
                 formdata.append('uploaded_images', selectedImages[i]);
             };
+
 
             await fetch(booksPostUrl, {
                 method: "POST",
@@ -115,6 +135,8 @@ function MarketplaceForm() {
                 body: formdata
             }).then(() => {
                 navigate("/Marketplace");
+            }).catch((error) => {
+                console.log(error)
             })
         }
     }
