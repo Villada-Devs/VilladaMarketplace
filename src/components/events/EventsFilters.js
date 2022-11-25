@@ -21,36 +21,46 @@ function EventsFilters({ events, setEventsFiltered, activeEventType, setActiveEv
 
         <>
 
-        <Dropdown className="d-inline mx-2">
-            <Dropdown.Toggle id="dropdown-autoclose-true" className="margin-80">
-                Filtros
-            </Dropdown.Toggle>
+            <Dropdown>
 
-            <Dropdown.Menu>
+                <div className="events-filters-cont">
 
-                <Dropdown.Item
-                    onClick={() => setActiveEventType(0)}
-                >Todos los eventos</Dropdown.Item>
+                    <Dropdown.Toggle className="button events-filters-button">
+                        Filtros
+                    </Dropdown.Toggle>
+                    
+                    {activeEventType === 0 ? (
+                        <p className="events-filters-label">Todos los eventos</p>
+                    ):(
+                        <p className="events-filters-label">{activeEventType}</p>
+                    )}
 
-                <Dropdown.Divider />
+                </div>
 
-                {
-                    eventsFilters.map((filter) => {
+                <Dropdown.Menu>
 
-                        return (
+                    <Dropdown.Item
+                        onClick={() => setActiveEventType(0)}
+                    >Todos los eventos</Dropdown.Item>
 
-                            <Dropdown.Item
-                                key={filter.id}
-                                onClick={() => setActiveEventType(filter.value)}
-                            >{filter.name}</Dropdown.Item>
+                    <Dropdown.Divider />
 
-                        );
+                    {
+                        eventsFilters.map((filter) => {
 
-                    })
-                }
-            </Dropdown.Menu>
-        </Dropdown>
+                            return (
 
+                                <Dropdown.Item
+                                    key={filter.id}
+                                    onClick={() => setActiveEventType(filter.value)}
+                                >{filter.name}</Dropdown.Item>
+
+                            );
+
+                        })
+                    }
+                </Dropdown.Menu>
+            </Dropdown>
         
         </>
     )
