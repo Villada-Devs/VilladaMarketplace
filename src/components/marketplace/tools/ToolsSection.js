@@ -5,9 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
-import ProductCard from './ProductCard';
+import ProductCard from '../ProductCard';
 
-import ContextConnected from "../../context/ContextConnected";
+import ContextConnected from "../../../context/ContextConnected";
 
 function ToolsSection() {
 
@@ -122,7 +122,7 @@ function ToolsSection() {
                                     <ProductCard 
                                         key={tool.id}
                                         prodImage={tool.product_images[0].image}
-                                        prodTitle={tool.tool}
+                                        prodTitle={tool.product_name}
                                         prodPrice={tool.price}
                                         prod={tool}
                                     />

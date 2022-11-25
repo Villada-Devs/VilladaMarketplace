@@ -62,7 +62,13 @@ function PoolMain() {
                 pageDescription="Si no podés llevar a tu hijo al colegio o tenes lugar en el auto disponible, conectate con otros padres para organizar un pool."
             >
                 
-                <Button className='button' variant="primary" onClick={() => { navigate("/Pool/formulario"); }}>Nuevo Pool</Button>
+                {Connected.userInfo? (
+
+                    <Button className='button' variant="primary" onClick={() => { navigate("/Pool/formulario"); }}>Nuevo Pool</Button>
+
+                ) : (
+                    null
+                )}
             
             </PageHeader>
 

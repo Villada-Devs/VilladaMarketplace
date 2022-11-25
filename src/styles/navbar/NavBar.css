@@ -53,7 +53,7 @@
     border-width: 2px !important;
     border-color: var(--main-color) !important;
     
-    --bs-btn-focus-shadow-rgb: 158,149,236;
+    --bs-btn-focus-shadow-rgb: 158,149,236 !important;
 }
 
 .nav-register-button:hover {

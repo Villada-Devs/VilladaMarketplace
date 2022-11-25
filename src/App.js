@@ -11,9 +11,9 @@ import LandPage from "./components/landpage/LandPage";
 
 import MarketplaceMain from "./components/marketplace/MarketplaceMain";
 import MarketplaceForm from "./components/marketplace/MarketplaceForm";
-import BooksSection from "./components/marketplace/BooksSection";
-import ToolsSection from "./components/marketplace/ToolsSection";
-import UniformsSection from "./components/marketplace/UniformsSection";
+import BooksSection from "./components/marketplace/books/BooksSection";
+import ToolsSection from "./components/marketplace/tools/ToolsSection";
+import UniformsSection from "./components/marketplace/uniforms/UniformsSection";
 import ArticleDetailedView from "./components/marketplace/ArticleDetailedView";
 
 import EventsMain from "./components/events/EventsMain";

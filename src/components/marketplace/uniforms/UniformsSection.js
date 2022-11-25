@@ -5,19 +5,19 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
-import ProductCard from './ProductCard';
+import ProductCard from '../ProductCard';
 
-import ContextConnected from "../../context/ContextConnected";
+import ContextConnected from "../../../context/ContextConnected";
 
-function BooksSection() {
+function UniformsSection() {
 
     const Connected = useContext(ContextConnected);
 
     useEffect(() => {
-        const loadBooks = async () => {
+        const loadUniforms = async () => {
           const token = await JSON.parse(localStorage.getItem("token"));
           if (token) {
-            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/marketplace/books/", {
+            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/marketplace/clothes/", {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
@@ -25,20 +25,18 @@ function BooksSection() {
               },
             })
             const data = await res.json();
-            Connected.setBooks(data.results);
+            Connected.setUniforms(data.results);
             console.log(data.results);
           }
         };
-        loadBooks();
+        loadUniforms();
     }, [Connected.userInfo]);
 
     return(
 
-        <>
-
         <Container className='page-container' fluid>
 
-            <h1>Libros y Apuntes</h1>
+            <h1>Uniformes</h1>
             <hr className='section-hr'></hr>
 
             <Row>
@@ -51,7 +49,7 @@ function BooksSection() {
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                name="group1"
+                                name="order"
                                 label="Recientes"
                                 type="radio"
                                 id="lengua"
@@ -60,7 +58,7 @@ function BooksSection() {
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                name="group1"
+                                name="order"
                                 label="Menor Precio"
                                 type="radio"
                                 id="matematicas"
@@ -69,7 +67,7 @@ function BooksSection() {
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                name="group1"
+                                name="order"
                                 label="Mayor Precio"
                                 type="radio"
                                 id="historia"
@@ -79,13 +77,14 @@ function BooksSection() {
 
                     <hr className='filter-hr'></hr>
 
-                    <Form.Group controlId="validationCustom02">
-                        <Form.Label className='market-filter'>Materia</Form.Label>
+                    <Form.Group>
+
+                        <Form.Label className='market-filter'>Tipo</Form.Label>
 
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                label="Lengua"
+                                label="Remera"
                                 type="checkbox"
                                 id="lengua"
                             />
@@ -93,7 +92,7 @@ function BooksSection() {
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                label="Matemátcas"
+                                label="Chomba"
                                 type="checkbox"
                                 id="matematicas"
                             />
@@ -101,7 +100,7 @@ function BooksSection() {
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                label="Historia"
+                                label="Buzo"
                                 type="checkbox"
                                 id="historia"
                             />
@@ -109,88 +108,67 @@ function BooksSection() {
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                label="Geografía"
+                                label="Campera"
                                 type="checkbox"
-                                id="geografia"
+                                id="historia"
                             />
 
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                label="Biología"
+                                label="Guardapolvo"
                                 type="checkbox"
-                                id="biologia"
+                                id="historia"
                             />
 
-                            <Form.Check
-                                className="market-filter-label"
-                                reverse
-                                label="Inglés"
-                                type="checkbox"
-                                id="ingles"
-                            />
                     </Form.Group>
 
                     <hr className='filter-hr'></hr>
 
-                    <Form.Group controlId="validationCustom02">
-                        <Form.Label className='market-filter'>Año</Form.Label>
+                    <Form.Group>
+
+                        <Form.Label className='market-filter'>Talle</Form.Label>
 
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                label="1°"
+                                label="S"
                                 type="checkbox"
-                                id="1"
+                                id="lengua"
                             />
 
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                label="2°"
+                                label="M"
                                 type="checkbox"
-                                id="2"
+                                id="matematicas"
                             />
 
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                label="3°"
+                                label="L"
                                 type="checkbox"
-                                id="3"
+                                id="historia"
                             />
 
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                label="4°"
+                                label="XL"
                                 type="checkbox"
-                                id="4"
+                                id="historia"
                             />
 
                             <Form.Check
                                 className="market-filter-label"
                                 reverse
-                                label="5°"
+                                label="XXL"
                                 type="checkbox"
-                                id="5"
+                                id="historia"
                             />
 
-                            <Form.Check
-                                className="market-filter-label"
-                                reverse
-                                label="6°"
-                                type="checkbox"
-                                id="6"
-                            />
-
-                            <Form.Check
-                                className="market-filter-label"
-                                reverse
-                                label="7°"
-                                type="checkbox"
-                                id="7"
-                            />
                     </Form.Group>
 
                 </Col>
@@ -200,16 +178,16 @@ function BooksSection() {
                     <Row>
 
                         {
-                            Connected.books.map((book) => {
+                            Connected.uniforms.map((uniform) => {
 
                                 return (
 
                                     <ProductCard 
-                                        key={book.id}
-                                        prodImage={book.product_images[0].image}
-                                        prodTitle={book.title}
-                                        prodPrice={book.price}
-                                        prod={book}
+                                        key={uniform.id}
+                                        prodImage={uniform.product_images[0].image}
+                                        prodTitle={uniform.product_name}
+                                        prodPrice={uniform.price}
+                                        prod={uniform}
                                     />
 
                                 );
@@ -226,9 +204,7 @@ function BooksSection() {
 
         </Container>
 
-        </>
-
     );
 }
 
-export default BooksSection;
+export default UniformsSection;

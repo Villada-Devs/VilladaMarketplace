@@ -29,7 +29,7 @@ function ArticleDetailedView(props) {
                             creationDate={location.state.creation_date}
                         />
                         
-                        <h1 className='art-det-title'>{location.state.title}</h1>
+                        <h1 className='art-det-title'>{location.state.product_name}</h1>
                         <h1 className='art-det-price'>${location.state.price}</h1>
 
                         <p>Características</p>
@@ -61,7 +61,7 @@ function ArticleDetailedView(props) {
                         <Button 
                             className='button art-det-button' 
                             variant="primary" 
-                            href={`https://api.whatsapp.com/send?phone=${location.state.tel}&text=Hola ${location.state.created_by_user}. Me interesa la publicación de tu libro ${location.state.title}!`}
+                            href={`https://api.whatsapp.com/send?phone=${location.state.tel}&text=Hola ${location.state.created_by_user}. Me interesa la publicación de tu libro ${location.state.product_name}!`}
                         ><FaWhatsapp className="whatsapp" />Contactar</Button>
 
                     </div>
