@@ -1,4 +1,5 @@
 .section-button {
+    border: unset;
     background-color: #fff;
     box-shadow: var(--shadow);
     border-radius: 10px;
@@ -11,8 +12,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    cursor: pointer;
 }
 
 .section-button-image {

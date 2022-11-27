@@ -1,0 +1,32 @@
+.about-info-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 80px 0;
+}
+
+.about-info-l {
+    padding: 0;
+    margin-right: 20px;
+}
+
+.about-info-r {
+    padding: 0;
+    margin-left: 20px;
+}
+
+.about-img {
+    padding: 0;
+}
+
+.about-event-title {
+    margin-bottom: 20px;
+}
+
+.about-event-img {
+    border-radius: 20px;
+    width: 100%;
+    min-height: 300px;
+    height: 100%;
+    object-fit: cover;
+}

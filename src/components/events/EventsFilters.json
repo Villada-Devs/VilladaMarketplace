@@ -1,0 +1,61 @@
+[
+    {
+        "id": 2,
+        "name": "Bienvenida a familias de primer año",
+        "value": "Bienvenida a familias de primer año"
+    },
+    {
+        "id": 3,
+        "name": "Talleres pedagógicos",
+        "value": "Talleres pedagógicos"
+    },
+    {
+        "id": 4,
+        "name": "Conferencias",
+        "value": "Conferencias"
+    },
+    {
+        "id": 5,
+        "name": "Retiros espirituales",
+        "value": "Retiros espirituales"
+    },
+    {
+        "id": 6,
+        "name": "Integración de los padres a la labor educativa",
+        "value": "Integración de los padres a la labor educativa"
+    },
+    {
+        "id": 7,
+        "name": "Locro del exalumno salesiano del villada",
+        "value": "Locro del exalumno salesiano del villada"
+    },
+    {
+        "id": 8,
+        "name": "UPF solidaria",
+        "value": "UPF solidaria"
+    }
+    ,
+    {
+        "id": 9,
+        "name": "Dia del educador",
+        "value": "Dia del educador"
+    }
+    ,
+    {
+        "id": 10,
+        "name": "Bicicleteada salesiana",
+        "value": "Bicicleteada salesiana"
+    }
+    ,
+    {
+        "id": 11,
+        "name": "Asado de fin de año",
+        "value": "Asado de fin de año"
+    }
+    ,
+    {
+        "id": 12,
+        "name": "Valle de la inmaculada",
+        "value": "Valle de la inmaculada"
+    }
+]

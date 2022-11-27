@@ -1,12 +1,14 @@
 import React, { useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 
 import Container from 'react-bootstrap/Container';
+import Button from "react-bootstrap/esm/Button";
 
 import PageHeader from "../PageHeader";
 import PoolCard from "./PoolCard";
 
-import "../../styles/pool/PoolMain.css"
+import "../../styles/pool/PoolMain.css";
 import "leaflet/dist/leaflet.css";
 
 import ContextConnected from "../../context/ContextConnected";
@@ -23,12 +25,14 @@ function PoolMain() {
     
         L.Icon.Default.mergeOptions({
           iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-          iconUrl: require("../../img/its.png"),
+          iconUrl: require("../../img/pool/its.png"),
           shadowUrl: require("leaflet/dist/images/marker-shadow.png")
         });
       }, []);
 
     const Connected = useContext(ContextConnected)
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const loadPools = async () => {
@@ -53,47 +57,64 @@ function PoolMain() {
 
         <Container className="page-container" fluid>
 
-            <PageHeader 
-                title="Villada Pool"
-                button="Nuevo Pool"
-                buttonURL="/Pool/formulario"
-            />
-
-            <MapContainer className='map-container' center={[-31.404829, -64.196187]} zoom={12} scrollWheelZoom={false}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-
-                <Marker position={[-31.362450, -64.276317]}>
-                    <Popup className='its'>
-                        <p>Instituto Técnico Salesiano Villada</p>
-                    </Popup>
-                </Marker>
+            <PageHeader
+                pageHeader="Villada Pool"
+                pageDescription="Si no podés llevar a tu hijo al colegio o tenes lugar en el auto disponible, conectate con otros padres para organizar un pool."
+            >
                 
-                
-                    {
-                        Connected.pools?.map((e) => {
-                            const position = [e.lat, e.lng];
+                {Connected.userInfo? (
 
-                            return(
-                                
-                                <Circle center={position} pathOptions={fillBlueOptions} radius={150} key={e.id}>
-                                    <Popup>
-                                        <PoolCard
-                                            key={e.id}
-                                            userName={e.author}
-                                            creationDate={e.created_date}
-                                            days={e.days}
-                                            places={e.places}
-                                            phoneNumber={e.phone_number}
-                                        />
-                                    </Popup>
-                                </Circle>
-                            )
-                        })
-                    }
+                    <Button className='button' variant="primary" onClick={() => { navigate("/Pool/formulario"); }}>Nuevo Pool</Button>
 
-            </MapContainer>
+                ) : (
+                    null
+                )}
+            
+            </PageHeader>
+
+            {Connected.userInfo? (
+                <MapContainer className='map-container' center={[-31.404829, -64.196187]} zoom={12} scrollWheelZoom={false}>
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+
+                    <Marker position={[-31.362450, -64.276317]}>
+                        <Popup className='its'>
+                            <p>Instituto Técnico Salesiano Villada</p>
+                        </Popup>
+                    </Marker>
+                    
+                    
+                        {
+                            Connected.pools.map((pool) => {
+                                console.log(pool)
+                                const position = [pool.lat, pool.lng]
+
+                                return(
+                                    
+                                    <Circle center={position} pathOptions={fillBlueOptions} radius={150} key={pool.id}>
+                                        <Popup>
+                                            <PoolCard
+                                                key={pool.id}
+                                                userName={pool.author}
+                                                creationDate={pool.created_date}
+                                                days={(pool.day_lunes? "Lu " : "") + (pool.day_martes? "Ma " : "") + (pool.day_miercoles? "Mi " : "") + (pool.day_jueves? "Ju " : "") + (pool.day_viernes? "Vi" : "")}
+                                                places={pool.slots}
+                                                phoneNumber={pool.first_tel}
+                                            />
+                                        </Popup>
+                                    </Circle>
+                                );
+                            })
+                        }
+
+                </MapContainer>
+            ) :
+            (
+                <div className="marketplace-categories">
+                        <p className="categories-header">Inicia sesión y comenzá a publicar !</p>
+                </div>
+            )}
 
         </Container>
     );

@@ -52,7 +52,7 @@ function NavBar() {
                 >
 
                     <Nav.Item>
-                        <NavLink className="nav-link" to="/Marketplace">Marketplace</NavLink>
+                        <NavLink className="nav-link" to="/Sobre-Nosotros">Quiénes Somos</NavLink>
                     </Nav.Item>
 
                     <Nav.Item>
@@ -60,9 +60,16 @@ function NavBar() {
                     </Nav.Item>
 
                     <Nav.Item>
+                        <NavLink className="nav-link" to="/Marketplace">Marketplace</NavLink>
+                    </Nav.Item>
+
+                    <Nav.Item>
                         <NavLink className="nav-link" to="/Pool">Pool</NavLink>
                     </Nav.Item>
-                    
+
+                    <Nav.Item>
+                        <NavLink className="nav-link" to="/Perfil">Perfil</NavLink>
+                    </Nav.Item>
 
                 </Nav>
                 <Form className="d-flex">
@@ -81,8 +88,7 @@ function NavBar() {
                     ) : (
                         <>
                             <Button 
-                                className="button nav-login-button" 
-                                variant="primary"
+                                className="button nav-login-button"
                                 onClick={() => {
                                     toggleLoginMenu();
                                 }}

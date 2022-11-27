@@ -15,11 +15,11 @@ function CardR(props) {
 
     return (
 
-        <Container className="event-card-r" fluid onClick={() => { navigate('/Eventos/detalles'); }} >
+        <Container className="event-card-r" fluid onClick={() => { navigate('/Eventos/detalles', {state: props.event}); }} >
             <Row>
 
                 <Col lg={5} md={12} sm={12}>
-                    <img className="event-card-photo" src={props.eventImage} />
+                    <img alt="" className="event-card-photo" src={props.eventImage} />
                 </Col>
 
                 <Col className="event-card-content">
@@ -27,7 +27,7 @@ function CardR(props) {
                         <div className="event-card-top card-r">
                             <User 
                                 userName={props.userName}
-                                creationDate={props.creationDate}
+                                creationDate={new Date(props.creationDate).toDateString()}
                             />
                         </div>
 
@@ -38,7 +38,7 @@ function CardR(props) {
                     </div>
 
                     <div className="event-card-footer">
-                        <p className="event-date"> <span className="blue-section">Fecha del Evento: </span>{props.eventDate}</p>
+                        <p className="event-date"> <span className="blue-section">Fecha del Evento: </span>{new Date(props.eventDate).toDateString()}</p>
                     </div>
                 </Col>
 

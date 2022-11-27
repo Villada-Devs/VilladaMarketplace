@@ -1,0 +1,44 @@
+.profile-user {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-user-img {
+    background-color: var(--main-color);
+    margin-right: 20px;
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+}
+
+.profile-section {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-section .bold-hr {
+    margin-bottom: 10px;
+}
+
+.profile-section-button {
+    background-color: unset;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-align: initial;
+    width: 200px;
+    border: unset;
+}
+
+.profile-section-button:hover {
+    background-color: #E1DDFF;
+}
+
+.profile-section-icon {
+    margin-right: 15px;
+    height: 20px;
+    width: auto;
+}

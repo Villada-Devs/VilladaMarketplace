@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
-import CloseButton from 'react-bootstrap/CloseButton';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
+import ContextConnected from '../../context/ContextConnected';
+import ImageInput from '../ImageInput';
 import FormCard from '../FormCard';
 
-import ImageInput from "../../img/Image Input.png"
-
-import "../../styles/events/EventsForm.css"
+import "../../styles/Forms.css"
 
 function EventsForm() {
+
+    const context = useContext(ContextConnected);
+
+    const navigate = useNavigate();
 
     const [validated, setValidated] = useState(false);
 
@@ -27,34 +31,32 @@ function EventsForm() {
     setValidated(true);
     };
 
+    const [sendImages, setSendImages] = useState([]);
     const [selectedImages, setSelectedImages] = useState([]);
-    const onSelectFile = (event) => {
-        const selectedFiles = event.target.files;
-        const selectedFilesArray = Array.from(selectedFiles);
+    
 
-        const imagesArray = selectedFilesArray.map((file) => {
-            return file;
-        });
+    const sendEvent = async (event) => {
+        event.preventDefault();
+        context.setSpinnerShowing(true)
 
-        setSelectedImages((previousImages) => previousImages.concat(imagesArray));
-    };
-
-    const sendEvent = async () => {
         const token = await JSON.parse(localStorage.getItem("token"));
         if (token) {
-            const title = document.querySelector('#validationCustom01').value;
-            const event_date = new Date(document.querySelector('#validationCustom02').value).toISOString();
-            const body = document.querySelector('#description').value;
-            const short_description = document.querySelector('#short_description').value;
 
-            var data = new FormData();
-            data.append('title', title);
-            data.append('body', body);
-            data.append('short_description', short_description);
-            data.append('event_date', event_date);
+            const title = document.querySelector("#title").value;
+            const short_description = document.querySelector("#description").value;
+            const body = document.querySelector("#longDescription").value;
+            const event_date = new Date(document.querySelector("#date").value).toISOString();
+            const event_type = document.querySelector("#type").value;
+
+            var formdata = new FormData();
+            formdata.append("title", title);
+            formdata.append("body", body);
+            formdata.append("short_description", short_description);
+            formdata.append("event_date", event_date);
+            formdata.append("event_type", event_type);
 
             for (let i = 0; i < selectedImages.length; i++) {
-                data.append('uploaded_images', selectedImages[i]);
+                formdata.append('uploaded_images', selectedImages[i]);
             };
 
 
@@ -63,62 +65,38 @@ function EventsForm() {
                 headers: {
                     "Authorization": `Bearer ${token.access_token}`
                 },
-                body: data
+                body: formdata
+            }).then(() => {
+                navigate("/Eventos");
+                context.setSpinnerShowing(false)
             })
 
         }
+
+        context.setSpinnerShowing(false)
     };
+    
 
     return (
 
         <Container className='form-container' fluid>
 
-            <h1 className='events-form-header blue-section'>Nuevo Evento</h1>
+            <h1 className='form-header blue-section'>Nuevo Evento</h1>
 
             <FormCard>
 
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label className='input-label events-form-image-label'>Foto</Form.Label>
-                    <div className='events-form-image-input-container'>
-
-                        <Form.Control 
-                            className='events-form-image-input' 
-                            type="file" 
-                            multiple 
-                            accept='image/png , image/jpeg'
-                            onChange={onSelectFile}
-                        />
-
-                        <img className='image-input-icon' alt='' src={ImageInput} />
-                        <p>Arrastra aquí tus imágenes, o <span className='blue-section'>Busca</span></p>
-                    </div>
-                </Form.Group>
-                
-                <div className='events-form-preview'>
-                    {selectedImages &&
-                        selectedImages.map((image, index) => {
-                            return(
-                                <div className='preview-image-container' key={index}>
-                                    <img className='preview-image' alt='' src={image}></img>
-                                    <CloseButton className='image-delete-button' onClick={() => 
-                                            setSelectedImages(selectedImages.filter((e) => e !== image))
-                                        }
-                                    />
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+                <ImageInput setSendImages={setSendImages} setSelectedImages={setSelectedImages} selectedImages={selectedImages} sendImages={sendImages} />
 
                 <Form noValidate validated={validated} onSubmit={submit}>
 
                     <Row>
 
-                        <Form.Group as={Col} md="6" controlId="validationCustom01">
+                        <Form.Group as={Col} md="4">
                             <Form.Label className='input-label'>Título</Form.Label>
                             <Form.Control
                                 className='input'
                                 type="text"
+                                id='title'
                                 required
                             />
                             <Form.Control.Feedback type="invalid">
@@ -126,11 +104,32 @@ function EventsForm() {
                             </Form.Control.Feedback>
                         </Form.Group>
 
-                        <Form.Group as={Col} md="6" controlId="validationCustom02">
+                        <Form.Group as={Col} md="4">
+                            <Form.Label className='input-label'>Tipo</Form.Label>
+                            <Form.Select required className='input' id='type'>
+                                <option value=""></option>
+                                <option value="Bienvenida a familias de primer año">Bienvenida a familias de primer año</option>
+                                <option value="Talleres pedagógicos">Talleres pedagógicos</option>
+                                <option value="Retiros espirituales">Retiros espirituales</option>
+                                <option value="Integración de los padres a la labor educativa">Integración de los padres a la labor educativa</option>
+                                <option value="Locro del exalumno salesiano del villada">Locro del exalumno salesiano del villada</option>
+                                <option value="UPF solidaria">UPF solidaria</option>
+                                <option value="Dia del educador">Dia del educador</option>
+                                <option value="Bicicleteada salesiana">Bicicleteada salesiana</option>
+                                <option value="Asado de fin de año">Asado de fin de año</option>
+                                <option value="Valle de la inmaculada">Valle de la inmaculada</option>
+                            </Form.Select>
+                            <Form.Control.Feedback type="invalid">
+                                Por favor seleccione un tipo.
+                            </Form.Control.Feedback>
+                        </Form.Group>
+
+                        <Form.Group as={Col} md="4">
                             <Form.Label className='input-label'>Fecha</Form.Label>
                             <Form.Control
                                 className='input'
                                 type="date"
+                                id="date"
                                 required 
                             />
                             <Form.Control.Feedback type="invalid">
@@ -142,7 +141,7 @@ function EventsForm() {
 
                     <Form.Group>
                         <Form.Label className='input-label'>Descripción corta</Form.Label>
-                        <Form.Control className='input events-form-description' id='short_description' required as="textarea" rows={3} />
+                        <Form.Control className='input events-form-description' required as="textarea" rows={3} id="description" />
                         <Form.Control.Feedback type="invalid">
                                 Por favor escriba una descripción.
                             </Form.Control.Feedback>
@@ -150,13 +149,13 @@ function EventsForm() {
 
                     <Form.Group>
                         <Form.Label className='input-label'>Descripcion detallada</Form.Label>
-                        <Form.Control className='input events-form-description' id='description' required as="textarea" rows={6} />
+                        <Form.Control className='input events-form-description' required as="textarea" rows={6} id='longDescription' />
                         <Form.Control.Feedback type="invalid">
                                 Por favor escriba una descripción.
                             </Form.Control.Feedback>
                     </Form.Group>
                         
-                    <Button className='button events-form-button' onClick={() => sendEvent()}>Enviar</Button>
+                    <Button className='button events-form-button' onClick={(e) => sendEvent(e)}>Enviar</Button>
                 </Form>
                 
             </FormCard>

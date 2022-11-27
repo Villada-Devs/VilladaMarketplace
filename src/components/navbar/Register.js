@@ -15,6 +15,18 @@ import "../../styles/navbar/Log-Reg.css";
 function Register({handleCardClick}) {
     const Connected = useContext(ContextConnected)
 
+    const [validated, setValidated] = useState(false);
+
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+        }
+
+        setValidated(true);
+    };
+
     const [submited, setSubmited] = useState(false);
 
     const toggleLoginMenu = async () => {
@@ -48,7 +60,7 @@ function Register({handleCardClick}) {
 
                 <hr className='log-reg-hr register-hr'></hr>
 
-                <Form>
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 {
                     !submited? (
 
@@ -58,14 +70,14 @@ function Register({handleCardClick}) {
                                 <Col>
                                     <Form.Group className="mb-3" controlId="FName">
                                         <Form.Label className='input-label'>Nombre</Form.Label>
-                                        <Form.Control className='input' type="text" />
+                                        <Form.Control required className='input' type="text" />
                                     </Form.Group>
                                 </Col>
 
                                 <Col>
                                     <Form.Group className="mb-3" controlId="LName">
                                         <Form.Label className='input-label'>Apellido</Form.Label>
-                                        <Form.Control className='input' type="text" />
+                                        <Form.Control required className='input' type="text" />
                                     </Form.Group>
                                 </Col>
 
@@ -73,17 +85,17 @@ function Register({handleCardClick}) {
                             
                             <Form.Group className="mb-3" controlId="UserName">
                                 <Form.Label className='input-label'>Nombre de Usuario</Form.Label>
-                                <Form.Control className='input' type="text" />
+                                <Form.Control required className='input' type="text" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="Email">
-                                <Form.Label className='input-label'>Mail Institucional</Form.Label>
-                                <Form.Control className='input' type="email" />
+                                <Form.Label className='input-label'>Mail</Form.Label>
+                                <Form.Control required className='input' type="email" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="Password">
                                 <Form.Label className='input-label'>Contraseña</Form.Label>
-                                <Form.Control className='input' type="password" placeholder='8+ carácteres' />
+                                <Form.Control required className='input' type="password" placeholder='8+ carácteres' />
                             </Form.Group>
 
                             <Button className='button login-register-button' variant="primary" type="submit">Crear Cuenta</Button>
@@ -102,7 +114,7 @@ function Register({handleCardClick}) {
                 </Form>
 
                 <div className='card-footer'>
-                    <p>¿Ya tienes Cuenta?<br></br><span className='blue-section' onClick={() => {toggleLoginMenu()}}>Iniciar Sesion</span></p>
+                    <p>¿Ya tienes Cuenta?<br /><span className='blue-section' onClick={() => {toggleLoginMenu()}}>Iniciar Sesion</span></p>
                 </div> 
 
             </div>

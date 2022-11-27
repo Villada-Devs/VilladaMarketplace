@@ -11,8 +11,10 @@ import Row from 'react-bootstrap/Row';
 import FormCard from '../FormCard';
 
 import "../../styles/Forms.css"
+import { useNavigate } from 'react-router-dom';
 
 function PoolForm() {
+    const navigate = useNavigate();
 
     const [validated, setValidated] = useState(false);
     const [position, setPosition] = useState(null);
@@ -30,6 +32,50 @@ function PoolForm() {
         <Marker position={position}></Marker>;
     };
 
+    const sendPool = async (event) => {
+        event.preventDefault();
+
+        const token = await JSON.parse(localStorage.getItem("token"));
+        if (token) {
+            const lat = position.lat;
+            const lng = position.lng;
+            const locality = "1";
+            const neighborhood = "1";
+            const slots = document.querySelector("#slots").value;
+            const first_tel = document.querySelector("#first_tel").value;
+
+            const day_lunes = document.querySelector("#lunes").checked;
+            const day_martes = document.querySelector("#martes").checked;
+            const day_miercoles = document.querySelector("#miercoles").checked;
+            const day_jueves = document.querySelector("#jueves").checked;
+            const day_viernes = document.querySelector("#viernes").checked;
+
+            var formdata = new FormData();
+            formdata.append("lat", lat);
+            formdata.append("lng", lng);
+            formdata.append("locality", locality);
+            formdata.append("neighborhood", neighborhood);
+            formdata.append("slots", slots);
+            formdata.append("first_tel", first_tel);
+            formdata.append("day_lunes", day_lunes);
+            formdata.append("day_martes", day_martes);
+            formdata.append("day_miercoles", day_miercoles);
+            formdata.append("day_jueves", day_jueves);
+            formdata.append("day_viernes", day_viernes);
+            formdata.append("alternative_tel", "3516271026");
+
+            await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/pools/", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token.access_token}`
+                },
+                body: formdata
+            }).then(() => {
+                navigate("/Pool");
+            })
+        }
+    }
+
     React.useEffect(() => {
         
         const L = require("leaflet");
@@ -41,15 +87,16 @@ function PoolForm() {
           iconUrl: require("leaflet/dist/images/marker-icon.png"),
           shadowUrl: require("leaflet/dist/images/marker-shadow.png")
         });
-    }, []);
+      }, []);
 
     const submit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
+    }
 
-        setValidated(true);
-
-        
+    setValidated(true);
     };
 
     return (
@@ -86,6 +133,7 @@ function PoolForm() {
                                 className='input'
                                 type="text"
                                 required
+                                id='slots'
                             />
                             <Form.Control.Feedback type="invalid">
                                 Por favor seleccione sus lugares disponibles.
@@ -148,11 +196,12 @@ function PoolForm() {
                         </Form.Group>
 
                         <Form.Group controlId="validationCustom01">
-                            <Form.Label className='input-label'>Contacto</Form.Label>
+                            <Form.Label className='input-label'>Número de teléfono</Form.Label>
                             <Form.Control
                                 className='input'
                                 type="text"
                                 required
+                                id='first_tel'
                             />
                             <Form.Control.Feedback type="invalid">
                                 Por favor ingrese un contacto.
@@ -161,7 +210,7 @@ function PoolForm() {
 
                     </Row>
                         
-                    <Button className='button form-button' type="submit">Enviar</Button>
+                    <Button className='button form-button' type="submit" onClick={(e) => sendPool(e)}>Enviar</Button>
                 </Form>
                 
             </FormCard>

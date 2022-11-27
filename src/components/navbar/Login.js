@@ -9,6 +9,7 @@ import ContextConnected from '../../context/ContextConnected';
 
 import "../../styles/navbar/Log-Reg.css";
 
+import { ToastContainer, toast } from 'react-toastify';
 
 function Login({handleCardClick}) {
 
@@ -46,20 +47,27 @@ function Login({handleCardClick}) {
             })
     
           const res = await response.json();
-          console.log(res)
+          console.log(response.status)
     
-          if("statusCode" in res === false) {
+          if(response.status == 200) {
             Connected.setUserInfo(res.user);
             const newToken = { access_token: res.access_token, refresh_token: res.refresh_token }
             localStorage.setItem("token", JSON.stringify(newToken));
             toggleLoginMenu();
           } else {
-            alert("Wrong Credentials.");
+            toast.error('Email o contraseña incorrectos', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
           }   
         }
       }
     
-    return (
+      return (
 
         <>
 
@@ -74,8 +82,8 @@ function Login({handleCardClick}) {
                     <hr className='log-reg-hr'></hr>
 
                     <Form>
-                        <Form.Group className="mb-3 unmarging" controlId="Email">
-                            <Form.Label className="input-label">Mail Institucional</Form.Label>
+                        <Form.Group className="mb-3 unmarging">
+                            <Form.Label className="input-label">Mail</Form.Label>
                             <Form.Control 
                                 id="login-mail-input" 
                                 className="input" 
@@ -83,7 +91,7 @@ function Login({handleCardClick}) {
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3 unmarging" controlId="Password">
+                        <Form.Group className="mb-3 unmarging">
                             <Form.Label className='input-label'>Contraseña</Form.Label>
                             <Form.Control 
                                 id="login-password-input" 
@@ -111,7 +119,7 @@ function Login({handleCardClick}) {
                             
                     
                     <div className='card-footer'>
-                        <p>¿No tienes Cuenta?<br></br><span className='blue-section' onClick={() => {toggleRegisterMenu()}}>Registrarse</span></p>
+                        <p>¿No tienes Cuenta?<br /><span className='blue-section' onClick={() => {toggleRegisterMenu()}}>Registrarse</span></p>
                     </div>
 
                 </div>

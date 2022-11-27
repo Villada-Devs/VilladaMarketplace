@@ -1,0 +1,14 @@
+.events-filters-cont {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.events-filters-button {
+  margin-right: 15px;
+}
+
+.events-filters-label {
+  margin: 0;
+}

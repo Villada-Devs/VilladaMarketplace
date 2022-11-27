@@ -10,3 +10,31 @@
     font-size: 20px;
     font-weight: 600;
 }
+
+
+/* Sections */
+
+
+.section-hr {
+    border-color: #6b6b6b;
+    margin: 45px 0;
+}
+
+.filter-hr {
+    border-color: #6b6b6b;
+    margin: 20px 0;
+}
+
+.market-filter {
+    font-weight: 600;
+    color: #313131;
+}
+
+.market-filter-label {
+    color: #4D4D4D;
+    margin: 10px 0;
+}
+
+.form-check-reverse {
+    text-align: left;
+}

@@ -1,0 +1,37 @@
+.prod-card-container {
+    background-color: #fff;
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 15px;
+    height: 400px;
+    width: 100%;
+
+    cursor: pointer;
+}
+
+.prod-img-cont {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: 75%;
+    width: 100%;
+}
+
+.prod-info-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.prod-img {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.prod-price {
+    margin-top: 10px;
+    font-weight: 400;
+    opacity: 75%;
+}
