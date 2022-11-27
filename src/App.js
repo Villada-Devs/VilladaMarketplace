@@ -29,7 +29,6 @@ import Footer from "./components/Footer";
 import ContextConnected from './context/ContextConnected';
 
 import "./styles/styles.css";
-import PoolForm from "./components/pool/PoolForm";
 
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

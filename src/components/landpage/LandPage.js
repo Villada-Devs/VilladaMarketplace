@@ -7,9 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import UPFland from "../../img/land/UPF-land.png"
-
-import UPFland from "../../img/UPF-land.png"
+import UPFland from "../../img/land/UPF-land.png";
 
 import "../../styles/landpage/LandPage.css"
 
