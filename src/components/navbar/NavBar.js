@@ -48,7 +48,7 @@ function NavBar() {
         
         <Navbar className="navbar" expand="lg">
             <Container className="unpadding" fluid>
-                <Navbar.Brand className="upf" ><NavLink className="nav-link" to="/">U P F</NavLink></Navbar.Brand>
+                <Navbar.Brand><NavLink className="nav-link upf" to="/">U P F</NavLink></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                 <Nav
