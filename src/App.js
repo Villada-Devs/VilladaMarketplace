@@ -51,7 +51,6 @@ function App() {
   const [pools, setPools] = useState([]);
 
   const [spinnerShowing, setSpinnerShowing] = useState(false);
-  
 
   const handleCardClick = (e) => e.stopPropagation();
 

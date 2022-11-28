@@ -1,5 +1,26 @@
+.profile-page {
+    max-width: 1366px;
+    padding: 0 4% 0;
+}
+
+
+.profile-page-row {
+    align-items: flex-start !important;
+}
+
+.profile-page-left {
+    padding-top: 120px;
+}
+
+.profile-page-right {
+    padding: 120px 0 0 20px;
+}
+
+
+/* Left Page */
+
+
 .profile-user {
-    margin-bottom: 40px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -7,6 +28,8 @@
 
 .profile-user-img {
     background-color: var(--main-color);
+    border: 5px solid #fff;
+    box-shadow: var(--shadow);
     margin-right: 20px;
     border-radius: 50%;
     height: 120px;
@@ -24,8 +47,13 @@
     margin-bottom: 10px;
 }
 
+
+/* Button */
+
+
 .profile-section-button {
     background-color: unset;
+    color: #313131;
     padding: 10px 15px;
     border-radius: 10px;
     text-align: initial;
@@ -37,8 +65,32 @@
     background-color: #E1DDFF;
 }
 
-.profile-section-icon {
-    margin-right: 15px;
-    height: 20px;
-    width: auto;
+.active-section {
+    background-color: #E1DDFF;
+}
+
+
+/* Right Page */
+
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+
+/* My Profile */
+
+.my-profile-img {
+    margin-bottom: 20px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    box-shadow: var(--shadow);
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+}
+
+.my-profile-input {
+    margin-bottom: 25px !important;
+    max-width: 400px;
 }

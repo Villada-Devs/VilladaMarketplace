@@ -9,7 +9,7 @@ function AboutUsInfoL(props) {
 
         <Container className='about-info-cont' fluid>
 
-            <Row>
+            <Row className='row-center'>
 
                 <Col className='about-info-l' md={7} sm={12}>
                     <h2 className='about-event-title blue-section'>{props.aboutEventTitle}</h2>
