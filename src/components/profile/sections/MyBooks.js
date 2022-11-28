@@ -14,7 +14,9 @@ function MyBooks(props) {
         const loadBooks = async () => {
           const token = await JSON.parse(localStorage.getItem("token"));
           if (token) {
-            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/marketplace/books/", {
+            const url = "http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/marketplace/myposts/"
+
+            const res = await fetch(url, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
@@ -22,8 +24,8 @@ function MyBooks(props) {
               },
             })
             const data = await res.json();
-            Connected.setBooks(data.results);
-            console.log(data.results);
+            Connected.setBooks(data.Book);
+            console.log(data.Book);
           }
         };
         loadBooks();

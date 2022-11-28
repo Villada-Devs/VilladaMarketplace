@@ -14,7 +14,9 @@ function MyTools(props) {
         const loadTools = async () => {
           const token = await JSON.parse(localStorage.getItem("token"));
           if (token) {
-            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/marketplace/tools/", {
+            const url = "http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/marketplace/myposts/"
+
+            const res = await fetch(url, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
@@ -22,8 +24,8 @@ function MyTools(props) {
               },
             })
             const data = await res.json();
-            Connected.setTools(data.results);
-            console.log(data.results);
+            Connected.setTools(data.Tool);
+            console.log(data.Tool);
           }
         };
         loadTools();

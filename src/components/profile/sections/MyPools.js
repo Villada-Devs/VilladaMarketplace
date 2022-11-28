@@ -18,7 +18,9 @@ function MyPools() {
         const loadPools = async () => {
           const token = await JSON.parse(localStorage.getItem("token"));
           if (token) {
-            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/pools/", {
+            const url = `http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/pools/?created_by=${Connected.userInfo.pk}`
+
+            const res = await fetch(url, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",

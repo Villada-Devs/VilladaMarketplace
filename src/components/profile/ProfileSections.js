@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import ContextConnected from "../../context/ContextConnected";
 
 function ProfileSections({ activeSection, setActiveSection }) {
+
+    const Connected = useContext(ContextConnected)
+
     return(
 
         <>
@@ -23,7 +28,12 @@ function ProfileSections({ activeSection, setActiveSection }) {
                 <button className={`profile-section-button ${activeSection === "MyTools" ? "active-section" : null}`} onClick={() => setActiveSection("MyTools")}>Herramientas</button>
                 <button className={`profile-section-button ${activeSection === "MyUniforms" ? "active-section" : null}`} onClick={() => setActiveSection("MyUniforms")}>Uniformes</button>
                 <button className={`profile-section-button ${activeSection === "MyPools" ? "active-section" : null}`} onClick={() => setActiveSection("MyPools")}>Pools</button>
-                <button className={`profile-section-button ${activeSection === "MyEvents" ? "active-section" : null}`} onClick={() => setActiveSection("MyEvents")}>Eventos</button>
+
+                { 
+                    Connected && Connected.userInfo && Connected.userInfo.is_staff?
+                        (<button className={`profile-section-button ${activeSection === "MyEvents" ? "active-section" : null}`} onClick={() => setActiveSection("MyEvents")}>Eventos</button>) :
+                    null
+                }
 
             </div>
 

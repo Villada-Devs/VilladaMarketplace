@@ -14,7 +14,9 @@ function MyUniforms(props) {
         const loadUniforms = async () => {
           const token = await JSON.parse(localStorage.getItem("token"));
           if (token) {
-            const res = await fetch("http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/marketplace/clothes/", {
+            const url = "http://villadaapidjango-env.eba-vaws9zih.us-east-1.elasticbeanstalk.com/api/v1/marketplace/myposts/"
+
+            const res = await fetch(url, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
@@ -22,8 +24,8 @@ function MyUniforms(props) {
               },
             })
             const data = await res.json();
-            Connected.setUniforms(data.results);
-            console.log(data.results);
+            Connected.setUniforms(data.Clothing);
+            console.log(data.Clothing);
           }
         };
         loadUniforms();

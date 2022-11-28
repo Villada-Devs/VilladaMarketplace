@@ -90,14 +90,10 @@ function ProfileView() {
 
                             <MyUniforms />
 
-                        ) : activeSection === "MyPools" ? (
+                        ) :  (
 
                             <MyPools />
 
-                        ) : (
-
-                            null
-                            
                         )}
 
                     </Col>
