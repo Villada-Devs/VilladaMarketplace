@@ -11,6 +11,7 @@ function ProductCard(props) {
     return(
 
         <Col lg={4} md={6} sm={6} >
+        
             <div className="prod-card-container" onClick={() => { navigate(`/Marketplace/articulo/detalles`, {state: props.prod}); }}>
 
                 <div className="prod-img-cont">
@@ -23,6 +24,7 @@ function ProductCard(props) {
                 </div>
 
             </div>
+            
         </Col>
 
     );

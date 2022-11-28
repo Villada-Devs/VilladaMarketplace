@@ -9,7 +9,7 @@ function AboutUsInfoR(props) {
 
         <Container className='about-info-cont' fluid>
 
-            <Row>
+            <Row className='row-center'>
 
                 <Col className='about-img'>
                     <img className='about-event-img' alt="" src={props.aboutEventImg}></img>

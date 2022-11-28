@@ -40,7 +40,8 @@ p {
     font-size: 16px;
 }
 
-.mb-3 {margin-bottom: unset !important;
+.mb-3 {
+    margin-bottom: unset !important;
 }
 
 
@@ -169,7 +170,7 @@ p {
     left: calc(50% - 50px);
 }
 
-.row {
+.row-center {
     display: flex;
     align-items: center;
 }
