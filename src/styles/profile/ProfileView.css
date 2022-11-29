@@ -6,6 +6,7 @@
 
 .profile-page-row {
     align-items: flex-start !important;
+    min-height: 90vh;
 }
 
 .profile-page-left {

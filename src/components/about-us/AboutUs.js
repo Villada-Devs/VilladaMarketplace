@@ -32,7 +32,7 @@ function AboutUs() {
                 crear una verdadera comunidad.
                 </p>
 
-                <h1 className="blue-section">Tareas y Acvtividades que llevamos a cabo</h1>
+                <h1 className="blue-section">Tareas y Actividades que llevamos a cabo</h1>
 
                 <hr className="bold-hr"></hr>
 
